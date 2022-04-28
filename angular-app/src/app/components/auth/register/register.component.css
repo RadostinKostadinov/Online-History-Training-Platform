@@ -144,7 +144,8 @@
 }
 
 #user-data > div#class-number > div > input,
-#school-data > div#class-number > div > input{
+#school-data > div#class-number > div > input,
+#school-data > div#class-number > div > select{
   display: block;
   margin-bottom: 10px;
   width: 100%;
