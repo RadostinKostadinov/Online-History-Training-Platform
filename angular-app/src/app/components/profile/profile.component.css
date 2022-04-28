@@ -62,3 +62,9 @@
 #left-menu ul li a:hover {
   background: hsla(41, 100%, 50%, 0.2);
 }
+
+[routerlink] {
+  text-decoration: none;
+}
+
+

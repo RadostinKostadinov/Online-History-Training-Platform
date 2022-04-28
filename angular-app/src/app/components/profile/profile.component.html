@@ -3,28 +3,28 @@
 
     <div id="first-group-btns">
       <ul>
-        <li><a>Профил</a></li>
+        <li><a routerLink="/profile/info" routerLinkActive="active">Профил</a></li>
       </ul>
     </div>
     <div id="second-group-btns">
       <ul>
-        <li><a>Преглед на профили</a></li>
-        <li><a>Управление на профили</a></li>
+        <li><a routerLink="/profile/view-profiles">Преглед на профили</a></li>
+        <li><a routerLink="/profile/edit-profiles">Управление на профили</a></li>
       </ul>
     </div>
     <div id="thrid-group-btns">
       <ul>
-        <li><a>Управление на ресурси</a></li>
-        <li><a>Състезания Контролни</a></li>
+        <li><a routerLink="/profile/edit-resources">Управление на ресурси</a></li>
+        <li><a routerLink="/profile/competitions">Състезания Контролни</a></li>
       </ul>
     </div>
     <div id="fourth-group-btns">
       <ul>
-        <li><a>Провери аватари</a></li>
+        <li><a routerLink="/profile/avatars-check">Провери аватари</a></li>
       </ul>
     </div>
   </div>
   <div id="profile-content">
- b
+    <router-outlet></router-outlet>
   </div>
 </div>
