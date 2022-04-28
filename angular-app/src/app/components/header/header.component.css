@@ -1,0 +1,90 @@
+
+#header {
+  width: 100vw;
+  max-width: 1920px;
+  position: fixed;
+  background-color: transparent;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+
+#background {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -9999;
+  background: rgb(186, 135, 97);
+  background: linear-gradient(
+    180deg,
+    rgba(186, 135, 97, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+#header-papirus {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  z-index: -1;
+  top:0;
+  left:0;
+}
+
+#header-wrapper {
+  width: 87.5%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+#header-first-row {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#header-second-row {
+  display: flex;
+  justify-content: center;
+}
+
+#header-second-row ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.25);
+}
+
+#header-second-row ul li {
+  float: left;
+}
+
+#header-second-row ul li a {
+  box-shadow: inset 0px 0px 13px #FFFFFF;
+  display: block;
+  padding: 12px 50px;
+  background: rgba(0, 0, 0, 0.01);
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+  color: hsla(100, 6%, 9%, 0.8);
+}
+
+#header-second-row ul li a:hover {
+  background: hsla(41, 100%, 50%, 0.2);
+}
+
+.header-time, .header-name {
+  background: rgba(186, 135, 97, 0.6);
+  padding: 3px 10px;
+  width: 300px;
+  font-size: 15px;
+  font-weight: 700;
+  color: hsla(100, 6%, 9%, 0.8);
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}

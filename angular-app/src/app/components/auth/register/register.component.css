@@ -1,0 +1,216 @@
+.section-fullscreen {
+  position: relative;
+  background: linear-gradient(
+    107.56deg,
+    var(--auth-background) 0%,
+    #ffffff 100%
+  );
+
+  display: flex;
+  justify-content: space-around;
+}
+
+#right-side {
+  position: relative;
+  width: 50%;
+  /* background-color: rgba(81, 255, 0, 0.226); */
+}
+#left-side {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 33%;
+  /* background-color: rgba(208, 255, 0, 0.226); */
+}
+
+#right-side-top {
+  padding-top: 5%;
+  width: 90%;
+  height: 60%;
+}
+
+#right-side-bottom {
+  position: relative;
+  width: 90%;
+  height: 40%;
+}
+
+#img-glagolica-horizontal {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit:scale-down;
+}
+
+#img-register-wave {
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+}
+
+#right-side-top form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 30px;
+}
+
+#right-side-top form > div {
+  position: relative;
+}
+
+#right-side-top form > div:nth-of-type(3) {
+  display: flex;
+  justify-content: center;
+  grid-column-start: 1;
+  grid-column-end: two;
+  padding-bottom: 20px;
+  /* background-color: var(--auth-form-background); */
+
+}
+
+#user-data,
+#school-data {
+  padding: 30px 30px;
+  background-color: var(--auth-form-background);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#center > form > div.form-group-label > p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12pt;
+  line-height: 14pt;
+  color: #ffffff;
+}
+
+#user-data > div > label:first-of-type,
+#school-data > div > label:first-of-type {
+  display: block;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12pt;
+  line-height: 14pt;
+  color: #ffffff;
+}
+
+#user-data > div > input:first-of-type,
+#school-data > div > input:first-of-type  {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  background-color: var(--auth-formfield-background);
+  /* background-color: var(--auth-form-background); */
+
+  height: 30px;
+  outline: none;
+  border: none;
+  font-size: 14pt;
+
+
+}
+
+#user-data input::placeholder,
+#school-data input::placeholder  {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+
+#user-data > div#class-number,
+#school-data > div#class-number {
+  display: flex;
+  justify-content: space-between;
+}
+
+#user-data > div#class-number > div,
+#school-data > div#class-number > div  {
+  display: inline-block;
+  width: 46%;
+}
+
+#user-data > div#class-number > div > label,
+#school-data > div#class-number > div > label {
+  display: block;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12pt;
+  line-height: 14pt;
+  color: #ffffff;
+}
+
+#user-data > div#class-number > div > input,
+#school-data > div#class-number > div > input{
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  background-color: var(--auth-formfield-background);
+  /* background-color: var(--auth-form-background); */
+
+  height: 30px;
+  outline: none;
+  border: none;
+  font-size: 14pt;
+}
+
+#form-btns {
+  display: flex;
+  align-items: flex-end;
+}
+
+.register-button {
+
+
+  padding: 15px 40px;
+
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16pt;
+
+  color: #FFFFFF;
+
+  border: 1px solid var(--auth-form-background);
+
+  cursor: pointer;
+ }
+
+ .register-button {
+  background-color: #BA8761;
+ }
+
+ #error-msg {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  /* border: 3px solid #ae1d5f; */
+  /* background-color: #ae1d5e4b; */
+  border-radius: 20px;
+  padding: 10px 0px;
+}
+
+#error-msg p {
+  text-align: center;
+  color: #ae1d5f;
+  font-size: 16pt;
+}
+ #success-msg {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  border: 3px solid #1dae55;
+  background-color: #1dae554b;
+  border-radius: 20px;
+  padding: 10px 0px;
+ }
+
+ #success-msg p {
+  text-align: center;
+  color: #ffffff;
+  font-size: 16pt;
+}

@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900");
+
+:root {
+  --auth-background: #59543F;
+  --auth-formfield-background: #b9865fb3;
+  --auth-form-background: #171916cc;
+  --auth-login-btn-background: #EB6F08;
+  --auth-form-labels: #ffffff;
+  --auth-buttons-text: #ffffff;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+body {
+  font-family: 'Montserrat';
+  font-weight: normal;
+}
+
+.section-fullscreen {
+  width: 100vw;
+  height: 100vh;
+}
+
+[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
