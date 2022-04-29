@@ -1,0 +1,50 @@
+#content-first-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+}
+
+#content-first-row > div:first-of-type select {
+  display: block;
+  margin-bottom: 10px;
+  height: 50px;
+  width: 200px;
+  outline: none;
+  border: none;
+  font-size: 16pt;
+  padding-left: 52px;
+
+  background: url(../../../../assets/core/select_arrow.svg) no-repeat;
+  background-position: 100% center !important;
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  padding-right: 2rem !important;
+  cursor: pointer;
+}
+
+#content-first-row > div:first-of-type p {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+#register-requests-btn a {
+  display: block;
+  padding: 12px 50px;
+  background: radial-gradient(
+    50% 1030.19% at 50% 50%,
+    rgba(130, 80, 54, 0.534) 0%,
+    rgba(130, 80, 54, 0.534) 40.13%,
+    rgba(244, 190, 131, 0.6) 100%
+  );
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: hsla(0, 0%, 100%, 0.8);
+  border: 2px solid #594833;
+  box-shadow: inset 0px 0px 13px #ffffff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin-bottom: 5px;
+}

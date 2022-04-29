@@ -1,1 +1,19 @@
-<p>edit-profiles works!</p>
+<div id="content-first-row">
+  <div>
+    <form [formGroup]="contactForm" (ngSubmit)="selectClass()">
+      <p>
+        <select formControlName="country">
+          <option *ngFor="let class of availableClasses" [ngValue]="class.name">
+            {{ class.name }}
+          </option>
+        </select>
+      </p>
+    </form>
+  </div>
+
+  <div id="register-requests-btn">
+    <a>Заявки за регистрация</a>
+  </div>
+</div>
+
+<!-- TODO: Add second row(table), which will list students. Like in figma design -->

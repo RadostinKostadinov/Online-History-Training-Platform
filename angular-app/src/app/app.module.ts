@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,7 @@ import { EditProfilesComponent } from './components/profile/edit-profiles/edit-p
 import { EditResourcesComponent } from './components/profile/edit-resources/edit-resources.component';
 import { CompetitionsComponent } from './components/profile/competitions/competitions.component';
 import { AvatarsCheckComponent } from './components/profile/avatars-check/avatars-check.component';
+import { RegisterRequestsComponent } from './components/profile/register-requests/register-requests.component';
 
 @NgModule({
   declarations: [
@@ -30,12 +31,14 @@ import { AvatarsCheckComponent } from './components/profile/avatars-check/avatar
     EditProfilesComponent,
     EditResourcesComponent,
     CompetitionsComponent,
-    AvatarsCheckComponent
+    AvatarsCheckComponent,
+    RegisterRequestsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
