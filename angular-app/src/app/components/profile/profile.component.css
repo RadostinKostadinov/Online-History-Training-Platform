@@ -25,6 +25,7 @@
 #profile-content {
   width: 75%;
   height: 97%;
+  position: relative;
 }
 
 #left-menu ul {

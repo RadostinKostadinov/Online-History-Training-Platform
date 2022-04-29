@@ -12,6 +12,7 @@ router.get(
     validateUser,
     validateTeacher,
     async (req, res) => {
+        console.log('/get/register-requests');
         try {
             const users = await User.find({ isApproved: false }).select({
                 _id: 1,

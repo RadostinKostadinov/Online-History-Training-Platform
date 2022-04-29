@@ -1,1 +1,39 @@
-<p>register-requests works!</p>
+<div id="content-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Име</th>
+        <th>Презиме</th>
+        <th>Фамилия</th>
+        <th>Клас</th>
+        <th>Номер</th>
+        <th>Бутон</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usersToShow">
+        <td>{{user.firstName}}</td>
+        <td>{{user.surName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.class}}</td>
+        <td>{{user.number}}</td>
+        <td><button (click)="approveUser(user._id)" >Одобри</button></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="pagination-buttons">
+    <div [ngClass]="pageNumber <= 0 ? 'pagination-end' : ''" id="pagination-button-left" class="pagination-button" (click)="previousPage()">
+      <img src="../../../../assets/core/pagination_arrow.svg">
+      <div>
+        <p>ПРЕДИШНА СТРАНИЦА</p>
+      </div>
+    </div>
+    <div [ngClass]="pageNumber >= maxPageNumber ? 'pagination-end' : ''" id="pagination-button-right" class="pagination-button" (click)="nextPage()">
+      <div>
+        <p>СЛЕДВАЩА СТРАНИЦА</p>
+      </div>
+      <img src="../../../../assets/core/pagination_arrow.svg">
+    </div>
+  </div>
+</div>

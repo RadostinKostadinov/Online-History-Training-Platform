@@ -1,3 +1,4 @@
+import { RegisterRequestsComponent } from './components/profile/register-requests/register-requests.component';
 import { AvatarsCheckComponent } from './components/profile/avatars-check/avatars-check.component';
 import { CompetitionsComponent } from './components/profile/competitions/competitions.component';
 import { EditResourcesComponent } from './components/profile/edit-resources/edit-resources.component';
@@ -25,7 +26,8 @@ const routes: Routes = [
       { path: 'edit-profiles', component: EditProfilesComponent, canActivate: [AuthGuard] },
       { path: 'edit-resources', component: EditResourcesComponent, canActivate: [AuthGuard] },
       { path: 'competitions', component: CompetitionsComponent, canActivate: [AuthGuard] },
-      { path: 'avatars-check', component: AvatarsCheckComponent, canActivate: [AuthGuard] }
+      { path: 'avatars-check', component: AvatarsCheckComponent, canActivate: [AuthGuard] },
+      { path: 'register-requests', component: RegisterRequestsComponent, canActivate: [AuthGuard] }
     ]
   },
   { path: '**', redirectTo: '' }
