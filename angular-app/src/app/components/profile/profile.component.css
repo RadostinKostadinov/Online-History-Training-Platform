@@ -24,8 +24,7 @@
 
 #profile-content {
   width: 75%;
-  height: 100%;
-  background-color: violet;
+  height: 97%;
 }
 
 #left-menu ul {
@@ -67,4 +66,7 @@
   text-decoration: none;
 }
 
-
+.active {
+  background: #DAAC8A !important;
+  cursor: not-allowed !important;
+}

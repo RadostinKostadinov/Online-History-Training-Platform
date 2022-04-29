@@ -34,7 +34,3 @@ body {
   cursor: not-allowed;
 }
 
-.active {
-  background: rgba(186, 135, 97, 0.6) !important;
-  cursor: not-allowed;
-}
