@@ -21,6 +21,7 @@ export class AuthService {
       }).pipe(
         catchError(this.handleError),
         tap(resData => {
+          console.log(resData);
           this.handleAuthentication(resData.username, resData.token, resData);
         })
       );
@@ -49,12 +50,13 @@ export class AuthService {
   }
 
   autoLogin() {
-    const userData: {username: string; token: string;} = JSON.parse(localStorage.getItem('userData')!);
+    const userData = JSON.parse(localStorage.getItem('userData')!);
     if(!userData) {
       return;
     }
 
-    const loadedUser = new User(userData.username, userData.token);
+    let loadedUser = new User(userData.username, userData.token);
+    loadedUser = Object.assign(loadedUser, userData);
 
     if(loadedUser.userToken){
       this.user.next(loadedUser);

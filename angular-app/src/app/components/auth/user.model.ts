@@ -1,6 +1,14 @@
 export class User {
   public email?: string;
   public password?: string;
+  public avatar?: {
+    owner?: string,
+    image?: string,
+    name?: string,
+    years?: string,
+    description?: string,
+    isReviewed?: boolean,
+  };
   public repass?: string;
   public firstName?: string;
   public surName?: string;
@@ -12,7 +20,11 @@ export class User {
   public avatarsPoints?: number;
   public avgGrade?: number;
   public class?: string;
-  public classTeacher?: string | null;
+  public classTeacher?: {
+    firstName?: string,
+    lastName?: string,
+    phoneNumber?: string,
+  };
   public competitionPoints?: number;
   public createdAt?: string;
   public isApproved?: boolean;

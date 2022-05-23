@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Avatar = require("../models/Avatar");
 const {
     registerValidation,
     loginValidation,
@@ -32,6 +33,12 @@ router.post("/register", async (req, res) => {
 
     //Създаване на обект от тип потребител
     const user = new User(req.body);
+    user.avatar = await Avatar.findById("6241875ec2198b2deeba7f5a");
+    user.address = "Не е въведен.";
+    user.userPhone = "0000000000";
+    user.parent = "Не е въведен.";
+    user.parentPhone = "Не е въведен.";
+    user.classTeacher = await User.findById("626ada41ca0004e257cb6ede");
     user.isApproved = false;
     user.password = hashedPassword;
 
@@ -52,7 +59,8 @@ router.post("/login", async (req, res) => {
     }
 
     //Проверяваме дали има такъв потребител в БД
-    const user = await User.findOne({ username: req.body.username }).lean();
+    const user = await User.findOne({ username: req.body.username }).populate('avatar').populate('classTeacher').lean();
+    console.log(user);
     if (!user) {
         return res.status(400).json({ message: "Няма такъв потребител." });
     }

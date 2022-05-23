@@ -2,11 +2,11 @@
   <div id="left-column">
     <div id="avatar-wrapper">
       <!-- avatar image -->
-      <img id="profile-avatar" src="../../../assets/defaults/profile-picture.png"/>
+      <img id="profile-avatar" src={{this.user!.avatar?.image}}/>
     </div>
     <div id="avatar-description-wrapper">
       <!-- avatar description -->
-      <p id="avatar-description">Хан Аспарух - 681-700 г.</p>
+      <p id="avatar-description">{{this.user!.avatar!.name}} - {{this.user!.avatar!.years}} г.</p>
     </div>
   </div>
   <div id="right-column">
@@ -17,31 +17,31 @@
         <div id="info-student-first-row">
           <div>
             <label>Име на ученика</label>
-            <p id="student-name">Иван Иванов</p>
+            <p id="student-name">{{this.user!.firstName}} {{this.user!.surName}} {{this.user!.lastName}}</p>
           </div>
         </div>
         <div id="info-student-second-row">
           <div>
             <label>Среден успех</label>
-            <p id="student-avg-grade">5.40</p>
+            <p id="student-avg-grade">{{this.user!.avgGrade}}</p>
           </div>
           <div>
             <label>Клас</label>
-            <p id="student-class">7Б</p>
+            <p id="student-class">{{this.user!.class}}</p>
           </div>
           <div>
             <label>Номер</label>
-            <p id="student-number">18</p>
+            <p id="student-number">{{this.user!.number}}</p>
           </div>
           <div>
             <label>Телефон</label>
-            <p id="student-phone">0897654321</p>
+            <p id="student-phone">{{this.user!.userPhone}}</p>
           </div>
         </div>
         <div id="info-student-third-row">
           <div>
             <label>Адрес на ученика</label>
-            <p id="student-address">гр.Русе, ул. Студентска, 96</p>
+            <p id="student-address">{{this.user!.address}}</p>
           </div>
         </div>
       </div>
@@ -49,11 +49,11 @@
         <div id="info-teacher-first-row">
           <div>
             <label>Име на класен ръководител</label>
-            <p id="teacher-name">Мария Михайлова</p>
+            <p id="teacher-name">{{this.user!.classTeacher!.firstName}} {{this.user!.classTeacher!.lastName}}</p>
           </div>
           <div>
             <label>Телефон</label>
-            <p id="teacher-phone">0897654321</p>
+            <p id="teacher-phone">{{this.user!.classTeacher!.phoneNumber}}</p>
           </div>
         </div>
       </div>
