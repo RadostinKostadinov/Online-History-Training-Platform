@@ -7,6 +7,21 @@ export class User {
   public lastName?: string;
   public school_class?: string;
   public number?: string;
+  public address?: string;
+  public avatars?: [];
+  public avatarsPoints?: number;
+  public avgGrade?: number;
+  public class?: string;
+  public classTeacher?: string | null;
+  public competitionPoints?: number;
+  public createdAt?: string;
+  public isApproved?: boolean;
+  public lessonsPoints?: number;
+  public practicesPoints?: number;
+  public solvedPTCs?: [];
+  public testPoints?: 0;
+  public type?: string;
+  public userPhone?: number;
 
   constructor(
     public username?: string,

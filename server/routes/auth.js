@@ -13,13 +13,17 @@ router.post("/register", async (req, res) => {
     req.body.type = "student";
     const { error: validationError } = registerValidation(req.body);
     if (validationError) {
-        return res.status(400).send({message: validationError.details[0].message });
+        return res
+            .status(400)
+            .send({ message: validationError.details[0].message });
     }
 
     //Проверяваме дали вече има такъв потребител в БД
     const usernameExists = await User.findOne({ username: req.body.username });
     if (usernameExists) {
-        return res.status(400).send({message: "Вече има потребител с това име."});
+        return res
+            .status(400)
+            .send({ message: "Вече има потребител с това име." });
     }
 
     //Хеширане на паролата
@@ -41,8 +45,6 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-    console.log(req.body);
-
     //Валидираме данните от заявката
     const { error: validationError } = loginValidation(req.body);
     if (validationError) {
@@ -50,20 +52,22 @@ router.post("/login", async (req, res) => {
     }
 
     //Проверяваме дали има такъв потребител в БД
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ username: req.body.username }).lean();
     if (!user) {
-        return res.status(400).json({message: "Няма такъв потребител."});
+        return res.status(400).json({ message: "Няма такъв потребител." });
     }
 
     //Проверяваме дали паролата е вярна
     const validPass = await bcrypt.compare(req.body.password, user.password);
     if (!validPass) {
-        return res.status(400).json({message: "Грешна парола."});
+        return res.status(400).json({ message: "Грешна парола." });
     }
 
     //Проверяваме дали профилът е одобрен
     if (!user.isApproved) {
-        return res.status(401).json({message: "Профилът все още не е одобрен."});
+        return res
+            .status(401)
+            .json({ message: "Профилът все още не е одобрен." });
     }
 
     //Създаваме Json Web Token и го добавяме в хедъра на отговора
@@ -73,7 +77,9 @@ router.post("/login", async (req, res) => {
     );
     res.header("auth-token", token);
 
-    res.json({username: user.username, token: token});
+    
+    userWithToken = Object.assign({}, user, { token: token });
+    res.json(userWithToken);
 });
 
 module.exports = router;

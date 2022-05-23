@@ -21,7 +21,7 @@ export class AuthService {
       }).pipe(
         catchError(this.handleError),
         tap(resData => {
-          this.handleAuthentication(resData.username, resData.token);
+          this.handleAuthentication(resData.username, resData.token, resData);
         })
       );
   }
@@ -61,8 +61,9 @@ export class AuthService {
     }
   }
 
-  private handleAuthentication(username: string, token: string) {
-    const user = new User(username = username, token = token);
+  private handleAuthentication(username: string, token: string, resData: Object) {
+    let user = new User(username = username, token = token);
+    user = Object.assign(user, resData);
     this.user.next(user);
     localStorage.setItem('userData', JSON.stringify(user));
   }
