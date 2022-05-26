@@ -18,6 +18,7 @@ import { EditResourcesComponent } from './components/profile/edit-resources/edit
 import { CompetitionsComponent } from './components/profile/competitions/competitions.component';
 import { AvatarsCheckComponent } from './components/profile/avatars-check/avatars-check.component';
 import { RegisterRequestsComponent } from './components/profile/register-requests/register-requests.component';
+import { LessonsComponent } from './components/lessons/lessons.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { RegisterRequestsComponent } from './components/profile/register-request
     EditResourcesComponent,
     CompetitionsComponent,
     AvatarsCheckComponent,
-    RegisterRequestsComponent
+    RegisterRequestsComponent,
+    LessonsComponent
   ],
   imports: [
     BrowserModule,

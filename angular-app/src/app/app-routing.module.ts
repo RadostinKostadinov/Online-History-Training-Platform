@@ -1,3 +1,4 @@
+import { LessonsComponent } from './components/lessons/lessons.component';
 import { RegisterRequestsComponent } from './components/profile/register-requests/register-requests.component';
 import { AvatarsCheckComponent } from './components/profile/avatars-check/avatars-check.component';
 import { CompetitionsComponent } from './components/profile/competitions/competitions.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'register-requests', component: RegisterRequestsComponent, canActivate: [AuthGuard] }
     ]
   },
+  { path: 'lessons', component: LessonsComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' }
 ];
 
