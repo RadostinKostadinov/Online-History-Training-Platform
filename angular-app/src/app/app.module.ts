@@ -1,8 +1,10 @@
+import * as $ from 'jquery';
 import { AuthInterceptorService } from './components/auth/auth-interceptor.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,7 @@ import { CompetitionsComponent } from './components/profile/competitions/competi
 import { AvatarsCheckComponent } from './components/profile/avatars-check/avatars-check.component';
 import { RegisterRequestsComponent } from './components/profile/register-requests/register-requests.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { LessonsComponent } from './components/lessons/lessons.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]

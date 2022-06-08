@@ -62,7 +62,7 @@ router.patch("/update/:avatarId", async (req, res) => {
     } 
 
     try {
-        const updatedPost = await Avatar.update(
+        const updatedAvatar = await Avatar.update(
             { _id: req.params.avatarId },
             { $set: req.body }
         );

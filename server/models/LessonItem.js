@@ -7,7 +7,7 @@ const LessonItemSchema = mongoose.Schema({
     },
     order: {
         type: Number,
-        required: true
+        required: false
     },
     points: {
         type: Number,
@@ -15,7 +15,7 @@ const LessonItemSchema = mongoose.Schema({
     },
     pointsNeeded: {
         type: Number,
-        required: true,
+        required: false,
     },
     text: {
         type: String

@@ -2,39 +2,40 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-require('dotenv/config');
+require("dotenv/config");
 //------------------------------------
 const app = express();
-
-
 
 //Middleware, authentication
 app.use(express.json());
 app.use(cors());
+app.use('/static', express.static('./static'));
 
 //Import Routes
-const postsRoute = require('./routes/posts.js');
-const avatarsRoute = require('./routes/avatars.js');
-const authRoute = require('./routes/auth.js');
-const usersRoute = require('./routes/users.js');
-
+const avatarsRoute = require("./routes/avatars.js");
+const authRoute = require("./routes/auth.js");
+const usersRoute = require("./routes/users.js");
+const erasRoute = require("./routes/eras.js");
+const lessonsRoute = require("./routes/lessons.js");
+const lessonItemsRoute = require("./routes/lessonItems.js");
+const uploadsRoute = require("./routes/upload.js");
 
 //Use Routes
-app.use('/avatars', avatarsRoute);
-app.use('/auth', authRoute);
-app.use('/users', usersRoute);
-
+app.use("/avatars", avatarsRoute);
+app.use("/auth", authRoute);
+app.use("/users", usersRoute);
+app.use("/eras", erasRoute);
+app.use("/lessons", lessonsRoute);
+app.use("/lessonItems", lessonItemsRoute);
+app.use("/upload", uploadsRoute);
 
 app.get("/", (req, res) => {
     res.send("We are on home");
 });
 
-
-
-
 //Connections
 app.listen(3000, () => {
-    console.log("SUCCESS: Server started.")
+    console.log("SUCCESS: Server started.");
 });
 
 mongoose.connect(process.env.DB_CONNECTION, () => {
