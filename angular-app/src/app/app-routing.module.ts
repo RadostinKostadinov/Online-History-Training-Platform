@@ -1,3 +1,5 @@
+import { SelectLessonComponent } from './components/lessons/select-lesson/select-lesson.component';
+import { SelectEraComponent } from './components/lessons/select-era/select-era.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
 import { RegisterRequestsComponent } from './components/profile/register-requests/register-requests.component';
 import { AvatarsCheckComponent } from './components/profile/avatars-check/avatars-check.component';
@@ -14,6 +16,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LessonComponent } from './components/lessons/lesson/lesson.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -31,7 +34,12 @@ const routes: Routes = [
       { path: 'register-requests', component: RegisterRequestsComponent, canActivate: [AuthGuard] }
     ]
   },
-  { path: 'lessons', component: LessonsComponent, canActivate: [AuthGuard]},
+  { path: 'lessons', component: LessonsComponent, canActivate: [AuthGuard], children: [
+    { path: '', pathMatch: 'full', redirectTo: 'select-era'},
+    { path: 'select-era', component: SelectEraComponent, canActivate: [AuthGuard] },
+    { path: 'select-lesson', component: SelectLessonComponent, canActivate: [AuthGuard] },
+    { path: 'lesson', component: LessonComponent, canActivate: [AuthGuard] }
+  ]},
   { path: '**', redirectTo: '' }
 ];
 

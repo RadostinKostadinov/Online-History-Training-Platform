@@ -22,6 +22,9 @@ import { AvatarsCheckComponent } from './components/profile/avatars-check/avatar
 import { RegisterRequestsComponent } from './components/profile/register-requests/register-requests.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SelectEraComponent } from './components/lessons/select-era/select-era.component';
+import { SelectLessonComponent } from './components/lessons/select-lesson/select-lesson.component';
+import { LessonComponent } from './components/lessons/lesson/lesson.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CompetitionsComponent,
     AvatarsCheckComponent,
     RegisterRequestsComponent,
-    LessonsComponent
+    LessonsComponent,
+    SelectEraComponent,
+    SelectLessonComponent,
+    LessonComponent
   ],
   imports: [
     BrowserModule,

@@ -25,15 +25,20 @@ export class RegisterRequestsComponent implements OnInit {
   usersToShow: unapprovedUser[] = [];
   pageNumber: number = 0;
   usersPerPage: number = 5;
-  maxPageNumber: number = Math.floor(this.unapprovedUsers.length / this.usersPerPage);
+  maxPageNumber: number = Math.ceil(this.unapprovedUsers.length / this.usersPerPage);
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.getUnapprovedUsers().pipe(take(1)).subscribe(users => {
-      this.unapprovedUsers = users;
-      this.maxPageNumber = Math.floor(this.unapprovedUsers.length / this.usersPerPage);
-      this.updateUnapprovedUsersTable();
+    this.getUnapprovedUsers().pipe(take(1)).subscribe({
+      next: (users) => {
+        this.unapprovedUsers = users;
+        this.maxPageNumber = Math.floor(this.unapprovedUsers.length / this.usersPerPage);
+        this.updateUnapprovedUsersTable();
+      },
+      error: (err) => {
+        console.error(err);
+      }
     });
 
   }
@@ -73,7 +78,7 @@ export class RegisterRequestsComponent implements OnInit {
     if (this.pageNumber * this.usersPerPage + this.usersPerPage > this.unapprovedUsers.length) {
       this.usersToShow = this.unapprovedUsers.slice(this.pageNumber * this.usersPerPage);
     } else {
-      this.usersToShow = this.unapprovedUsers.slice(this.pageNumber * this.usersPerPage, this.usersPerPage);
+      this.usersToShow = this.unapprovedUsers.slice(this.pageNumber * this.usersPerPage, this.pageNumber * this.usersPerPage + this.usersPerPage);
     }
   }
 }

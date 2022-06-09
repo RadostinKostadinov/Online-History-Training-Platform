@@ -1,0 +1,43 @@
+<div id="select-lesson-content-wrapper">
+  <div id="select-lesson-left-side">
+    <h1>Избор на урок</h1>
+    <div>
+      <p>{{ era.name }}</p>
+    </div>
+    <div>
+      <a
+        *ngFor="let lesson of lessonsToShow"
+        (click)="onLessonSelect($event, lesson._id)"
+      >
+        {{ lesson.name }}</a
+      >
+      <div id="pagination-buttons">
+        <div
+          [ngClass]="pageNumber <= 0 ? 'pagination-end' : ''"
+          id="pagination-button-left"
+          class="pagination-button"
+          (click)="paginationPrevPage()"
+        >
+          <img src="../../../../assets/core/pagination_arrow.svg" />
+          <div>
+            <p>ПРЕДИШНА СТРАНИЦА</p>
+          </div>
+        </div>
+        <div
+          [ngClass]="pageNumber >= maxPageNumber - 1 ? 'pagination-end' : ''"
+          id="pagination-button-right"
+          class="pagination-button"
+          (click)="paginationNextPage()"
+        >
+          <div>
+            <p>СЛЕДВАЩА СТРАНИЦА</p>
+          </div>
+          <img src="../../../../assets/core/pagination_arrow.svg" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="select-lesson-right-side">
+    <img src="../../../assets/core/lessons-page-greeting.png" />
+  </div>
+</div>
