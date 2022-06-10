@@ -1,22 +1,23 @@
 const mongoose = require("mongoose");
 
-import { QuestionSchema } from "./Question";
-
 const PTCBlankSchema = mongoose.Schema({
-    type: {
+    name: {
         type: String,
         required: true
+    },
+    type: {
+        type: String
     },
     lesson: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Lesson"
     },
     questions: [{
-        type: QuestionSchema
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Question"
     }],
     competitionTime: {
-        type: Number,
-        required: true,
+        type: Number
     },
     isEnabled: {
         type: Boolean,
@@ -29,4 +30,4 @@ const PTCBlankSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('PTCBlanks', PTCBlankSchema);
+module.exports = mongoose.model('PTCBlank', PTCBlankSchema);

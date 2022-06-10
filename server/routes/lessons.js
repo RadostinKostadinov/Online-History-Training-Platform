@@ -12,6 +12,20 @@ router.get("/get/:lessonId", async (req, res) => {
     }
 });
 
+// Връща упражненията за даден урок ID
+router.get("/get-practices/:lessonId", async (req, res) => {
+    try {
+        filters = {
+            _id: false,
+            practices: true
+        }
+        const lesson = await Lesson.findById(req.params.lessonId, filters).populate({ path:'practices', model: 'PTCBlank'}).lean();
+        res.status(200).json(lesson.practices);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 // Създава урок
 router.post("/create", async (req, res) => {
     const lesson = new Lesson(req.body);

@@ -9,10 +9,10 @@ const LessonSchema = mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: "LessonItem"
     }],
-    practice: {
+    practices: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'PTCBlank'
-    },
+    }],
     tests: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'PTCBlank'

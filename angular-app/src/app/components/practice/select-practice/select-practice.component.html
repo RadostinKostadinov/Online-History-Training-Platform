@@ -1,0 +1,47 @@
+<div id="sp-wrapper">
+  <div id="background-image-question">
+    <img
+      src="../../../../assets/core/select-practice-background.png"
+      alt="select-practice-background-image"
+    />
+  </div>
+  <div id="sp-content">
+    <div id="sp-ux">
+      <div id="sp-era">
+        <div id="sp-eras-sliding">
+          <h2>ЕРА</h2>
+          <div id="sp-eras-wrapper">
+            <a
+              href="#"
+              *ngFor="let era of eras"
+              (click)="onSelectEra($event, era._id)"
+              >{{ era.name }}</a
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        id="sp-lesson"
+        [ngClass]="lessons ? 'display-lessons-section' : 'hide-lessons-section'"
+      >
+        <div id="sp-lessons-sliding">
+          <h2>УРОК</h2>
+          <div id="sp-lessons-wrapper">
+            <a
+              href="#"
+              *ngFor="let lesson of lessons"
+              (click)="onSelectLesson($event, lesson._id)"
+              >{{ lesson.name }}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="sp-balloon">
+      <img
+        src="../../../../assets/core/select-practice-balloon.svg"
+        alt="select-practice-balloon-text"
+      />
+    </div>
+  </div>
+</div>

@@ -1,21 +1,21 @@
 const mongoose = require("mongoose");
 
-export const QuestionSchema = mongoose.Schema({
+const QuestionSchema = mongoose.Schema({
     type: {
         type: String,
-        required: true,
-    },
-    points: {
-        type: Number,
         required: true
     },
-    order: {
-        type: Number,
-        required: true,
+    points: {
+        type: String,
+        required: true
+    },
+    itemName: {
+        type: String,
+        required: true
     },
     question: {
         type: String,
-        required: true,
+        required: true
     },
     answers:[{
         type: String
@@ -23,6 +23,15 @@ export const QuestionSchema = mongoose.Schema({
     correctAnswer: {
         type: String,
         required: true
+    },
+    questionIndex: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        immutable: true,
+        default: Date.now
     }
 });
 

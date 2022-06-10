@@ -5,7 +5,7 @@
 >
   <div class="content-wrapper">
     <div (click)="onChooseMode($event, 'lessons')"><a href="#">Уроци</a></div>
-    <div (click)="onChooseMode($event, 'practices')">
+    <div (click)="onChooseMode($event, 'practice')">
       <a href="#">Упражнения</a>
     </div>
     <div (click)="onChooseMode($event, 'tests')"><a href="#">Контролни</a></div>
@@ -41,7 +41,7 @@
         >
           <a>{{ lesson.name }}</a>
         </div>
-        <div class="accordion-panel-element add-new-lesson-input-wrapper">
+        <div *ngIf="mode == 'lessons'" class="accordion-panel-element add-new-lesson-input-wrapper">
           <input id="add-new-lesson-input" type="text" />
           <img
             (click)="onAddLesson(era._id)"

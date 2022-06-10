@@ -1,0 +1,33 @@
+<div class="choose-practice-wrapper">
+  <div>{{ lesson.name }}</div>
+  <div class="content-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Име</th>
+          <th>Продължителност</th>
+          <th>Активно</th>
+          <th>Бутон</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let practice of practices">
+          <td>{{ practice.name }}</td>
+          <td>{{ practice.competitionTime }}</td>
+          <td [textContent]="practice.isEnabled ? 'Да' : 'Не'"></td>
+          <td>
+            <button (click)="onChoosePractice($event, practice._id)">
+              Редактирай
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3"><input type="text" id="new-practice-input" /></td>
+          <td>
+            <button (click)="addNewPractice($event)">Добави</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

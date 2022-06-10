@@ -1,3 +1,8 @@
+import { StartComponent } from './components/practice/start/start.component';
+import { SelectPracticeComponent } from './components/practice/select-practice/select-practice.component';
+import { PracticeComponent } from './components/practice/practice.component';
+import { ChoosePracticeComponent } from './components/profile/edit-resources/choose-practice/choose-practice.component';
+import { EditPracticeComponent } from './components/profile/edit-resources/edit-practice/edit-practice.component';
 import { SelectLessonComponent } from './components/lessons/select-lesson/select-lesson.component';
 import { SelectEraComponent } from './components/lessons/select-era/select-era.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
@@ -22,6 +27,11 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [LoggedInGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard] },
+  { path: 'practice', component: PracticeComponent, canActivate: [AuthGuard], children: [
+    { path: '', pathMatch: 'full', redirectTo: 'select-practice' },
+    { path: 'select-practice', component: SelectPracticeComponent, canActivate: [AuthGuard] },
+    { path: 'start', component: StartComponent, canActivate: [AuthGuard] },
+  ] },
   {
     path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
       { path: '', pathMatch: 'full', redirectTo: 'info' },
@@ -31,15 +41,19 @@ const routes: Routes = [
       { path: 'edit-resources', component: EditResourcesComponent, canActivate: [AuthGuard] },
       { path: 'competitions', component: CompetitionsComponent, canActivate: [AuthGuard] },
       { path: 'avatars-check', component: AvatarsCheckComponent, canActivate: [AuthGuard] },
-      { path: 'register-requests', component: RegisterRequestsComponent, canActivate: [AuthGuard] }
+      { path: 'register-requests', component: RegisterRequestsComponent, canActivate: [AuthGuard] },
+      { path: 'edit-practice', component: EditPracticeComponent, canActivate: [AuthGuard] },
+      { path: 'choose-practice', component: ChoosePracticeComponent, canActivate: [AuthGuard] }
     ]
   },
-  { path: 'lessons', component: LessonsComponent, canActivate: [AuthGuard], children: [
-    { path: '', pathMatch: 'full', redirectTo: 'select-era'},
-    { path: 'select-era', component: SelectEraComponent, canActivate: [AuthGuard] },
-    { path: 'select-lesson', component: SelectLessonComponent, canActivate: [AuthGuard] },
-    { path: 'lesson', component: LessonComponent, canActivate: [AuthGuard] }
-  ]},
+  {
+    path: 'lessons', component: LessonsComponent, canActivate: [AuthGuard], children: [
+      { path: '', pathMatch: 'full', redirectTo: 'select-era' },
+      { path: 'select-era', component: SelectEraComponent, canActivate: [AuthGuard] },
+      { path: 'select-lesson', component: SelectLessonComponent, canActivate: [AuthGuard] },
+      { path: 'lesson', component: LessonComponent, canActivate: [AuthGuard] }
+    ]
+  },
   { path: '**', redirectTo: '' }
 ];
 

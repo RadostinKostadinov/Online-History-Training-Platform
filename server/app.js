@@ -19,6 +19,8 @@ const erasRoute = require("./routes/eras.js");
 const lessonsRoute = require("./routes/lessons.js");
 const lessonItemsRoute = require("./routes/lessonItems.js");
 const uploadsRoute = require("./routes/upload.js");
+const questionsRoute = require("./routes/questions.js");
+const practicesRoute = require("./routes/practices.js");
 
 //Use Routes
 app.use("/avatars", avatarsRoute);
@@ -28,6 +30,8 @@ app.use("/eras", erasRoute);
 app.use("/lessons", lessonsRoute);
 app.use("/lessonItems", lessonItemsRoute);
 app.use("/upload", uploadsRoute);
+app.use("/questions", questionsRoute);
+app.use("/practices", practicesRoute);
 
 app.get("/", (req, res) => {
     res.send("We are on home");

@@ -37,39 +37,45 @@ export class LessonComponent implements OnInit, OnDestroy {
 
   onChooseItem(event: any, itemId: string) {
     event.preventDefault();
-    this.itemImages = new Map();
-    this.itemVideos = new Map();
+
     this.lessonService.getLessonItem(itemId);
-    this.lessonItemSubscription = this.lessonService.currentLessonItem.subscribe((lessonItem) => {
-      this.lessonItem = lessonItem;
+    this.lessonItemSubscription?.unsubscribe();
+    setTimeout(() => {
+      this.lessonItemSubscription = this.lessonService.currentLessonItem.subscribe((lessonItem) => {
+        this.lessonItem = lessonItem;
 
-      this.lessonItem.videos.forEach((videoUrl: string) => {
-        this.itemVideos.set(videoUrl, this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl));
-      });
+        this.itemVideos = new Map();
+        this.lessonItem.videos.forEach((videoUrl: string) => {
+          this.itemVideos.set(videoUrl, this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl));
+        });
 
-      this.lessonItem.images.forEach((imageName: string) => {
-        this.getImage(imageName).pipe(take(1)).subscribe({
-          next: (x: any) => {
-            console.log(imageName);
-            console.log(x.changingThisBreaksApplicationSecurity);
-            this.itemImages.set(imageName, x);
-          }, error: (err: any) => {
-            console.log(err);
-          }
+        this.itemImages = new Map();
+
+        console.log(this.lessonItem);
+
+        this.lessonItem.images.forEach((imageName: string) => {
+          console.log(imageName);
+          this.getImage(imageName).pipe(take(1)).subscribe({
+            next: (x: any) => {
+              this.itemImages.set(imageName, x);
+            }, error: (err: any) => {
+              console.log(err);
+            }
+          })
         })
+
+        this.videoSliderStep = 0;
+        const videoWrapper: any = document.querySelector('.lesson-videos-wrapper');
+        videoWrapper.style.transform = `translateX(-${this.videoSliderStep * 330}px)`;
+
+        this.imageSliderStep = 0;
+        const imageWrapper: any = document.querySelector('.lesson-images-wrapper');
+        imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 330}px)`;
+
+        let allLearnBtns = document.querySelectorAll('.lesson-grid-item-choose-button');
+        allLearnBtns[allLearnBtns.length - 1].scrollIntoView({ behavior: 'smooth' });
       })
-
-      this.videoSliderStep = 0;
-      const videoWrapper: any = document.querySelector('.lesson-videos-wrapper');
-      videoWrapper.style.transform = `translateX(-${this.videoSliderStep * 330}px)`;
-
-      this.imageSliderStep = 0;
-      const imageWrapper: any = document.querySelector('.lesson-images-wrapper');
-      imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 330}px)`;
-
-      let allLearnBtns = document.querySelectorAll('.lesson-grid-item-choose-button');
-      allLearnBtns[allLearnBtns.length - 1].scrollIntoView({behavior: 'smooth'});
-    })
+    }, 100);
   }
 
   slideLeftImages(event: any) {
@@ -110,6 +116,7 @@ export class LessonComponent implements OnInit, OnDestroy {
   }
 
   getImage(imageName: string): any {
+    console.log('get image');
     const url = `http://localhost:3000/upload/image/get/${imageName}`;
     return this.http
       .get(url, { responseType: 'blob' })
@@ -122,8 +129,8 @@ export class LessonComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.eraSubscription?.unsubscribe();
-      this.lessonSubscription?.unsubscribe();
+    this.eraSubscription?.unsubscribe();
+    this.lessonSubscription?.unsubscribe();
   }
 
 

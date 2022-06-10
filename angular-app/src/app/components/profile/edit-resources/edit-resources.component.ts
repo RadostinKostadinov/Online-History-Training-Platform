@@ -1,4 +1,5 @@
-import * as $ from 'jquery';
+import { EditResourcesService } from './edit-resources.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { map, take } from 'rxjs';
 import { HttpClient, } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -19,13 +20,13 @@ export class EditResourcesComponent implements OnInit {
   lesson: any;
   lessonItem: any;
   itemImages = new Map();
+  itemVideos = new Map();
   url: any;
   imageSliderStep: any;
   videoSliderStep: any;
-  itemVideos = new Map();
   eraLessons: string[] = [];
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute, private ers: EditResourcesService) { }
 
   ngOnInit(): void {
     this.http.get('http://localhost:3000/eras/get/all').pipe(take(1)).subscribe((eras) => {
@@ -60,6 +61,13 @@ export class EditResourcesComponent implements OnInit {
   }
 
   onChooseLesson(eraId: string, lessonId: string) {
+    if (this.mode === "practice") {
+      this.ers.getLesson(lessonId);
+      this.router.navigate(['/profile/choose-practice']);
+    }
+
+
+
     this.states.push('third-screen');
     this.currentState = this.states[this.states.length - 1];
 
@@ -94,7 +102,6 @@ export class EditResourcesComponent implements OnInit {
         this.eraLessons.push(res.lessonId);
         this.http.get(`http://localhost:3000/lessons/get/${res.lessonId}`).pipe(take(1)).subscribe((lesson: any) => {
           this.lesson = lesson;
-          console.log(this.lesson);
           this.http.patch(`http://localhost:3000/eras/update/${this.era._id}`, {
             lessons: this.eraLessons
           }).pipe(take(1)).subscribe({
@@ -125,6 +132,9 @@ export class EditResourcesComponent implements OnInit {
     }
     this.states.push('fourth-screen');
     this.currentState = this.states[this.states.length - 1];
+
+    this.itemImages = new Map();
+    this.itemVideos = new Map();
 
     this.http.get(`http://localhost:3000/lessonItems/get/${lessonItemId}`).pipe(take(1)).subscribe((lessonItem: any) => {
 
@@ -158,7 +168,7 @@ export class EditResourcesComponent implements OnInit {
     this.lesson.items.forEach((element: any, index: number) => {
       element.order = index;
     });
-    this.http.patch('http://localhost:3000/lessons/update/629df08da3fff790f16b155f', {
+    this.http.patch(`http://localhost:3000/lessons/update/${this.lesson._id}`, {
       "items": this.lesson.items
     }).pipe(take(1)).subscribe(() => { });
   }

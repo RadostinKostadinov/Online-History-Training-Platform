@@ -25,6 +25,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SelectEraComponent } from './components/lessons/select-era/select-era.component';
 import { SelectLessonComponent } from './components/lessons/select-lesson/select-lesson.component';
 import { LessonComponent } from './components/lessons/lesson/lesson.component';
+import { EditPracticeComponent } from './components/profile/edit-resources/edit-practice/edit-practice.component';
+import { ChoosePracticeComponent } from './components/profile/edit-resources/choose-practice/choose-practice.component';
+import { PracticeComponent } from './components/practice/practice.component';
+import { SelectPracticeComponent } from './components/practice/select-practice/select-practice.component';
+import { StartComponent } from './components/practice/start/start.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,12 @@ import { LessonComponent } from './components/lessons/lesson/lesson.component';
     LessonsComponent,
     SelectEraComponent,
     SelectLessonComponent,
-    LessonComponent
+    LessonComponent,
+    EditPracticeComponent,
+    ChoosePracticeComponent,
+    PracticeComponent,
+    SelectPracticeComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
