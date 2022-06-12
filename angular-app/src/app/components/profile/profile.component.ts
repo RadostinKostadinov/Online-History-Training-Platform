@@ -1,3 +1,5 @@
+import { AuthService } from './../auth/auth.service';
+import { take } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
+    this.auth.user.pipe(take(1)).subscribe((user) => this.user = user);
   }
 
 }

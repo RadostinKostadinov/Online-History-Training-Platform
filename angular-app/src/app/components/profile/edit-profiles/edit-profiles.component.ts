@@ -10,8 +10,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class EditProfilesComponent implements OnInit {
 
   classSelectSub?: Subscription;
-  contactForm: FormGroup = new FormGroup({
-    country: new FormControl([]),
+  avClassesForm: FormGroup = new FormGroup({
+    avClass: new FormControl([]),
   });
 
   //TODO: To get classes from DB or Env file or Config file
@@ -37,11 +37,11 @@ export class EditProfilesComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.contactForm = this.fb.group({
+    this.avClassesForm = this.fb.group({
       country: ['5А']
     });
 
-    this.classSelectSub = this.contactForm.get("country")?.valueChanges
+    this.classSelectSub = this.avClassesForm.get("avClass")?.valueChanges
       .subscribe(value => {
         this.onClassSelected(value);
       })
@@ -55,7 +55,7 @@ export class EditProfilesComponent implements OnInit {
 
   selectClass() {
     console.log("Form Submitted");
-    console.log(this.contactForm.value);
+    console.log(this.avClassesForm.value);
   }
 
   ngOnDestroy(): void {

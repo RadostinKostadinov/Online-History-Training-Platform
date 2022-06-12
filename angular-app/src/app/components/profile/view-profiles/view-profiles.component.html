@@ -1,1 +1,57 @@
-<p>view-profiles works!</p>
+<div id="content-first-row">
+  <div>
+    <form [formGroup]="avClassesForm">
+      <p>
+        <select formControlName="avClass">
+          <option *ngFor="let class of availableClasses" [ngValue]="class.name">
+            {{ class.name }}
+          </option>
+        </select>
+      </p>
+    </form>
+  </div>
+</div>
+
+<div id="vp-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Номер</th>
+        <th>Име, Презиме, Фамилия</th>
+        <th>К</th>
+        <th>У</th>
+        <th>А</th>
+        <th>УРОЦИ</th>
+        <th>С</th>
+        <th>БУТОН</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usersToShow">
+        <td>{{user.number}}</td>
+        <td>{{user.firstName}} {{user.surName}} {{user.lastName}}</td>
+        <td>{{user.testsPoints}}</td>
+        <td>{{user.practicesPoints}}</td>
+        <td>{{user.avatarsPoints}}</td>
+        <td>{{user.lessonsPoints}}</td>
+        <td>{{user.competitionsPoints}}</td>
+        <td><button (click)="viewUser($event, user._id)" >Виж</button></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="pagination-buttons">
+    <div [ngClass]="pageNumber <= 0 ? 'pagination-end' : ''" id="pagination-button-left" class="pagination-button" (click)="previousPage()">
+      <img src="../../../../assets/core/pagination_arrow.svg">
+      <div>
+        <p>ПРЕДИШНА СТРАНИЦА</p>
+      </div>
+    </div>
+    <div [ngClass]="pageNumber >= maxPageNumber ? 'pagination-end' : ''" id="pagination-button-right" class="pagination-button" (click)="nextPage()">
+      <div>
+        <p>СЛЕДВАЩА СТРАНИЦА</p>
+      </div>
+      <img src="../../../../assets/core/pagination_arrow.svg">
+    </div>
+  </div>
+</div>

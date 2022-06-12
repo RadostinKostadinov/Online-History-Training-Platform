@@ -60,7 +60,6 @@ router.post("/login", async (req, res) => {
 
     //Проверяваме дали има такъв потребител в БД
     const user = await User.findOne({ username: req.body.username }).populate('avatar').populate('classTeacher').lean();
-    console.log(user);
     if (!user) {
         return res.status(400).json({ message: "Няма такъв потребител." });
     }

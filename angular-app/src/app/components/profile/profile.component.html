@@ -1,6 +1,6 @@
 <div id="profile-core">
   <!-- TODO: Divide "Profile" functionality/screens -> Student and Teacher -->
-  <div id="left-menu">
+  <div id="left-menu" *ngIf="user.type == 'teacher'">
 
     <div id="first-group-btns">
       <ul>
@@ -25,7 +25,7 @@
       </ul>
     </div>
   </div>
-  <div id="profile-content">
+  <div id="profile-content" [ngClass]="user.type == 'teacher' ? '' : 'profile-user'">
     <router-outlet></router-outlet>
   </div>
 </div>

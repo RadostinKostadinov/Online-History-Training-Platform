@@ -31,6 +31,10 @@
   position: relative;
 }
 
+.profile-user {
+  width: 100% !important;
+}
+
 #left-menu ul {
   list-style-type: none;
   margin: 0;
@@ -72,5 +76,4 @@
 
 .active {
   background: #DAAC8A !important;
-  cursor: not-allowed !important;
 }

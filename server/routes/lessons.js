@@ -1,11 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const Lesson = require("../models/Lesson");
+3;
+const LessonItem = require("../models/LessonItem");
 
 // Връща урок с дадено ID
 router.get("/get/:lessonId", async (req, res) => {
     try {
-        const lesson = await Lesson.findById(req.params.lessonId).populate('items').lean();
+        const lesson = await Lesson.findById(req.params.lessonId)
+            .populate("items")
+            .lean();
         res.status(200).json(lesson);
     } catch (err) {
         res.status(500).json(err);
@@ -17,9 +21,11 @@ router.get("/get-practices/:lessonId", async (req, res) => {
     try {
         filters = {
             _id: false,
-            practices: true
-        }
-        const lesson = await Lesson.findById(req.params.lessonId, filters).populate({ path:'practices', model: 'PTCBlank'}).lean();
+            practices: true,
+        };
+        const lesson = await Lesson.findById(req.params.lessonId, filters)
+            .populate({ path: "practices", model: "PTCBlank" })
+            .lean();
         res.status(200).json(lesson.practices);
     } catch (err) {
         res.status(500).json(err);
@@ -41,11 +47,16 @@ router.post("/create", async (req, res) => {
 // Изтрива урок с дадено ID
 router.delete("/delete/:lessonId", async (req, res) => {
     try {
+        const lesson = await Lesson.findById(req.params.lessonId)
+        lesson.items.forEach(async (item) => {
+            await LessonItem.deleteOne({_id: item._id});
+        });
         const removedLesson = await Lesson.deleteOne({
-            id: req.params.lessonId,
+            _id: req.params.lessonId,
         });
         res.status(200).json(removedLesson);
     } catch (err) {
+        console.log(err);
         res.status(500).json(err);
     }
 });

@@ -27,10 +27,8 @@ router.post("/create", async (req, res) => {
 
 //Изтрива аватар с дадено ID
 router.delete("/delete/:questionId", async (req, res) => {
-    console.log(req.params.questionId);
     try {
         const removedQuestion = await Question.deleteOne({ _id: req.params.questionId });
-        console.log(removedQuestion);
         res.status(200).json(removedQuestion);
     } catch (err) {
         res.status(500).json(err);

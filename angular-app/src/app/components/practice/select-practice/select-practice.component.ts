@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs';
 import { PracticeService } from './../practice.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,11 +8,15 @@ import { Router } from '@angular/router';
   templateUrl: './select-practice.component.html',
   styleUrls: ['./select-practice.component.css']
 })
-export class SelectPracticeComponent implements OnInit {
+export class SelectPracticeComponent implements OnInit, OnDestroy {
   erasSubscription?: Subscription;
+  practicesSubscription?: Subscription;
+
+  isPopupVisible: boolean = false;
 
   eras: any;
   lessons: any;
+  practices: any;
 
 
   constructor(private practiceService: PracticeService, private router: Router) { }
@@ -36,6 +40,28 @@ export class SelectPracticeComponent implements OnInit {
   onSelectLesson(event: any, lessonId: string) {
     event.preventDefault();
     this.practiceService.getLessonFromDB(lessonId);
-    this.router.navigate(['/practice/start']);
+    this.practicesSubscription = this.practiceService.currentPractices.subscribe((practices: any) => {
+      this.practices = practices.filter((practice: any) => {
+        if(practice.isEnabled) return practice;
+      });
+    });
+
+    this.isPopupVisible = true;
+  }
+
+  closePopup() {
+    this.isPopupVisible = false;
+  }
+
+  onSelectPractice(event: any, practiceId: string) {
+    event.preventDefault();
+    this.practiceService.getPracticeFromDB(practiceId);
+
+    this.router.navigate(['/practice/solve-practice']);
+  }
+
+  ngOnDestroy(): void {
+      this.erasSubscription?.unsubscribe();
+      this.practicesSubscription?.unsubscribe();
   }
 }

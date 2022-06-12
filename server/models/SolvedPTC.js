@@ -13,6 +13,10 @@ const SolvedPTCSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    practiceName: {
+        type: String,
+        required: true,
+    },
     questions: [
         {
             type: {
@@ -24,6 +28,14 @@ const SolvedPTCSchema = mongoose.Schema({
             }
         }
     ],
+    studentPoints: {
+        type: Number,
+        required: true,
+    },
+    totalPoints: {
+        type: Number,
+        required: true,
+    },
     createdAt: {
         type: Date,
         immutable: true,

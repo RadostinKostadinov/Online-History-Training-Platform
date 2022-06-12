@@ -37,7 +37,6 @@ router.delete("/delete/:itemId", async (req, res) => {
 
 //Обновавя информацията в точка от урок с даедно ID
 router.patch("/update/:itemId", async (req, res) => {
-    console.log("asd");
     try {
         const updatedItem = await LessonItem.updateOne(
             { _id: req.params.itemId },

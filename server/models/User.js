@@ -61,7 +61,7 @@ const UserSchema = new mongoose.Schema({
     },
     solvedPTCs: [{
         type: mongoose.SchemaTypes.ObjectId,
-        ref: "SolvedPTC",
+        ref: "SolvedPTCs",
     }],
     avatars: [{
         type: mongoose.SchemaTypes.ObjectId,

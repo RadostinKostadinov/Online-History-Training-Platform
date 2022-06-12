@@ -1,0 +1,357 @@
+#vp-section-1 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 30px;
+}
+
+#vp-row-1,
+#vp-row-2 {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  column-gap: 30px;
+}
+
+#top-left,
+#bottom-left {
+  flex: 1;
+}
+
+#top-right,
+#bottom-right {
+  flex: 1.9;
+}
+
+#profile-image-wrapper,
+#points-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: relative;
+
+  background: rgba(235, 180, 131, 0.6);
+  border: 2px solid #594833;
+  box-shadow: inset 0px 0px 13px #ffffff;
+  border-radius: 30px;
+}
+
+#profile-image-wrapper > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid #594833;
+}
+
+#top-right {
+  display: flex;
+  justify-content: row;
+  column-gap: 30px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#info-column-1,
+#info-column-2 {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+  height: 100%;
+}
+
+.profile-info-cell {
+  flex: 1;
+  width: 90%;
+
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+
+  padding: 5px 10px;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.2em;
+
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #ffffff;
+}
+
+#points-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+}
+.profile-points-info-cell {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 10px;
+  width: 100%;
+}
+
+.profile-points-info-cell > div:nth-of-type(1) {
+  flex: 8;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  /* or 122% */
+
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.profile-points-info-cell > div:nth-of-type(2) {
+  flex: 2;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  /* or 122% */
+
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+}
+
+
+#bottom-right {
+  margin-right: 10px;
+  background: linear-gradient(
+    237.14deg,
+    rgba(186, 135, 97, 0.63) 0%,
+    rgba(186, 135, 97, 0.63) 100%
+  );
+  box-shadow: 0px 4px 25px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+/* adds space between tbody and thead */
+tbody:before {
+  content: "@";
+  display: block;
+  line-height: 10px;
+  text-indent: -99999px;
+}
+
+tr {
+  background: rgba(255, 255, 255, 0.3);
+}
+td {
+}
+
+th,
+td,
+tbody button {
+  padding: 10px 0px;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.3em;
+
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #3a313d;
+}
+
+tbody > tr:not(:last-child) {
+  border-bottom: 3px solid #ba876199;
+}
+
+tbody button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+tbody button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* PAGINATION BUTTONS */
+#pagination-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#pagination-button-left {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+#pagination-button-right > img {
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+#pagination-button-right > img {
+  transform: rotate(180deg);
+}
+
+.pagination-button {
+  cursor: pointer;
+  display: flex;
+  column-gap: 10px;
+}
+
+.pagination-button > img {
+  width: 50px;
+  height: auto;
+}
+
+.pagination-button > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.pagination-button > div > p {
+  max-width: 10ch;
+  text-align: center;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.pagination-end {
+  visibility: hidden;
+}
+
+#vp-section-2 {
+  margin-top: 50px;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+}
+
+#ptc-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+  width: 50%;
+}
+
+#ptc-heading > div {
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+
+  padding: 5px 10px;
+  width: 100%;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3em;
+  /* or 159% */
+
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#ptc-questions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.ptc-question {
+  width: 80%;
+  background: rgba(235, 180, 131, 0.6);
+  border: 2px solid #594833;
+  box-shadow: inset 0px 0px 13px #ffffff;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.ptc-question > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.ptc-question > div label {
+  flex: 1;
+  text-align: right;
+}
+
+.ptc-question > div span {
+  flex: 12;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
+

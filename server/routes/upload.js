@@ -46,12 +46,8 @@ router.get("/image/get/:imageName", async (req, res) => {
         imageName
     );
 
-    console.log(imageName);
-    console.log(imagePath);
-
     let isImgExists = false;
     fs.access(imagePath, () => {
-        console.log('vutre sme - sushtestvuva');
         isImgExists = true;
         res.status(200).sendFile(imagePath);
     });

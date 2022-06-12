@@ -84,7 +84,7 @@ export class EditResourcesComponent implements OnInit {
     });
   }
 
-  onAddLesson(eraId: string) {
+  onAddLesson(event: any, eraId: string) {
     this.era = this.eras.find((era: any) => {
       if (era._id == eraId) return era;
     });
@@ -94,7 +94,7 @@ export class EditResourcesComponent implements OnInit {
       this.eraLessons.push(lesson._id);
     });
 
-    const newLessonName = (<any>document.getElementById('add-new-lesson-input'))?.value;
+    const newLessonName = (<HTMLInputElement>event.target.parentElement.querySelector('#add-new-lesson-input'))!.value;
     this.http.post('http://localhost:3000/lessons/create', {
       name: newLessonName
     }).pipe(take(1)).subscribe({
@@ -125,7 +125,38 @@ export class EditResourcesComponent implements OnInit {
     this.currentState = this.states[this.states.length - 1];
   }
 
+  onDeleteLesson(era: any, lessonId: string) {
+    console.log(lessonId);
+    this.http.delete(`http://localhost:3000/lessons/delete/${lessonId}`).pipe(take(1)).subscribe({
+      next: (res) => {
+        this.eras.forEach((era: any) => {
+          era.lessons = era.lessons.filter((lesson: any) => {
+            if(lesson._id != lessonId) return lesson;
+          });
+        });
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
   //-------THIRD SCREEN--------------
+  onDeleteItem(event: any, lessonItemId: string) {
+    event.preventDefault();
+    this.http.delete(`http://localhost:3000/lessonItems/delete/${lessonItemId}`).pipe(take(1)).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.lesson.items = this.lesson.items.filter((item: any) => {
+          if(item._id != lessonItemId) return item;
+        })
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
   onChooseLessonItem(event: any, lessonItemId: string) {
     if (event) {
       event.preventDefault();

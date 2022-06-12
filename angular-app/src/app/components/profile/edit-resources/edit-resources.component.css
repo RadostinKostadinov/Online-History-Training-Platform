@@ -153,6 +153,11 @@ a.btn-previous-screen {
 }
 
 .accordion-panel-element {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  column-gap: 10px;
+
   width: 80%;
   margin-bottom: 5px;
   margin-left: auto;
@@ -176,6 +181,15 @@ a.btn-previous-screen {
   color: #3a313d;
 
   cursor: pointer;
+}
+
+.accordion-panel-element > a {
+  flex: 10;
+}
+
+.accordion-panel-element > div {
+  flex: 1;
+  z-index: 12;
 }
 
 .accordion-panel-element:hover {

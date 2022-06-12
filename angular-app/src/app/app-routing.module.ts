@@ -1,4 +1,5 @@
-import { StartComponent } from './components/practice/start/start.component';
+import { AdminGuard } from './components/auth/admin.guard';
+import { SolvePracticeComponent } from './components/practice/solve-practice/solve-practice.component';
 import { SelectPracticeComponent } from './components/practice/select-practice/select-practice.component';
 import { PracticeComponent } from './components/practice/practice.component';
 import { ChoosePracticeComponent } from './components/profile/edit-resources/choose-practice/choose-practice.component';
@@ -22,28 +23,36 @@ import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LessonComponent } from './components/lessons/lesson/lesson.component';
+import { ViewProfileComponent } from './components/profile/view-profile/view-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [LoggedInGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard] },
-  { path: 'practice', component: PracticeComponent, canActivate: [AuthGuard], children: [
-    { path: '', pathMatch: 'full', redirectTo: 'select-practice' },
-    { path: 'select-practice', component: SelectPracticeComponent, canActivate: [AuthGuard] },
-    { path: 'start', component: StartComponent, canActivate: [AuthGuard] },
-  ] },
   {
-    path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
-      { path: '', pathMatch: 'full', redirectTo: 'info' },
-      { path: 'info', component: InfoComponent, canActivate: [AuthGuard] },
-      { path: 'view-profiles', component: ViewProfilesComponent, canActivate: [AuthGuard] },
-      { path: 'edit-profiles', component: EditProfilesComponent, canActivate: [AuthGuard] },
-      { path: 'edit-resources', component: EditResourcesComponent, canActivate: [AuthGuard] },
-      { path: 'competitions', component: CompetitionsComponent, canActivate: [AuthGuard] },
-      { path: 'avatars-check', component: AvatarsCheckComponent, canActivate: [AuthGuard] },
-      { path: 'register-requests', component: RegisterRequestsComponent, canActivate: [AuthGuard] },
-      { path: 'edit-practice', component: EditPracticeComponent, canActivate: [AuthGuard] },
-      { path: 'choose-practice', component: ChoosePracticeComponent, canActivate: [AuthGuard] }
+    path: 'practice', component: PracticeComponent, canActivate: [AuthGuard], children: [
+      { path: '', pathMatch: 'full', redirectTo: 'select-practice' },
+      { path: 'select-practice', component: SelectPracticeComponent, canActivate: [AuthGuard] },
+      { path: 'solve-practice', component: SolvePracticeComponent, canActivate: [AuthGuard] },
+    ]
+  },
+  {
+    path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard], children: [
+      { path: '', pathMatch: 'full', redirectTo: 'edit-resources' },
+      {
+        path: '', canActivateChild: [AdminGuard], children: [
+          { path: 'view-profiles', component: ViewProfilesComponent, canActivate: [AuthGuard] },
+          { path: 'view-profile', component: ViewProfileComponent, canActivate: [AuthGuard] },
+          { path: 'edit-profiles', component: EditProfilesComponent, canActivate: [AuthGuard] },
+          { path: 'edit-resources', component: EditResourcesComponent, canActivate: [AuthGuard] },
+          { path: 'competitions', component: CompetitionsComponent, canActivate: [AuthGuard] },
+          { path: 'avatars-check', component: AvatarsCheckComponent, canActivate: [AuthGuard] },
+          { path: 'register-requests', component: RegisterRequestsComponent, canActivate: [AuthGuard] },
+          { path: 'edit-practice', component: EditPracticeComponent, canActivate: [AuthGuard] },
+          { path: 'choose-practice', component: ChoosePracticeComponent, canActivate: [AuthGuard] }
+        ]
+      },
+      { path: 'info', component: InfoComponent, canActivate: [AuthGuard] }
     ]
   },
   {

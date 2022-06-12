@@ -45,3 +45,19 @@
     </div>
   </div>
 </div>
+<div id="sp-practice-popup" *ngIf="practices && isPopupVisible">
+  <div id="sp-popup-content">
+    <div id="sp-popup-heading">
+      <h2>ИЗБЕРИ УПРАЖНЕНИЕ</h2>
+      <div id="close-popup-btn" (click)="closePopup()">X</div>
+    </div>
+    <div id="sp-practices-wrapper">
+      <a
+        href="#"
+        *ngFor="let practice of practices"
+        (click)="onSelectPractice($event, practice._id)"
+        >{{ practice.name }}</a
+      >
+    </div>
+  </div>
+</div>

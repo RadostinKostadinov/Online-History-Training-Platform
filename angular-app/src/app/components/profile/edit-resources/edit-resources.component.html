@@ -37,14 +37,14 @@
         <div
           class="accordion-panel-element"
           *ngFor="let lesson of era.lessons; index as k"
-          (click)="onChooseLesson(era._id, lesson._id)"
         >
-          <a>{{ lesson.name }}</a>
+          <a (click)="onChooseLesson(era._id, lesson._id)">{{ lesson.name }}</a>
+          <div (click)="onDeleteLesson(era._id, lesson._id)">X</div>
         </div>
         <div *ngIf="mode == 'lessons'" class="accordion-panel-element add-new-lesson-input-wrapper">
           <input id="add-new-lesson-input" type="text" />
           <img
-            (click)="onAddLesson(era._id)"
+            (click)="onAddLesson($event, era._id)"
             src="../../../../assets/core/add_lesson_btn.png"
             alt="add_lesson_btn"
             height="30"
@@ -84,7 +84,8 @@
       <thead>
         <tr>
           <th>Име</th>
-          <th>Бутон</th>
+          <th>Отвори</th>
+          <th>Премахни</th>
         </tr>
       </thead>
       <tbody
@@ -98,6 +99,11 @@
           <td>
             <button (click)="onChooseLessonItem($event, lessonitem._id)">
               Редактирай
+            </button>
+          </td>
+          <td>
+            <button (click)="onDeleteItem($event, lessonitem._id)">
+              Изтрий
             </button>
           </td>
         </tr>

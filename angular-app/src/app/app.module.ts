@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +29,8 @@ import { EditPracticeComponent } from './components/profile/edit-resources/edit-
 import { ChoosePracticeComponent } from './components/profile/edit-resources/choose-practice/choose-practice.component';
 import { PracticeComponent } from './components/practice/practice.component';
 import { SelectPracticeComponent } from './components/practice/select-practice/select-practice.component';
-import { StartComponent } from './components/practice/start/start.component';
+import { SolvePracticeComponent } from './components/practice/solve-practice/solve-practice.component';
+import { ViewProfileComponent } from './components/profile/view-profile/view-profile.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { StartComponent } from './components/practice/start/start.component';
     ChoosePracticeComponent,
     PracticeComponent,
     SelectPracticeComponent,
-    StartComponent
+    SolvePracticeComponent,
+    ViewProfileComponent
   ],
   imports: [
     BrowserModule,
