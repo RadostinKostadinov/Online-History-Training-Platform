@@ -82,12 +82,10 @@ export class ViewProfilesComponent implements OnInit, OnDestroy {
 
   onClassSelected(value: string) {
     this.currentClass = this.allStudents.filter((user) => {
-      console.log(user.class, value);
       if(user.class == value) {
         return user;
       }
     });
-    console.log(this.currentClass);
     this.maxPageNumber = Math.floor(this.currentClass.length / this.usersPerPage);
     this.updateTable();
   }

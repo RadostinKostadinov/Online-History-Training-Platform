@@ -126,7 +126,6 @@ export class EditResourcesComponent implements OnInit {
   }
 
   onDeleteLesson(era: any, lessonId: string) {
-    console.log(lessonId);
     this.http.delete(`http://localhost:3000/lessons/delete/${lessonId}`).pipe(take(1)).subscribe({
       next: (res) => {
         this.eras.forEach((era: any) => {
@@ -136,7 +135,7 @@ export class EditResourcesComponent implements OnInit {
         });
       },
       error: (error) => {
-        console.log(error);
+        console.error(error);
       }
     });
   }
@@ -146,13 +145,12 @@ export class EditResourcesComponent implements OnInit {
     event.preventDefault();
     this.http.delete(`http://localhost:3000/lessonItems/delete/${lessonItemId}`).pipe(take(1)).subscribe({
       next: (res) => {
-        console.log(res);
         this.lesson.items = this.lesson.items.filter((item: any) => {
           if(item._id != lessonItemId) return item;
         })
       },
       error: (error) => {
-        console.log(error);
+        console.error(error);
       }
     });
   }
@@ -176,7 +174,7 @@ export class EditResourcesComponent implements OnInit {
           next: (x: any) => {
             this.itemImages.set(imageName, x.changingThisBreaksApplicationSecurity);
           }, error: (err: any) => {
-            console.log(err);
+            console.error(err);
           }
         })
       })
@@ -360,6 +358,7 @@ export class EditResourcesComponent implements OnInit {
 
   saveItem(event: any) {
     event.preventDefault();
+    this.lessonItem.date = (<any>document.querySelector('.third-screen-lesson-date')).value;
     this.lessonItem.text = (<any>document.querySelector('#lessonItem-text')).value;
     this.lessonItem.interesting = (<any>document.querySelector('#lessonItem-interesting')).value;
     this.lessonItem.images = Array.from(this.itemImages.keys());

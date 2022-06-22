@@ -48,14 +48,10 @@ export class EditProfilesComponent implements OnInit {
   }
 
   onClassSelected(value: string) {
-    console.log('Избран е клас.');
     //TODO: Send req to db and get all students from selected class.
-    console.log(value);
   }
 
   selectClass() {
-    console.log("Form Submitted");
-    console.log(this.avClassesForm.value);
   }
 
   ngOnDestroy(): void {

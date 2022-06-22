@@ -216,6 +216,7 @@ div.lesson-name-wrapper {
   justify-content: center;
 }
 
+
 div#edit-resources-third-screen > div.content-wrapper {
   background: linear-gradient(
     237.14deg,
@@ -245,7 +246,7 @@ tr {
   background: rgba(255, 255, 255, 0.3);
 }
 td {
-  width: calc(100% / 6);
+  /* width: calc(100% / 6); */
 }
 
 th,
@@ -336,9 +337,46 @@ tbody button:hover {
   display: flex;
   justify-content: space-between;
 }
-#edit-resources-fourth-screen > div.controls-wrapper > div:nth-of-type(2) span {
-  padding: 20px 0px;
+
+.lesson-date-wrapper,
+.lesson-item-wrapper  {
+  width: 50%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: rgb(255 226 200 / 40%);
+  box-shadow: inset 0px 0px 13px #ffffff;
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.third-screen-lesson-date,
+.third-screen-item-name {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.3em;
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffffab;
+
+  width: 100%;
+  background: none;
+  border: none;
+}
+
+
+#lesson-edit-name-date-row {
+  display: flex;
+  column-gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+
 
 #edit-resources-fourth-screen > div.content-wrapper {
   display: flex;
@@ -378,14 +416,13 @@ tbody button:hover {
   letter-spacing: -0.02em;
 
   color: rgba(58, 49, 61, 0.8);
-
 }
 
 .slider {
   width: 100%;
   position: relative;
   overflow: hidden;
-  display:flex;
+  display: flex;
   flex-direction: column;
 
   background: rgba(255, 255, 255, 0.4);
@@ -393,11 +430,10 @@ tbody button:hover {
   border: 1px solid rgba(58, 49, 61, 0.8);
 
   padding: 20px;
-
 }
 
 .images-wrapper,
-.videos-wrapper{
+.videos-wrapper {
   width: 100%;
   height: 225px;
   position: relative;
@@ -424,7 +460,7 @@ tbody button:hover {
   position: relative;
 }
 
-.display-image{
+.display-image {
   width: 300px;
   height: 225px;
   border: 1px solid black;
@@ -523,4 +559,33 @@ tbody button:hover {
 #new-lesson-item-input {
   height: 30px;
   width: 90%;
+}
+
+.circle-td {
+  position: relative;
+}
+
+.circle-td > div{
+  margin-left: 10px;
+  font-style: bold;
+  font-weight: 700;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #3a313d;
+
+  background: rgba(83, 194, 102, 0.6);
+  width: 60px;
+  height: 60px;
+  border-radius: 40px;
+
+  cursor: pointer;
+
+  box-shadow: none !important;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -61,3 +61,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ::-webkit-scrollbar-corner {
   box-shadow: inset 0 0 5px grey;
 }
+
+.magnifier-icon-view-more {
+  width: 25px !important;
+  height: 25px !important;
+}

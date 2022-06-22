@@ -21,7 +21,6 @@ export class AuthService {
       }).pipe(
         catchError(this.handleError),
         tap(resData => {
-          console.log(resData);
           this.handleAuthentication(resData.username, resData.token, resData);
         })
       );
@@ -73,10 +72,9 @@ export class AuthService {
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage = '500 - Проблем със сървъра.'
     if (!errorRes.error || !errorRes.error.message) {
-      return throwError(errorMessage);
+      return throwError(errorRes.error);
     }
 
-    console.log(errorRes.error.message);
     switch (errorRes.error.message) {
       case 'Грешна парола.':
         errorMessage = 'Грешна парола, моля опитайте отново.';
@@ -88,6 +86,6 @@ export class AuthService {
         errorMessage = 'Профилът все още не е одобрен, обърнете се към учител.'
       }
 
-    return throwError(errorMessage);
+    return throwError(errorRes.error.message);
   }
 }

@@ -56,7 +56,6 @@ router.delete("/delete/:lessonId", async (req, res) => {
         });
         res.status(200).json(removedLesson);
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
 });

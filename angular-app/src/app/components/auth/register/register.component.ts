@@ -27,11 +27,9 @@ export class RegisterComponent implements OnInit {
     this.authService.register(form.value).subscribe({
     next: (resData) => {
       this.isRegSuccessful = true;
-      console.log(`RESDATA: ${resData}`);
       form.reset();
     },
     error: (errorMessage) => {
-      console.log(`ERROR HANDLED`);
       this.errorMsg = errorMessage;
     }
   });;

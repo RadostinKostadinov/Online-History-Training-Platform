@@ -111,11 +111,20 @@
 
 .lesson-grid-item-choose-circle {
   position: absolute;
-  border-radius: 30px;
+  border-radius: 40px;
   background: rgba(83, 194, 102, 0.6);
   content: "";
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+
+  text-transform: uppercase;
 }
 
 .lesson-grid-item > div:nth-of-type(2) {
@@ -163,8 +172,73 @@
   align-items: center;
 }
 
-.row-1-text,
-.row-4-interesting {
+#row-1-text-images {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 20px;
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: linear-gradient(1.87deg, rgba(186, 135, 97, 0) 1.58%, #BA8761 98.45%);
+}
+
+.left-column-text,
+.right-column-images {
+  flex: 1;
+  padding: 0px 20px;
+}
+
+.left-column-text {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.left-column-text > h3 {
+  width: 80%;
+  text-align: center;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3em;
+
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+  margin-bottom: 10px;
+}
+
+#lesson-textarea-text {
+  width: 90%;
+  text-align: center;
+  height: 500px;
+
+  padding: 30px;
+  background: linear-gradient(180deg, rgb(141 106 78) 0%, #BA8761 100%);
+  box-shadow: 0px 4px 50px 5px rgba(0, 0, 0, 0.25);
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3em;
+  /* or 159% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
+
+.row-3-interesting {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -177,8 +251,7 @@
   background: linear-gradient(1.87deg, rgba(186, 135, 97, 0) 1.58%, #BA8761 98.45%);
 }
 
-.row-1-text > h3,
-.row-4-interesting > div{
+.row-3-interesting > div{
   width: 80%;
   text-align: center;
 
@@ -193,8 +266,7 @@
   color: #FFFFFF;
 }
 
-.row-1-text > p#lesson-p-text,
-.row-4-interesting > p#lesson-p-interesting{
+.row-3-interesting > p#lesson-p-interesting{
   width: 80%;
   text-align: center;
 
@@ -217,7 +289,7 @@
   color: #FFFFFF;
 }
 
-.row-2-images {
+.right-column-images {
   padding: 30px;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -232,7 +304,7 @@
 
 }
 
-.row-2-images > div:nth-of-type(1) {
+.right-column-images > div:nth-of-type(1) {
   align-self: center;
   width: 300px;
   padding: 15px 20px;
@@ -318,7 +390,7 @@
   right: -5%;
 }
 
-.row-3-videos {
+.row-2-videos {
   padding: 30px;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -333,7 +405,7 @@
 
 }
 
-.row-3-videos > div:nth-of-type(1) {
+.row-2-videos > div:nth-of-type(1) {
   align-self: center;
   width: 300px;
   padding: 15px 20px;
@@ -389,3 +461,6 @@
   position: absolute;
 }
 
+.lesson-grid-item-choose-circle {
+
+}

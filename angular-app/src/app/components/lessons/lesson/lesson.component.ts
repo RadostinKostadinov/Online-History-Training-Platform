@@ -43,6 +43,7 @@ export class LessonComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.lessonItemSubscription = this.lessonService.currentLessonItem.subscribe((lessonItem) => {
         this.lessonItem = lessonItem;
+        console.log(this.lessonItem.text);
 
         this.itemVideos = new Map();
         this.lessonItem.videos.forEach((videoUrl: string) => {
@@ -51,31 +52,30 @@ export class LessonComponent implements OnInit, OnDestroy {
 
         this.itemImages = new Map();
 
-        console.log(this.lessonItem);
-
         this.lessonItem.images.forEach((imageName: string) => {
-          console.log(imageName);
           this.getImage(imageName).pipe(take(1)).subscribe({
             next: (x: any) => {
               this.itemImages.set(imageName, x);
             }, error: (err: any) => {
-              console.log(err);
+              console.error(err);
             }
           })
         })
 
-        this.videoSliderStep = 0;
-        const videoWrapper: any = document.querySelector('.lesson-videos-wrapper');
-        videoWrapper.style.transform = `translateX(-${this.videoSliderStep * 330}px)`;
+        setTimeout(() => {
+          this.videoSliderStep = 0;
+          const videoWrapper: any = document.querySelector('.lesson-videos-wrapper');
+          videoWrapper.style.transform = `translateX(-${this.videoSliderStep * 450}px)`;
 
-        this.imageSliderStep = 0;
-        const imageWrapper: any = document.querySelector('.lesson-images-wrapper');
-        imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 330}px)`;
+          this.imageSliderStep = 0;
+          const imageWrapper: any = document.querySelector('.lesson-images-wrapper');
+          imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 450}px)`;
 
-        let allLearnBtns = document.querySelectorAll('.lesson-grid-item-choose-button');
-        allLearnBtns[allLearnBtns.length - 1].scrollIntoView({ behavior: 'smooth' });
+          let allLearnBtns = document.querySelectorAll('.lesson-grid-item-choose-circle');
+          allLearnBtns[allLearnBtns.length - 1].scrollIntoView({ behavior: 'smooth' });
+        }, 300);
       })
-    }, 100);
+    }, 300);
   }
 
   slideLeftImages(event: any) {
@@ -84,17 +84,17 @@ export class LessonComponent implements OnInit, OnDestroy {
     }
     event.preventDefault();
     const imageWrapper: any = document.querySelector('.lesson-images-wrapper');
-    imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 330}px)`;
+    imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 450}px)`;
   }
 
   slideRightImages(event: any) {
-    if (this.imageSliderStep < this.lessonItem.images.length - 2) {
+    if (this.imageSliderStep < this.lessonItem.images.length - 1) {
       this.imageSliderStep += 1;
     }
 
     event.preventDefault();
     const imageWrapper: any = document.querySelector('.lesson-images-wrapper');
-    imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 330}px)`;
+    imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 450}px)`;
   }
 
   slideLeftVideos(event: any) {
@@ -103,20 +103,19 @@ export class LessonComponent implements OnInit, OnDestroy {
     }
     event.preventDefault();
     const videoWrapper: any = document.querySelector('.lesson-videos-wrapper');
-    videoWrapper.style.transform = `translateX(-${this.videoSliderStep * 330}px)`;
+    videoWrapper.style.transform = `translateX(-${this.videoSliderStep * 450}px)`;
   }
 
   slideRightVideos(event: any) {
-    if (this.videoSliderStep < this.lessonItem.videos.length - 3) {
+    if (this.videoSliderStep < this.lessonItem.videos.length - 2) {
       this.videoSliderStep += 1;
     }
     event.preventDefault();
     const videoWrapper: any = document.querySelector('.lesson-videos-wrapper');
-    videoWrapper.style.transform = `translateX(-${this.videoSliderStep * 330}px)`;
+    videoWrapper.style.transform = `translateX(-${this.videoSliderStep * 450}px)`;
   }
 
   getImage(imageName: string): any {
-    console.log('get image');
     const url = `http://localhost:3000/upload/image/get/${imageName}`;
     return this.http
       .get(url, { responseType: 'blob' })

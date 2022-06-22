@@ -12,14 +12,15 @@
   <div id="solvep-timeline" *ngIf="isStarted">
     <div id="lesson-items-grid">
       <div class="lesson-grid-item" *ngFor="let question of practice.questions">
-        <p>{{ question.itemName }}</p>
+        <p *ngIf="question.itemDisplayType == 'name'">{{ question.itemName }}</p>
+        <p *ngIf="question.itemDisplayType == 'date'">&nbsp;</p>
         <div class="lesson-grid-item-linecircle-wrapper">
           <div class="lesson-grid-item-choose-line"></div>
           <div
             class="lesson-grid-item-choose-circle"
             [ngClass]="question.markedAnswer ? 'solvep-timeline-checked' : ''"
             (click)="onChooseItem($event, question._id)"
-          ></div>
+          ><span *ngIf="question.itemDisplayType == 'date'">{{question.itemDate}}</span></div>
         </div>
         <div>
           <button

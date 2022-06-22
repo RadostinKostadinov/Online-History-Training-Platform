@@ -23,7 +23,7 @@
         <th>А</th>
         <th>УРОЦИ</th>
         <th>С</th>
-        <th>БУТОН</th>
+        <th>ПРЕГЛЕД</th>
       </tr>
     </thead>
     <tbody>
@@ -35,7 +35,7 @@
         <td>{{user.avatarsPoints}}</td>
         <td>{{user.lessonsPoints}}</td>
         <td>{{user.competitionsPoints}}</td>
-        <td><button (click)="viewUser($event, user._id)" >Виж</button></td>
+        <td><button (click)="viewUser($event, user._id)" ><img class="magnifier-icon-view-more" src="../.././../../assets/core/magnifier.png"/></button></td>
         <td></td>
       </tr>
     </tbody>

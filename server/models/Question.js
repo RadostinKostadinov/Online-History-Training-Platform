@@ -13,6 +13,14 @@ const QuestionSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    itemDate: {
+        type: String,
+        required: true
+    },
+    itemDisplayType: {
+        type: String,
+        required: true
+    },
     question: {
         type: String,
         required: true

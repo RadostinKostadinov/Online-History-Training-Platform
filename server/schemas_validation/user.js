@@ -5,20 +5,20 @@ const Joi = require("@hapi/joi");
 const registerValidation = (data) => {
     const schema = Joi.object({
         type: Joi.string().valid("student", "teacher").required(),
-        username: Joi.string().min(4).max(12).alphanum().required(),
+        username: Joi.string().min(4).max(12).required(),
         email: Joi.string().min(6).email().required(),
         password: Joi.string().min(6).required(),
         avatar: Joi.object(),
-        firstName: Joi.string().alphanum().min(3).max(30).required(),
-        surName: Joi.string().alphanum().min(3).max(30).required(),
-        lastName: Joi.string().alphanum().min(3).max(30).required(),
+        firstName: Joi.string().min(3).max(30).required(),
+        surName: Joi.string().min(3).max(30).required(),
+        lastName: Joi.string().min(3).max(30).required(),
         address: Joi.string(),
         class: Joi.string().required(),
         number: Joi.number().required(),
         userPhone: Joi.string()
             .regex(/^[0-9]{10}$/),
-        parent: Joi.string().alphanum(),
-        parentPhone: Joi.string().alphanum(),
+        parent: Joi.string(),
+        parentPhone: Joi.string(),
         avgGrade: Joi.number().max(6),
         solvedPTCs: Joi.array(),
         avatars: Joi.array(),
@@ -38,7 +38,7 @@ const registerValidation = (data) => {
 //Login validation
 const loginValidation = (data) => {
     const schema = Joi.object({
-        username: Joi.string().min(4).max(12).alphanum().required(),
+        username: Joi.string().min(4).max(12).required(),
         password: Joi.string().min(6).required(),
     });
 

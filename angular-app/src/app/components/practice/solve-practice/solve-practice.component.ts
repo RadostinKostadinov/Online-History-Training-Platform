@@ -30,8 +30,6 @@ export class SolvePracticeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.lessonSubscription = this.practiceService.currentLesson.subscribe((lesson) => {
       this.lesson = lesson;
-      console.log(this.lesson);
-
     });
 
     this.practiceSubscription = this.practiceService.currentPractice.subscribe((practice) => {
@@ -41,7 +39,6 @@ export class SolvePracticeComponent implements OnInit, OnDestroy {
 
     this.authService.user.subscribe((user: any) => {
       this.user = user;
-      console.log(this.user);
     });
 
   };
@@ -49,7 +46,6 @@ export class SolvePracticeComponent implements OnInit, OnDestroy {
   sendPractice() {
     this.isStarted = false;
     this.isSent = true;
-    console.log(this.user);
     this.http.post(`http://localhost:3000/practices/create-solved/${this.practice._id}`, {
       owner: this.user._id,
       type: 'practice',
@@ -71,10 +67,9 @@ export class SolvePracticeComponent implements OnInit, OnDestroy {
           solvedPTCs: this.user.solvedPTCs
         }).pipe(take(1)).subscribe({
           next: (res: any) => {
-            console.log(res);
           },
           error: (err) => {
-            console.log(err);
+            console.error(err);
           }
         })
       },
@@ -92,9 +87,7 @@ export class SolvePracticeComponent implements OnInit, OnDestroy {
     let newQuestion = this.practice.questions.find((question: any) => {
       let q1 = Number(question.questionIndex);
       let q2 = Number(this.displayedQuestion.questionIndex) + 1;
-      console.log(q1, q2);
       if (q1 == q2) {
-        console.log('vutre');
         return question;
       }
     });
@@ -116,9 +109,7 @@ export class SolvePracticeComponent implements OnInit, OnDestroy {
     let newQuestion = this.practice.questions.find((question: any) => {
       let q1 = Number(question.questionIndex);
       let q2 = Number(this.displayedQuestion.questionIndex) + -1;
-      console.log(q1, q2);
       if (q1 == q2) {
-        console.log('vutre');
         return question;
       }
     });

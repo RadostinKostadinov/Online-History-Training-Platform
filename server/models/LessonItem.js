@@ -29,6 +29,9 @@ const LessonItemSchema = mongoose.Schema({
     interesting: {
         type: String
     },
+    date: {
+        type: String
+    },
     createdAt: {
         type: Date,
         immutable: true,

@@ -39,7 +39,7 @@
           *ngFor="let lesson of era.lessons; index as k"
         >
           <a (click)="onChooseLesson(era._id, lesson._id)">{{ lesson.name }}</a>
-          <div (click)="onDeleteLesson(era._id, lesson._id)">X</div>
+          <div *ngIf="mode == 'lessons'" (click)="onDeleteLesson(era._id, lesson._id)">X</div>
         </div>
         <div *ngIf="mode == 'lessons'" class="accordion-panel-element add-new-lesson-input-wrapper">
           <input id="add-new-lesson-input" type="text" />
@@ -83,6 +83,7 @@
     <table>
       <thead>
         <tr>
+          <th class="circle-th"></th>
           <th>Име</th>
           <th>Отвори</th>
           <th>Премахни</th>
@@ -95,6 +96,7 @@
         (cdkDropListDropped)="drop($event)"
       >
         <tr *ngFor="let lessonitem of lesson.items" cdkDrag>
+          <td class="circle-td"><div>{{ lessonitem.date }}</div></td>
           <td>{{ lessonitem.name }}</td>
           <td>
             <button (click)="onChooseLessonItem($event, lessonitem._id)">
@@ -108,7 +110,7 @@
           </td>
         </tr>
         <tr>
-          <td><input type="text" id="new-lesson-item-input" /></td>
+          <td colspan="3"><input type="text" id="new-lesson-item-input" /></td>
           <td>
             <button (click)="addNewLessonItem($event)">
               Добави
@@ -142,9 +144,12 @@
         >Запази</a
       >
     </div>
-    <div>
-      <div class="lesson-name-wrapper">
-        <span class="third-screen-lesson-name">{{ lessonItem.name }}</span>
+    <div id="lesson-edit-name-date-row">
+      <div class="lesson-date-wrapper">
+        <input type="text" class="third-screen-lesson-date" [value]="lessonItem.date"/>
+      </div>
+      <div class="lesson-item-wrapper">
+        <input type="text"  class="third-screen-item-name" [value]="lessonItem.name"/>
       </div>
     </div>
   </div>

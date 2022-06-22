@@ -21,7 +21,7 @@ router.post("/create", async (req, res) => {
         const savedQuestion = await question.save();
         res.status(200).json({ questionId: savedQuestion._id });
     } catch (err) {
-        res.status(500).json(500);
+        res.status(500).json(err);
     }
 });
 

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { User } from './../auth/user.model';
 import { AuthService } from './../auth/auth.service';
 import { Subscription } from 'rxjs';
@@ -13,12 +14,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   private userSub!: Subscription;
   user: User | null = {userToken: 'nqma'};
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe(user => {
       this.user = user;
       this.isAuthenticated = !!user;
+      if(this.isAuthenticated && this.user?.type == "teacher") {
+        this.router.navigate(['/profile']);
+      }
     });
   }
 

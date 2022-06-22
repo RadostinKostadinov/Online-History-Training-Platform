@@ -54,6 +54,19 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
     parentDiv.querySelector('input').classList.toggle("ep-input-correct-answer");
   }
 
+  onSelectName(event: any) {
+    event.preventDefault();
+
+    event.currentTarget.classList.add('ep-questionItem-active');
+    event.currentTarget.nextElementSibling.classList.remove('ep-questionItem-active');
+  }
+  onSelectDate(event: any) {
+    event.preventDefault();
+
+    event.currentTarget.classList.add('ep-questionItem-active');
+    event.currentTarget.previousElementSibling.classList.remove('ep-questionItem-active');
+  }
+
   savePTCBlank(event: any) {
     event.preventDefault();
     this.blankQuestionsIds = [];
@@ -66,12 +79,31 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
       });
     }
 
-    let isErrorOccured = false;
+    let isErrorOccurred = false;
     questionsElArr.forEach((questionEl, index, array) => {
-      if (isErrorOccured) return;
-      let itemName = (<any>questionEl.querySelector('div:nth-of-type(1)'))!.innerText;
+      if (isErrorOccurred) return;
+
+      let itemName = (<any>questionEl.querySelector('.ep-questionItem-name'))!.innerText;
       let questionIndex = (<any>questionEl.querySelector('.ep-question-index span'))!.innerText;
       let type = 'multiple-choice-text'; //multiple-choice-text, multiple-choice-image, fill-in-the-blank
+
+      let itemDate = (<any>questionEl.querySelector('.ep-questionItem-date'))!.innerText;
+      if(itemDate == '') itemDate = '-';
+
+
+
+      let itemDisplayType;
+      try {
+        itemDisplayType = (<any>questionEl.querySelector('.ep-questionItem-active'))!.dataset.type;
+        if (itemDisplayType == '') {
+          throw new Error(`Моля проверете: Въпрос ${questionIndex} - Няма избран метод на показване`);
+        }
+      } catch (err: any) {
+        isErrorOccurred = true;
+        alert(err.message);
+        return;
+      }
+
 
       let question;
       try {
@@ -80,7 +112,7 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
           throw new Error(`Моля проверете: Въпрос ${questionIndex} - Няма условие`);
         }
       } catch (err: any) {
-        isErrorOccured = true;
+        isErrorOccurred = true;
         alert(err.message);
         return;
       }
@@ -110,7 +142,7 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
           answ4
         ]
       } catch (err: any) {
-        isErrorOccured = true;
+        isErrorOccurred = true;
         alert(err.message);
         return;
       }
@@ -120,7 +152,7 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
         correctAnswer = (<any>questionEl.querySelector('.ep-question-box > div > div > div > div.checked')).parentElement.querySelector('input').value;
       } catch (err) {
         if (err) {
-          isErrorOccured = true;
+          isErrorOccurred = true;
           alert(`Моля проверете: Въпрос ${questionIndex} - няма маркиран верен отговор.`);
           return;
         }
@@ -133,7 +165,7 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
           throw new Error(`Моля проверете: Въпрос ${questionIndex} - Невалидни точки`);
         }
       } catch (err: any) {
-        isErrorOccured = true;
+        isErrorOccurred = true;
         alert(err.message);
         return;
       }
@@ -142,6 +174,8 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
         type,
         points,
         itemName,
+        itemDate,
+        itemDisplayType,
         question,
         answers,
         correctAnswer,
@@ -151,7 +185,6 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
       this.myObservables.push(this.createQuestion(questionObj));
 
     });
-
     let blankName = (<any>document.querySelector('#ep-name'))!.value;
     if (blankName == '') {
       alert('Невалидно име на упражнението.');
@@ -190,7 +223,7 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
     this.blankIsActive = true;
   }
 
-  disablePractice(){
+  disablePractice() {
     this.blankIsActive = false;
   }
 

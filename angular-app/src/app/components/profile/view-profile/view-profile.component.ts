@@ -42,7 +42,6 @@ export class ViewProfileComponent implements OnInit, OnDestroy {
 
         return solvedPTC;
       });
-      console.log(this.solvedPTCs);
       this.maxPageNumber = Math.floor(this.solvedPTCs.length / this.ptcsPerPage) - 1;
       this.updateTable();
     })

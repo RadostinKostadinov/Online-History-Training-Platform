@@ -14,9 +14,10 @@ router.post("/register", async (req, res) => {
     req.body.type = "student";
     const { error: validationError } = registerValidation(req.body);
     if (validationError) {
+        console.log(validationError);
         return res
             .status(400)
-            .send({ message: validationError.details[0].message });
+            .send({ message: "Невалидни данни." });
     }
 
     //Проверяваме дали вече има такъв потребител в БД
@@ -38,7 +39,7 @@ router.post("/register", async (req, res) => {
     user.userPhone = "0000000000";
     user.parent = "Не е въведен.";
     user.parentPhone = "Не е въведен.";
-    user.classTeacher = await User.findById("626ada41ca0004e257cb6ede");
+    user.classTeacher = await User.findById("6241a62b3e85e8c4530307ce");
     user.isApproved = false;
     user.password = hashedPassword;
 
@@ -47,7 +48,7 @@ router.post("/register", async (req, res) => {
         const savedUser = await user.save();
         res.json({ userId: savedUser._id });
     } catch (err) {
-        res.status(400).send(err);
+        res.status(400).send({message: "Проблем при запазване на потребителя."});
     }
 });
 

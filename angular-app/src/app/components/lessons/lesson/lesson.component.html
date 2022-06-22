@@ -19,47 +19,48 @@
       <p>{{ item.name }}</p>
       <div class="lesson-grid-item-linecircle-wrapper">
         <div class="lesson-grid-item-choose-line"></div>
-        <div class="lesson-grid-item-choose-circle"></div>
-      </div>
-      <div>
-        <button
-          class="lesson-grid-item-choose-button"
+        <div
+          class="lesson-grid-item-choose-circle"
           (click)="onChooseItem($event, item._id)"
         >
-          УЧИ
-        </button>
+          {{ item.date }}
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <div id="lesson-section-3-lesson" *ngIf="lessonItem">
-  <div class="row-1-text">
-    <h3>{{ lessonItem.name }}</h3>
-    <p id="lesson-p-text">{{ lessonItem.text }}</p>
-  </div>
-  <div class="row-2-images">
-    <div>ИЗОБРАЖЕНИЯ</div>
-    <div class="lesson-images-slider">
-      <div class="lesson-images-wrapper">
-        <div
-          class="lesson-image-wrapper-slide"
-          *ngFor="let image of itemImages | keyvalue"
-        >
-          <img class="lesson-display-image" [src]="image.value" />
+  <div id="row-1-text-images">
+    <div class="left-column-text">
+      <h3>{{ lessonItem.name }}</h3>
+      <textarea id="lesson-textarea-text" [readonly]="true">{{
+        lessonItem.text
+      }}</textarea>
+    </div>
+    <div class="right-column-images">
+      <div>ИЗОБРАЖЕНИЯ</div>
+      <div class="lesson-images-slider">
+        <div class="lesson-images-wrapper">
+          <div
+            class="lesson-image-wrapper-slide"
+            *ngFor="let image of itemImages | keyvalue"
+          >
+            <img class="lesson-display-image" [src]="image.value" />
+          </div>
+        </div>
+      </div>
+      <div id="lesson-images-pagination">
+        <div (click)="slideLeftImages($event)" class="lesson-slider-prev-btn">
+          <img src="/assets/core/pagination_arrow_white_Left.png" />
+        </div>
+        <div (click)="slideRightImages($event)" class="lesson-slider-next-btn">
+          <img src="/assets/core/pagination_arrow_white_Right.png" />
         </div>
       </div>
     </div>
-    <div id="lesson-images-pagination">
-      <div (click)="slideLeftImages($event)" class="lesson-slider-prev-btn">
-        <img src="/assets/core/pagination_arrow_white_Left.png" />
-      </div>
-      <div (click)="slideRightImages($event)" class="lesson-slider-next-btn">
-        <img src="/assets/core/pagination_arrow_white_Right.png" />
-      </div>
-    </div>
   </div>
-  <div class="row-3-videos">
+  <div class="row-2-videos">
     <div>ВИДЕA</div>
     <div class="lesson-videos-slider">
       <div class="lesson-videos-wrapper">
@@ -88,8 +89,8 @@
       </div>
     </div>
   </div>
-  <div class="row-4-interesting">
-    <div>ИНТЕРЕСНО</div>
+  <div class="row-3-interesting">
+    <div>ЛЮБОПИТНО</div>
     <p id="lesson-p-interesting">{{ lessonItem.interesting }}</p>
   </div>
 </div>
