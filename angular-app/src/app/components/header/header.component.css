@@ -1,4 +1,3 @@
-
 #header {
   width: 100%;
   max-width: 1920px;
@@ -15,15 +14,13 @@
   width: 100%;
   height: 100vh;
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   z-index: -9999;
   background: rgb(186, 135, 97);
-  background: linear-gradient(
-    180deg,
-    rgba(186, 135, 97, 1) 0%,
-    rgba(255, 255, 255, 1) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(186, 135, 97, 1) 0%,
+      rgba(255, 255, 255, 1) 100%);
 }
 
 #header-papirus {
@@ -31,8 +28,8 @@
   height: 160px;
   position: absolute;
   z-index: -1;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
 }
 
 #header-wrapper {
@@ -59,7 +56,6 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.25);
 }
 
 #header-second-row ul li {
@@ -67,29 +63,44 @@
 }
 
 #header-second-row ul li a {
-  box-shadow: inset 0px 0px 13px #FFFFFF;
+  font-family: Bukyvede;
+
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: bold;
+
   display: block;
   padding: 12px 50px;
-  background: rgba(0, 0, 0, 0.01);
   cursor: pointer;
-  font-size: 17px;
-  font-weight: 700;
+
   color: hsla(100, 6%, 9%, 0.8);
 }
 
 #header-second-row ul li a:hover {
-  background: hsla(41, 100%, 50%, 0.2);
+  background-image: url(../../../assets/core/header_button_background.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 150px 75px;
+
 }
 
-.header-time, .header-name {
-  background: rgba(186, 135, 97, 0.6);
+.header-time,
+.header-name {
+  font-family: Bukyvede;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+
   padding: 3px 10px;
   width: 300px;
-  font-size: 15px;
-  font-weight: 700;
+
   color: hsla(100, 6%, 9%, 0.8);
-  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.25);
-  text-align: center;
+
+  background-image: url(../../../assets/core/header_dateandname_bg_v1.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 [routerlink] {
@@ -97,6 +108,12 @@
 }
 
 .active {
-  background: rgba(186, 135, 97, 0.6) !important;
+  text-decoration: underline;
+
+  background-image: url(../../../assets/core/header_button_background.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 125px 125px;
+
   cursor: not-allowed;
 }

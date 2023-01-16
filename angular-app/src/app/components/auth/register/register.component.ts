@@ -24,6 +24,19 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    console.log(form.controls['password'].value);
+    console.log(form.controls['repass'].value);
+
+    if(form.controls['password'].value != form.controls['repass'].value) {
+      this.errorMsg = 'Паролите не съвпадат.';
+      return;
+    }
+
+    if(isNaN(form.controls['number'].value)) {
+      this.errorMsg = 'Въведете валиден номер в клас.';
+      return;
+    }
+
     this.authService.register(form.value).subscribe({
     next: (resData) => {
       this.isRegSuccessful = true;

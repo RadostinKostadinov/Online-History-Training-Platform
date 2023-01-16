@@ -55,6 +55,9 @@ export class ViewProfilesComponent implements OnInit, OnDestroy {
         if(a.number < b.number) return -1;
         if(a.number > b.number) return 1;
         return 0;
+      }).filter((student: any) => {
+        console.log(student);
+        if(student.type == 'student') return student;
       });
       this.currentClass = this.allStudents;
       this.maxPageNumber = Math.floor(this.currentClass.length / this.usersPerPage);

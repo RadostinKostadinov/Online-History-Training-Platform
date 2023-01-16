@@ -38,11 +38,12 @@ export class ViewProfileComponent implements OnInit, OnDestroy {
         }
 
         const creationDate = new Date(solvedPTC.createdAt);
-        solvedPTC.date = `${creationDate.getFullYear()}-${creationDate.getMonth() + 1}-${creationDate.getDate()} ${creationDate.getHours()}:${creationDate.getMinutes()}`
+
+        solvedPTC.date = `${creationDate.getFullYear()}-${this.checkTime(creationDate.getMonth() + 1)}-${this.checkTime(creationDate.getDate())} ${this.checkTime(creationDate.getHours())}:${this.checkTime(creationDate.getMinutes())}`
 
         return solvedPTC;
       });
-      this.maxPageNumber = Math.floor(this.solvedPTCs.length / this.ptcsPerPage) - 1;
+      this.maxPageNumber = Math.ceil(this.solvedPTCs.length / this.ptcsPerPage);
       this.updateTable();
     })
   }
@@ -50,11 +51,11 @@ export class ViewProfileComponent implements OnInit, OnDestroy {
   viewBlank(event: any, blankId: string) {
     event.preventDefault();
     this.displayedPTC = this.solvedPTCs.find((ptcBlank) => {
-      if(blankId == ptcBlank._id) return ptcBlank;
+      if (blankId == ptcBlank._id) return ptcBlank;
     })
 
     setTimeout(() => {
-      document.getElementById('pagination-buttons')?.scrollIntoView({behavior: 'smooth'});
+      document.getElementById('pagination-buttons')?.scrollIntoView({ behavior: 'smooth' });
     }, 200);
   }
 
@@ -85,4 +86,9 @@ export class ViewProfileComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.studentSub?.unsubscribe();
   }
+
+  checkTime(i: number) {
+    return (i < 10) ? "0" + i : i;
+  }
 }
+

@@ -22,6 +22,7 @@
                 name="username"
                 required
                 minlength="4"
+                maxlength="12"
               />
             </div>
             <div>
@@ -78,7 +79,8 @@
                 ngModel
                 name="firstName"
                 required
-                minlength="4"
+                minlength="3"
+                maxlength="30"
               />
             </div>
             <div>
@@ -90,7 +92,8 @@
                 ngModel
                 name="surName"
                 required
-                minlength="1"
+                minlength="3"
+                maxlength="30"
               />
             </div>
             <div>
@@ -102,7 +105,8 @@
                 ngModel
                 name="lastName"
                 required
-                minlength="4"
+                minlength="3"
+                maxlength="30"
               />
             </div>
             <div id="class-number">
@@ -131,17 +135,6 @@
                   <option value="12А">12А</option>
                   <option value="12Б">12Б</option>
                 </select>
-                <!-- <input
-                  placeholder="5A"
-                  id="class-number-class"
-                  type="text"
-                  id="school_class"
-                  ngModel
-                  name="school_class"
-                  required
-                  minlength="2"
-                  maxlength="3"
-                /> -->
               </div>
               <div>
                 <label for="number">Номер</label>

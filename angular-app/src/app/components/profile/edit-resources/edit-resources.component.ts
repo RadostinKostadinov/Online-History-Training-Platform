@@ -168,6 +168,9 @@ export class EditResourcesComponent implements OnInit {
     this.http.get(`http://localhost:3000/lessonItems/get/${lessonItemId}`).pipe(take(1)).subscribe((lessonItem: any) => {
 
       this.lessonItem = lessonItem;
+      if(this.lessonItem.date == undefined) {
+        this.lessonItem.date = 'дата';
+      }
 
       this.lessonItem.images.forEach((imageName: string) => {
         this.getImage(imageName).pipe(take(1)).subscribe({

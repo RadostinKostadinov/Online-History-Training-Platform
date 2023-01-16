@@ -64,7 +64,8 @@ export class SolvePracticeComponent implements OnInit, OnDestroy {
         this.user.solvedPTCs.push(res.savedSolvedPractice);
 
         this.http.patch(`http://localhost:3000/users/update/${this.user._id}`, {
-          solvedPTCs: this.user.solvedPTCs
+          solvedPTCs: this.user.solvedPTCs,
+          practicesPoints: Number(this.user.practicesPoints) + Number(res.studentPoints)
         }).pipe(take(1)).subscribe({
           next: (res: any) => {
           },

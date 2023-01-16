@@ -69,7 +69,7 @@ export class LessonComponent implements OnInit, OnDestroy {
 
           this.imageSliderStep = 0;
           const imageWrapper: any = document.querySelector('.lesson-images-wrapper');
-          imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 450}px)`;
+          imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 480}px)`;
 
           let allLearnBtns = document.querySelectorAll('.lesson-grid-item-choose-circle');
           allLearnBtns[allLearnBtns.length - 1].scrollIntoView({ behavior: 'smooth' });
@@ -84,7 +84,7 @@ export class LessonComponent implements OnInit, OnDestroy {
     }
     event.preventDefault();
     const imageWrapper: any = document.querySelector('.lesson-images-wrapper');
-    imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 450}px)`;
+    imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 480}px)`;
   }
 
   slideRightImages(event: any) {
@@ -94,7 +94,7 @@ export class LessonComponent implements OnInit, OnDestroy {
 
     event.preventDefault();
     const imageWrapper: any = document.querySelector('.lesson-images-wrapper');
-    imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 450}px)`;
+    imageWrapper.style.transform = `translateX(-${this.imageSliderStep * 480}px)`;
   }
 
   slideLeftVideos(event: any) {

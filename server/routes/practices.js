@@ -81,7 +81,7 @@ router.post("/create-solved/:practiceId", async (req, res) => {
     const solvedPractice = new SolvedPractice(data);
     try {
         const savedSolvedPractice = await solvedPractice.save();
-        res.status(200).json({ savedSolvedPractice: savedSolvedPractice._id });
+        res.status(200).json({ savedSolvedPractice: savedSolvedPractice._id, studentPoints: savedSolvedPractice.studentPoints });
     } catch (err) {
         res.status(500).json(500);
     }

@@ -23,7 +23,7 @@ export class User {
   public classTeacher?: {
     firstName?: string,
     lastName?: string,
-    phoneNumber?: string,
+    userPhone?: string,
   };
   public competitionPoints?: number;
   public createdAt?: string;

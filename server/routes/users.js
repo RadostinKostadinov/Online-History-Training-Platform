@@ -4,7 +4,7 @@ const User = require("../models/User");
 const {
     validateUser,
     validateTeacher,
-} = require("../middlewares/verifyToken.js");
+} = require("../middleware/verifyToken.js");
 
 //Връща всички профили, чакащи потвърждение за регистрация
 router.get(
@@ -37,6 +37,7 @@ router.get(
             const users = await User.find({ isApproved: true })
                 .select({
                     _id: 1,
+                    type: 1,
                     firstName: 1,
                     surName: 1,
                     lastName: 1,
