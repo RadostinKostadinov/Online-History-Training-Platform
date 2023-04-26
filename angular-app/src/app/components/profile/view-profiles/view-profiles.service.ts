@@ -15,7 +15,7 @@ export class ViewProfilesService {
   constructor(private http: HttpClient) { }
 
   getAllStudents() {
-    this.http.get('http://localhost:3000/users/get/all-students').pipe(take(1)).subscribe((students: any) => {
+    this.http.get('https://rk-diplomna-api.herokuapp.com/users/get/all-students').pipe(take(1)).subscribe((students: any) => {
       this.allStudentsBehSub.next(students);
     });
   }

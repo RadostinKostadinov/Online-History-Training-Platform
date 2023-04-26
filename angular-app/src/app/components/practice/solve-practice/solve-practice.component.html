@@ -2,25 +2,25 @@
   <div id="solvep-heading">
     <div id="solvep-minutes-left"></div>
     <div id="solvep-lesson-name">{{ lesson.name }}</div>
-    <div *ngIf="totalQuestions != 0 && markedQuestions == totalQuestions" class="solvep-header-right-box solvep-btn-send">
+    <div *ngIf="totalQuestions !== 0 && markedQuestions === totalQuestions" class="solvep-header-right-box solvep-btn-send">
       <div (click)="sendPractice()">Предай</div>
     </div>
-    <div *ngIf="totalQuestions != 0 && markedQuestions != totalQuestions" class="solvep-header-right-box">
+    <div *ngIf="totalQuestions !== 0 && markedQuestions !== totalQuestions" class="solvep-header-right-box">
       <div>{{markedQuestions}}/{{totalQuestions}}</div>
     </div>
   </div>
   <div id="solvep-timeline" *ngIf="isStarted">
     <div id="lesson-items-grid">
       <div class="lesson-grid-item" *ngFor="let question of practice.questions">
-        <p *ngIf="question.itemDisplayType == 'name'">{{ question.itemName }}</p>
-        <p *ngIf="question.itemDisplayType == 'date'">&nbsp;</p>
+        <p *ngIf="question.itemDisplayType === 'name'">{{ question.itemName }}</p>
+        <p *ngIf="question.itemDisplayType === 'date'">&nbsp;</p>
         <div class="lesson-grid-item-linecircle-wrapper">
           <div class="lesson-grid-item-choose-line"></div>
           <div
             class="lesson-grid-item-choose-circle"
             [ngClass]="question.markedAnswer ? 'solvep-timeline-checked' : ''"
             (click)="onChooseItem($event, question._id)"
-          ><span *ngIf="question.itemDisplayType == 'date'">{{question.itemDate}}</span></div>
+          ><span *ngIf="question.itemDisplayType === 'date'">{{question.itemDate}}</span></div>
         </div>
         <div>
           <button
@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <div id="solvep-question" *ngIf="displayedQuestion != '' && isStarted">
+  <div id="solvep-question" *ngIf="displayedQuestion !== '' && isStarted">
     <div id="solvep-prev-question">
       <div (click)="prevQuestion()">
         &#10096;

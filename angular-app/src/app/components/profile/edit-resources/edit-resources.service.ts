@@ -15,18 +15,18 @@ export class EditResourcesService {
   constructor(private http: HttpClient) { }
 
   getLesson(lessonId: string) {
-    this.http.get(`http://localhost:3000/lessons/get/${lessonId}`).pipe(take(1)).subscribe((lesson: any) => {
+    this.http.get(`https://rk-diplomna-api.herokuapp.com/lessons/get/${lessonId}`).pipe(take(1)).subscribe((lesson: any) => {
       this.lesson.next(lesson);
     });
   }
 
   getPractice(practiceId: string) {
-    this.http.get(`http://localhost:3000/practices/get/${practiceId}`).pipe(take(1)).subscribe((practice: any) => {
+    this.http.get(`https://rk-diplomna-api.herokuapp.com/practices/get/${practiceId}`).pipe(take(1)).subscribe((practice: any) => {
       this.practice.next(practice);
     });
   }
 
   deleteQuestion(questionId: any) {
-      return this.http.delete(`http://localhost:3000/questions/delete/${questionId}`);
+      return this.http.delete(`https://rk-diplomna-api.herokuapp.com/questions/delete/${questionId}`);
   }
 }

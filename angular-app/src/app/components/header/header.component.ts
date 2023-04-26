@@ -31,8 +31,9 @@ export class HeaderComponent implements OnInit {
         m = this.checkTime(today.getMinutes()),
         s = this.checkTime(today.getSeconds());
       let day = today.getDay();
-      console.log(day);
-      document.querySelector('.header-time p')!.innerHTML = `${year}/${month+1}/${date} - ${h}:${m}:${s} - ${this.days[day]}`;
+      if (document.querySelector('.header-time p')) {
+        document.querySelector('.header-time p')!.innerHTML = `${year}/${month + 1}/${date} - ${h}:${m}:${s} - ${this.days[day]}`;
+      }
     }, 500)
   }
 

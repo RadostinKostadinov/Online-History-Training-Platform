@@ -34,12 +34,12 @@ export class ChoosePracticeComponent implements OnInit, OnDestroy {
 
   addNewPractice(event: any) {
     const newPracticeName = (<any>document.getElementById('new-practice-input'))?.value;
-    this.http.post('http://localhost:3000/practices/create', {
+    this.http.post('https://rk-diplomna-api.herokuapp.com/practices/create', {
       name: newPracticeName
     }).pipe(take(1)).subscribe((res: any) => {
       this.newPracticeId = res.practiceId;
       this.currentPractices.push(this.newPracticeId);
-      this.http.patch(`http://localhost:3000/lessons/update/${this.lesson._id}`, {
+      this.http.patch(`https://rk-diplomna-api.herokuapp.com/lessons/update/${this.lesson._id}`, {
         "practices": this.currentPractices
       }).pipe(take(1)).subscribe(() => {
         this.updatePracticesList();
@@ -53,7 +53,7 @@ export class ChoosePracticeComponent implements OnInit, OnDestroy {
   }
 
   updatePracticesList() {
-    this.http.get(`http://localhost:3000/lessons/get-practices/${this.lesson._id}`).pipe(take(1)).subscribe((practices: any) => {
+    this.http.get(`https://rk-diplomna-api.herokuapp.com/lessons/get-practices/${this.lesson._id}`).pipe(take(1)).subscribe((practices: any) => {
       this.practices = practices;
       this.currentPractices = [];
       this.practices.forEach((practice: any) => {

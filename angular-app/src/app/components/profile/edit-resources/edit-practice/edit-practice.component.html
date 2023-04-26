@@ -31,7 +31,7 @@
   </div>
 
   <div id="ep-section2-questions">
-    <div id="not-practice-questions" *ngIf="practice.questions.length == 0">
+    <div id="not-practice-questions" *ngIf="practice.questions.length === 0">
       <div
         class="ep-question"
         *ngFor="let lessonItem of lesson.items; index as i"
@@ -103,14 +103,12 @@
       <div class="ep-question-heading">
         <div class="ep-questionItem-name" (click)="onSelectName($event)" data-type="name"
         [ngClass]="
-        question.itemDisplayType == 'name'
-          ? 'ep-questionItem-active'
+        question.itemDisplayType == 'name' ? 'ep-questionItem-active'
           : ''
       ">{{ question.itemName }}</div>
         <div class="ep-questionItem-date" (click)="onSelectDate($event)" data-type="date"
         [ngClass]="
-        question.itemDisplayType == 'date'
-          ? 'ep-questionItem-active'
+        question.itemDisplayType == 'date' ? 'ep-questionItem-active'
           : ''
       ">{{ question.itemDate }}</div>
       </div>
@@ -130,7 +128,7 @@
                 <div>
                   <input
                     [ngClass]="
-                      question.answers[0] === question.correctAnswer
+                      question.answers[0] == question.correctAnswer
                         ? 'ep-input-correct-answer'
                         : ''
                     "
@@ -141,7 +139,7 @@
                   />
                   <div
                     [ngClass]="
-                      question.answers[0] === question.correctAnswer
+                      question.answers[0] == question.correctAnswer
                         ? 'checked'
                         : ''
                     "
@@ -152,7 +150,7 @@
                 <div>
                   <input
                     [ngClass]="
-                      question.answers[1] === question.correctAnswer
+                      question.answers[1] == question.correctAnswer
                         ? 'ep-input-correct-answer'
                         : ''
                     "
@@ -163,7 +161,7 @@
                   />
                   <div
                     [ngClass]="
-                      question.answers[1] === question.correctAnswer
+                      question.answers[1] == question.correctAnswer
                         ? 'checked'
                         : ''
                     "
@@ -176,7 +174,7 @@
                 <div>
                   <div
                     [ngClass]="
-                      question.answers[2] === question.correctAnswer
+                      question.answers[2] == question.correctAnswer
                         ? 'checked'
                         : ''
                     "
@@ -185,7 +183,7 @@
                   ></div>
                   <input
                     [ngClass]="
-                      question.answers[2] === question.correctAnswer
+                      question.answers[2] == question.correctAnswer
                         ? 'ep-input-correct-answer'
                         : ''
                     "
@@ -198,7 +196,7 @@
                 <div>
                   <div
                     [ngClass]="
-                      question.answers[3] === question.correctAnswer
+                      question.answers[3] == question.correctAnswer
                         ? 'checked'
                         : ''
                     "
@@ -207,7 +205,7 @@
                   ></div>
                   <input
                     [ngClass]="
-                      question.answers[3] === question.correctAnswer
+                      question.answers[3] == question.correctAnswer
                         ? 'ep-input-correct-answer'
                         : ''
                     "

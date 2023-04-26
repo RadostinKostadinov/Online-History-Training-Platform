@@ -44,7 +44,7 @@ export class RegisterRequestsComponent implements OnInit {
   }
 
   approveUser(_id: string) {
-    this.http.post(`http://localhost:3000/users/post/register-requests/${_id}`, {}).subscribe(resData => {
+    this.http.post(`https://rk-diplomna-api.herokuapp.com/users/post/register-requests/${_id}`, {}).subscribe(resData => {
       this.unapprovedUsers = this.unapprovedUsers.filter((value, index, arr) => {
         return value._id != _id;
       })
@@ -55,7 +55,7 @@ export class RegisterRequestsComponent implements OnInit {
   }
 
   getUnapprovedUsers() {
-    return this.http.get<unapprovedUser[]>('http://localhost:3000/users/get/register-requests');
+    return this.http.get<unapprovedUser[]>('https://rk-diplomna-api.herokuapp.com/users/get/register-requests');
   };
 
   previousPage() {

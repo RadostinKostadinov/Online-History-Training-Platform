@@ -20,7 +20,7 @@ export class LessonsServiceService {
   constructor(private http: HttpClient) { }
 
   getEras() {
-    this.http.get('http://localhost:3000/eras/get/all').pipe(take(1)).subscribe((eras: any) => {
+    this.http.get('https://rk-diplomna-api.herokuapp.com/eras/get/all').pipe(take(1)).subscribe((eras: any) => {
       this.eras.next(eras);
     });
   }
@@ -41,13 +41,13 @@ export class LessonsServiceService {
   }
 
   getLesson(lessonId: string) {
-    this.http.get(`http://localhost:3000/lessons/get/${lessonId}`).pipe(take(1)).subscribe((lesson: any) => {
+    this.http.get(`https://rk-diplomna-api.herokuapp.com/lessons/get/${lessonId}`).pipe(take(1)).subscribe((lesson: any) => {
       this.lesson.next(lesson);
     });
   }
 
   getLessonItem(lessonItemId: string) {
-    this.http.get(`http://localhost:3000/lessonItems/get/${lessonItemId}`).pipe(take(1)).subscribe((lessonItem: any) => {
+    this.http.get(`https://rk-diplomna-api.herokuapp.com/lessonItems/get/${lessonItemId}`).pipe(take(1)).subscribe((lessonItem: any) => {
       this.lessonItem.next(lessonItem);
     })
   }

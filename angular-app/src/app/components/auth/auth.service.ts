@@ -14,7 +14,7 @@ export class AuthService {
 
   login(username: string, password: string) {
 
-    return this.http.post<any>('http://localhost:3000/auth/login',
+    return this.http.post<any>('https://rk-diplomna-api.herokuapp.com/auth/login',
       {
         username: username,
         password: password
@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   register(user: User) {
-    return this.http.post('http://localhost:3000/auth/register',
+    return this.http.post('https://rk-diplomna-api.herokuapp.com/auth/register',
       {
         username: user.username,
         email: user.email,
@@ -50,14 +50,14 @@ export class AuthService {
 
   autoLogin() {
     const userData = JSON.parse(localStorage.getItem('userData')!);
-    if(!userData) {
+    if (!userData) {
       return;
     }
 
     let loadedUser = new User(userData.username, userData.token);
     loadedUser = Object.assign(loadedUser, userData);
 
-    if(loadedUser.userToken){
+    if (loadedUser.userToken) {
       this.user.next(loadedUser);
     }
   }
@@ -84,7 +84,7 @@ export class AuthService {
         break;
       case 'Профилът все още не е одобрен.':
         errorMessage = 'Профилът все още не е одобрен, обърнете се към учител.'
-      }
+    }
 
     return throwError(errorRes.error.message);
   }

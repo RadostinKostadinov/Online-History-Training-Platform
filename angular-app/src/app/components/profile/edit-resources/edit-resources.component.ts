@@ -29,7 +29,7 @@ export class EditResourcesComponent implements OnInit {
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute, private ers: EditResourcesService) { }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/eras/get/all').pipe(take(1)).subscribe((eras) => {
+    this.http.get('https://rk-diplomna-api.herokuapp.com/eras/get/all').pipe(take(1)).subscribe((eras) => {
       this.eras = eras;
     });
   }
@@ -79,7 +79,7 @@ export class EditResourcesComponent implements OnInit {
       if (lesson._id == lessonId) return lesson;
     })
 
-    this.http.get(`http://localhost:3000/lessons/get/${this.lesson._id}`).pipe(take(1)).subscribe((lesson: any) => {
+    this.http.get(`https://rk-diplomna-api.herokuapp.com/lessons/get/${this.lesson._id}`).pipe(take(1)).subscribe((lesson: any) => {
       this.lesson = lesson;
     });
   }
@@ -95,18 +95,18 @@ export class EditResourcesComponent implements OnInit {
     });
 
     const newLessonName = (<HTMLInputElement>event.target.parentElement.querySelector('#add-new-lesson-input'))!.value;
-    this.http.post('http://localhost:3000/lessons/create', {
+    this.http.post('https://rk-diplomna-api.herokuapp.com/lessons/create', {
       name: newLessonName
     }).pipe(take(1)).subscribe({
       next: (res: any) => {
         this.eraLessons.push(res.lessonId);
-        this.http.get(`http://localhost:3000/lessons/get/${res.lessonId}`).pipe(take(1)).subscribe((lesson: any) => {
+        this.http.get(`https://rk-diplomna-api.herokuapp.com/lessons/get/${res.lessonId}`).pipe(take(1)).subscribe((lesson: any) => {
           this.lesson = lesson;
-          this.http.patch(`http://localhost:3000/eras/update/${this.era._id}`, {
+          this.http.patch(`https://rk-diplomna-api.herokuapp.com/eras/update/${this.era._id}`, {
             lessons: this.eraLessons
           }).pipe(take(1)).subscribe({
             next: (res) => {
-              this.http.get('http://localhost:3000/eras/get/all').pipe(take(1)).subscribe((eras) => {
+              this.http.get('https://rk-diplomna-api.herokuapp.com/eras/get/all').pipe(take(1)).subscribe((eras) => {
                 this.eras = eras;
               });
             },
@@ -126,7 +126,7 @@ export class EditResourcesComponent implements OnInit {
   }
 
   onDeleteLesson(era: any, lessonId: string) {
-    this.http.delete(`http://localhost:3000/lessons/delete/${lessonId}`).pipe(take(1)).subscribe({
+    this.http.delete(`https://rk-diplomna-api.herokuapp.com/lessons/delete/${lessonId}`).pipe(take(1)).subscribe({
       next: (res) => {
         this.eras.forEach((era: any) => {
           era.lessons = era.lessons.filter((lesson: any) => {
@@ -143,7 +143,7 @@ export class EditResourcesComponent implements OnInit {
   //-------THIRD SCREEN--------------
   onDeleteItem(event: any, lessonItemId: string) {
     event.preventDefault();
-    this.http.delete(`http://localhost:3000/lessonItems/delete/${lessonItemId}`).pipe(take(1)).subscribe({
+    this.http.delete(`https://rk-diplomna-api.herokuapp.com/lessonItems/delete/${lessonItemId}`).pipe(take(1)).subscribe({
       next: (res) => {
         this.lesson.items = this.lesson.items.filter((item: any) => {
           if(item._id != lessonItemId) return item;
@@ -165,7 +165,7 @@ export class EditResourcesComponent implements OnInit {
     this.itemImages = new Map();
     this.itemVideos = new Map();
 
-    this.http.get(`http://localhost:3000/lessonItems/get/${lessonItemId}`).pipe(take(1)).subscribe((lessonItem: any) => {
+    this.http.get(`https://rk-diplomna-api.herokuapp.com/lessonItems/get/${lessonItemId}`).pipe(take(1)).subscribe((lessonItem: any) => {
 
       this.lessonItem = lessonItem;
       if(this.lessonItem.date == undefined) {
@@ -200,7 +200,7 @@ export class EditResourcesComponent implements OnInit {
     this.lesson.items.forEach((element: any, index: number) => {
       element.order = index;
     });
-    this.http.patch(`http://localhost:3000/lessons/update/${this.lesson._id}`, {
+    this.http.patch(`https://rk-diplomna-api.herokuapp.com/lessons/update/${this.lesson._id}`, {
       "items": this.lesson.items
     }).pipe(take(1)).subscribe(() => { });
   }
@@ -228,7 +228,7 @@ export class EditResourcesComponent implements OnInit {
     const newLessonItemName = (<any>document.getElementById('new-lesson-item-input'))?.value;
 
     //create new item with this name
-    this.http.post('http://localhost:3000/lessonItems/create', {
+    this.http.post('https://rk-diplomna-api.herokuapp.com/lessonItems/create', {
       name: newLessonItemName
     }).pipe(take(1)).subscribe((res: any) => {
       newLessonItemId = res.savedItemId;
@@ -241,13 +241,13 @@ export class EditResourcesComponent implements OnInit {
       //add new item to lesson items and update in DB
       thisLessonItems.push(newLessonItemId);
 
-      this.http.patch(`http://localhost:3000/lessons/update/${this.lesson._id}`, {
+      this.http.patch(`https://rk-diplomna-api.herokuapp.com/lessons/update/${this.lesson._id}`, {
         items: thisLessonItems
       }).pipe(take(1)).subscribe({
         next: (res) => {
 
           //get updated lesson from DB
-          this.http.get(`http://localhost:3000/lessons/get/${this.lesson._id}`).pipe(take(1)).subscribe((lesson: any) => {
+          this.http.get(`https://rk-diplomna-api.herokuapp.com/lessons/get/${this.lesson._id}`).pipe(take(1)).subscribe((lesson: any) => {
             this.lesson = lesson;
           });
 
@@ -268,7 +268,7 @@ export class EditResourcesComponent implements OnInit {
     const fd = new FormData();
     fd.append('uploadedImage', file, file.name);
 
-    this.http.post('http://localhost:3000/upload/image', fd).pipe(take(1)).subscribe({
+    this.http.post('https://rk-diplomna-api.herokuapp.com/upload/image', fd).pipe(take(1)).subscribe({
       next: (res: any) => {
         this.getImage(res.fileName).subscribe({
           next: (x: any) => {
@@ -367,7 +367,7 @@ export class EditResourcesComponent implements OnInit {
     this.lessonItem.images = Array.from(this.itemImages.keys());
     this.lessonItem.videos = Array.from(this.itemVideos.keys());
 
-    this.http.patch(`http://localhost:3000/lessonItems/update/${this.lessonItem._id}`, this.lessonItem).pipe(take(1)).subscribe({
+    this.http.patch(`https://rk-diplomna-api.herokuapp.com/lessonItems/update/${this.lessonItem._id}`, this.lessonItem).pipe(take(1)).subscribe({
       next: (res) => {
         alert('УСПЕШНО ОБНОВЕНО!');
       },
@@ -379,7 +379,7 @@ export class EditResourcesComponent implements OnInit {
 
   //-------API CALL FUNCTIONS--------------
   getImage(imageName: string): any {
-    const url = `http://localhost:3000/upload/image/get/${imageName}`;
+    const url = `https://rk-diplomna-api.herokuapp.com/upload/image/get/${imageName}`;
     return this.http
       .get(url, { responseType: 'blob' })
       .pipe(
@@ -391,7 +391,7 @@ export class EditResourcesComponent implements OnInit {
   }
 
   updateItemImages() {
-    return this.http.patch(`http://localhost:3000/lessonItems/update/${this.lessonItem._id}`, {
+    return this.http.patch(`https://rk-diplomna-api.herokuapp.com/lessonItems/update/${this.lessonItem._id}`, {
       "images": this.lessonItem.images
     })
   };

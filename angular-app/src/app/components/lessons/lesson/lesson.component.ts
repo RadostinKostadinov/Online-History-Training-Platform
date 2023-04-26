@@ -116,7 +116,7 @@ export class LessonComponent implements OnInit, OnDestroy {
   }
 
   getImage(imageName: string): any {
-    const url = `http://localhost:3000/upload/image/get/${imageName}`;
+    const url = `https://rk-diplomna-api.herokuapp.com/upload/image/get/${imageName}`;
     return this.http
       .get(url, { responseType: 'blob' })
       .pipe(

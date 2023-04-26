@@ -1,7 +1,7 @@
 <div
   id="edit-resources-first-screen"
   class="edit-resources-wrapper"
-  *ngIf="currentState == 'first-screen'"
+  *ngIf="currentState === 'first-screen'"
 >
   <div class="content-wrapper">
     <div (click)="onChooseMode($event, 'lessons')"><a href="#">Уроци</a></div>
@@ -18,7 +18,7 @@
 <div
   id="edit-resources-second-screen"
   class="edit-resources-wrapper"
-  *ngIf="currentState == 'second-screen'"
+  *ngIf="currentState === 'second-screen'"
 >
   <div class="controls-wrapper">
     <a
@@ -39,9 +39,9 @@
           *ngFor="let lesson of era.lessons; index as k"
         >
           <a (click)="onChooseLesson(era._id, lesson._id)">{{ lesson.name }}</a>
-          <div *ngIf="mode == 'lessons'" (click)="onDeleteLesson(era._id, lesson._id)">X</div>
+          <div *ngIf="mode === 'lessons'" (click)="onDeleteLesson(era._id, lesson._id)">X</div>
         </div>
-        <div *ngIf="mode == 'lessons'" class="accordion-panel-element add-new-lesson-input-wrapper">
+        <div *ngIf="mode === 'lessons'" class="accordion-panel-element add-new-lesson-input-wrapper">
           <input id="add-new-lesson-input" type="text" />
           <img
             (click)="onAddLesson($event, era._id)"
@@ -59,7 +59,7 @@
 <div
   id="edit-resources-third-screen"
   class="edit-resources-wrapper"
-  *ngIf="currentState == 'third-screen'"
+  *ngIf="currentState === 'third-screen'"
 >
   <div class="controls-wrapper">
     <a
@@ -125,7 +125,7 @@
 <div
   id="edit-resources-fourth-screen"
   class="edit-resources-wrapper"
-  *ngIf="currentState == 'fourth-screen'"
+  *ngIf="currentState === 'fourth-screen'"
 >
   <div class="controls-wrapper">
     <div>

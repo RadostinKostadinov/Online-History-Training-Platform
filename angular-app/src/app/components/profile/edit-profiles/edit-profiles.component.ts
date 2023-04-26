@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   templateUrl: './edit-profiles.component.html',
   styleUrls: ['./edit-profiles.component.css']
 })
-export class EditProfilesComponent implements OnInit {
+export class EditProfilesComponent implements OnInit, OnDestroy {
 
   classSelectSub?: Subscription;
   avClassesForm: FormGroup = new FormGroup({

@@ -12,7 +12,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class HomeComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private userSub!: Subscription;
-  user: User | null = {userToken: 'nqma'};
+  user: User | null = { userToken: 'nqma' };
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -20,14 +20,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.userSub = this.authService.user.subscribe(user => {
       this.user = user;
       this.isAuthenticated = !!user;
-      if(this.isAuthenticated && this.user?.type == "teacher") {
+      if (this.isAuthenticated && this.user?.type == "teacher") {
         this.router.navigate(['/profile']);
       }
     });
   }
 
   ngOnDestroy(): void {
-      this.userSub.unsubscribe();
+    this.userSub.unsubscribe();
   }
 
 }

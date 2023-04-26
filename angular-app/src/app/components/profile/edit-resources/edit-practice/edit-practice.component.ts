@@ -211,7 +211,7 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
         isEnabled: this.blankIsActive,
       }
 
-      this.http.patch(`http://localhost:3000/practices/update/${this.practice._id}`, ptcBlank).pipe(take(1)).subscribe((res: any) => {
+      this.http.patch(`https://rk-diplomna-api.herokuapp.com/practices/update/${this.practice._id}`, ptcBlank).pipe(take(1)).subscribe((res: any) => {
         this.ers.getPractice(res.practiceId);
         alert('Успешно запазено.');
       });
@@ -233,7 +233,7 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
   }
 
   createQuestion(questionObject: Object) {
-    return this.http.post('http://localhost:3000/questions/create', questionObject);
+    return this.http.post('https://rk-diplomna-api.herokuapp.com/questions/create', questionObject);
   }
 
 }
