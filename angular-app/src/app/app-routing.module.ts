@@ -9,7 +9,7 @@ import { SelectEraComponent } from './components/lessons/select-era/select-era.c
 import { LessonsComponent } from './components/lessons/lessons.component';
 import { RegisterRequestsComponent } from './components/profile/register-requests/register-requests.component';
 import { AvatarsCheckComponent } from './components/profile/avatars-check/avatars-check.component';
-import { CompetitionsComponent } from './components/profile/competitions/competitions.component';
+import { EditCompetitionsAndTests } from './components/profile/edit-competitions-and-tests/edit-competitions-and-tests.component';
 import { EditResourcesComponent } from './components/profile/edit-resources/edit-resources.component';
 import { ViewProfilesComponent } from './components/profile/view-profiles/view-profiles.component';
 import { EditProfilesComponent } from './components/profile/edit-profiles/edit-profiles.component';
@@ -24,6 +24,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LessonComponent } from './components/lessons/lesson/lesson.component';
 import { ViewProfileComponent } from './components/profile/view-profile/view-profile.component';
+import { CompetitionsComponent } from './components/competitions/competitions.component';
+import { CompetitionsOverviewComponent } from './components/competitions/competitions-overview/competitions-overview.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -37,6 +39,12 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'competitions', component: CompetitionsComponent, canActivate: [AuthGuard], children: [
+      { path: '', pathMatch: 'full', redirectTo: 'overview' },
+      { path: 'overview', component: CompetitionsOverviewComponent, canActivate: [AuthGuard]},
+    ]
+  },
+  {
     path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard], children: [
       { path: '', pathMatch: 'full', redirectTo: 'edit-resources' },
       {
@@ -45,7 +53,7 @@ const routes: Routes = [
           { path: 'view-profile', component: ViewProfileComponent, canActivate: [AuthGuard] },
           { path: 'edit-profiles', component: EditProfilesComponent, canActivate: [AuthGuard] },
           { path: 'edit-resources', component: EditResourcesComponent, canActivate: [AuthGuard] },
-          { path: 'competitions', component: CompetitionsComponent, canActivate: [AuthGuard] },
+          { path: 'competitions', component: EditCompetitionsAndTests, canActivate: [AuthGuard] },
           { path: 'avatars-check', component: AvatarsCheckComponent, canActivate: [AuthGuard] },
           { path: 'register-requests', component: RegisterRequestsComponent, canActivate: [AuthGuard] },
           { path: 'edit-practice', component: EditPracticeComponent, canActivate: [AuthGuard] },

@@ -17,7 +17,7 @@ import { InfoComponent } from './components/profile/info/info.component';
 import { ViewProfilesComponent } from './components/profile/view-profiles/view-profiles.component';
 import { EditProfilesComponent } from './components/profile/edit-profiles/edit-profiles.component';
 import { EditResourcesComponent } from './components/profile/edit-resources/edit-resources.component';
-import { CompetitionsComponent } from './components/profile/competitions/competitions.component';
+import { EditCompetitionsAndTests } from './components/profile/edit-competitions-and-tests/edit-competitions-and-tests.component';
 import { AvatarsCheckComponent } from './components/profile/avatars-check/avatars-check.component';
 import { RegisterRequestsComponent } from './components/profile/register-requests/register-requests.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
@@ -31,6 +31,10 @@ import { PracticeComponent } from './components/practice/practice.component';
 import { SelectPracticeComponent } from './components/practice/select-practice/select-practice.component';
 import { SolvePracticeComponent } from './components/practice/solve-practice/solve-practice.component';
 import { ViewProfileComponent } from './components/profile/view-profile/view-profile.component';
+import { CompetitionsOverviewComponent } from './components/competitions/competitions-overview/competitions-overview.component';
+import { CompetitionsComponent } from './components/competitions/competitions.component';
+import { PointsStatisticComponent } from './components/competitions/competitions-overview/points-statistic/points-statistic.component';
+import { PointsStatisticPointsComponent } from './components/competitions/competitions-overview/points-statistic-points/points-statistic-points.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,7 @@ import { ViewProfileComponent } from './components/profile/view-profile/view-pro
     ViewProfilesComponent,
     EditProfilesComponent,
     EditResourcesComponent,
-    CompetitionsComponent,
+    EditCompetitionsAndTests,
     AvatarsCheckComponent,
     RegisterRequestsComponent,
     LessonsComponent,
@@ -56,7 +60,11 @@ import { ViewProfileComponent } from './components/profile/view-profile/view-pro
     PracticeComponent,
     SelectPracticeComponent,
     SolvePracticeComponent,
-    ViewProfileComponent
+    ViewProfileComponent,
+    CompetitionsComponent,
+    CompetitionsOverviewComponent,
+    PointsStatisticComponent,
+    PointsStatisticPointsComponent
   ],
   imports: [
     BrowserModule,

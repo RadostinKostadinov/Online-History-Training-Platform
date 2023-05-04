@@ -66,7 +66,7 @@ export class EditResourcesComponent implements OnInit {
       this.router.navigate(['/profile/choose-practice']);
     }
 
-
+    console.log('AFTER IF');
 
     this.states.push('third-screen');
     this.currentState = this.states[this.states.length - 1];
