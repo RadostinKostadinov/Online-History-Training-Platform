@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  backendUrl: 'https://rk-diplomna-api.herokuapp.com/'
 };

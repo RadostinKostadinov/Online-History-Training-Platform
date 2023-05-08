@@ -4,6 +4,7 @@ import { AuthService } from './../../auth/auth.service';
 import { Subscription, take } from 'rxjs';
 import { PracticeService } from '../practice.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-solve-practice',
@@ -46,7 +47,7 @@ export class SolvePracticeComponent implements OnInit, OnDestroy {
   sendPractice() {
     this.isStarted = false;
     this.isSent = true;
-    this.http.post(`https://rk-diplomna-api.herokuapp.com/practices/create-solved/${this.practice._id}`, {
+    this.http.post(`${environment.backendUrl}practices/create-solved/${this.practice._id}`, {
       owner: this.user._id,
       type: 'practice',
       lessonName: this.lesson.name,
@@ -63,7 +64,7 @@ export class SolvePracticeComponent implements OnInit, OnDestroy {
       next: (res: any) => {
         this.user.solvedPTCs.push(res.savedSolvedPractice);
 
-        this.http.patch(`https://rk-diplomna-api.herokuapp.com/users/update/${this.user._id}`, {
+        this.http.patch(`${environment.backendUrl}users/update/${this.user._id}`, {
           solvedPTCs: this.user.solvedPTCs,
           practicesPoints: Number(this.user.practicesPoints) + Number(res.studentPoints)
         }).pipe(take(1)).subscribe({

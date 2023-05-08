@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { exhaustMap, map, take, tap, Subscription } from 'rxjs';
 import { User } from '../../auth/user.model';
+import { environment } from 'src/environments/environment';
 
 
 interface unapprovedUser {
@@ -44,7 +45,7 @@ export class RegisterRequestsComponent implements OnInit {
   }
 
   approveUser(_id: string) {
-    this.http.post(`https://rk-diplomna-api.herokuapp.com/users/post/register-requests/${_id}`, {}).subscribe(resData => {
+    this.http.post(`${environment.backendUrl}users/post/register-requests/${_id}`, {}).subscribe(resData => {
       this.unapprovedUsers = this.unapprovedUsers.filter((value, index, arr) => {
         return value._id != _id;
       })
@@ -55,7 +56,7 @@ export class RegisterRequestsComponent implements OnInit {
   }
 
   getUnapprovedUsers() {
-    return this.http.get<unapprovedUser[]>('https://rk-diplomna-api.herokuapp.com/users/get/register-requests');
+    return this.http.get<unapprovedUser[]>(`${environment.backendUrl}users/get/register-requests`);
   };
 
   previousPage() {

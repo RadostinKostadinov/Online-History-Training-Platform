@@ -3,6 +3,7 @@ import { User } from './user.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
 
   login(username: string, password: string) {
 
-    return this.http.post<any>('https://rk-diplomna-api.herokuapp.com/auth/login',
+    return this.http.post<any>(`${environment.backendUrl}auth/login`,
       {
         username: username,
         password: password
@@ -33,7 +34,7 @@ export class AuthService {
   }
 
   register(user: User) {
-    return this.http.post('https://rk-diplomna-api.herokuapp.com/auth/register',
+    return this.http.post(`${environment.backendUrl}auth/register`,
       {
         username: user.username,
         email: user.email,

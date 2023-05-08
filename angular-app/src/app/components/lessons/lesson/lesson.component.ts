@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LessonsServiceService } from '../lessons-service.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-lesson',
@@ -116,7 +117,7 @@ export class LessonComponent implements OnInit, OnDestroy {
   }
 
   getImage(imageName: string): any {
-    const url = `https://rk-diplomna-api.herokuapp.com/upload/image/get/${imageName}`;
+    const url = `${environment.backendUrl}upload/image/get/${imageName}`;
     return this.http
       .get(url, { responseType: 'blob' })
       .pipe(

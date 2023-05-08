@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Subscription, take } from 'rxjs';
 import { EditResourcesService } from './../edit-resources.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-practice',
@@ -211,7 +212,7 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
         isEnabled: this.blankIsActive,
       }
 
-      this.http.patch(`https://rk-diplomna-api.herokuapp.com/practices/update/${this.practice._id}`, ptcBlank).pipe(take(1)).subscribe((res: any) => {
+      this.http.patch(`${environment.backendUrl}practices/update/${this.practice._id}`, ptcBlank).pipe(take(1)).subscribe((res: any) => {
         this.ers.getPractice(res.practiceId);
         alert('Успешно запазено.');
       });
@@ -233,7 +234,7 @@ export class EditPracticeComponent implements OnInit, OnDestroy {
   }
 
   createQuestion(questionObject: Object) {
-    return this.http.post('https://rk-diplomna-api.herokuapp.com/questions/create', questionObject);
+    return this.http.post(`${environment.backendUrl}questions/create`, questionObject);
   }
 
 }

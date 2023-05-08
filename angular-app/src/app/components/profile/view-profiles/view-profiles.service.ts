@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, take } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ViewProfilesService {
   constructor(private http: HttpClient) { }
 
   getAllStudents() {
-    this.http.get('https://rk-diplomna-api.herokuapp.com/users/get/all-students').pipe(take(1)).subscribe((students: any) => {
+    this.http.get(`${environment.backendUrl}users/get/all-students`).pipe(take(1)).subscribe((students: any) => {
       this.allStudentsBehSub.next(students);
     });
   }
