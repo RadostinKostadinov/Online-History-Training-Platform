@@ -21,6 +21,7 @@ const lessonItemsRoute = require('./routes/lessonItems.js');
 const uploadsRoute = require('./routes/upload.js');
 const questionsRoute = require('./routes/questions.js');
 const practicesRoute = require('./routes/practices.js');
+const testsRoute = require('./routes/tests.js');
 
 // Use Routes
 app.use('/avatars', avatarsRoute);
@@ -32,6 +33,7 @@ app.use('/lessonItems', lessonItemsRoute);
 app.use('/upload', uploadsRoute);
 app.use('/questions', questionsRoute);
 app.use('/practices', practicesRoute);
+app.use('/tests', testsRoute);
 
 app.get('/', (req, res) => {
   res.send('We are on home');

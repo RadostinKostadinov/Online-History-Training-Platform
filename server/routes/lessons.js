@@ -32,6 +32,22 @@ router.get("/get-practices/:lessonId", async (req, res) => {
     }
 });
 
+router.get("/get-tests/:lessonId", async (req, res) => {
+    try {
+        const filters = {
+            _id: false,
+            tests: true,
+        }
+        const lesson = await Lesson.findById(req.params.lessonId, filters)
+            .populate({ path: 'tests', model: "PTCBlank" })
+            .lean();
+
+        res.status(200).json(lesson.tests);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
 // Създава урок
 router.post("/create", async (req, res) => {
     const lesson = new Lesson(req.body);

@@ -26,6 +26,8 @@ import { LessonComponent } from './components/lessons/lesson/lesson.component';
 import { ViewProfileComponent } from './components/profile/view-profile/view-profile.component';
 import { CompetitionsComponent } from './components/competitions/competitions.component';
 import { CompetitionsOverviewComponent } from './components/competitions/competitions-overview/competitions-overview.component';
+import { ChooseTestComponent } from './components/profile/edit-resources/choose-test/choose-test.component';
+import { EditTestComponent } from './components/profile/edit-resources/edit-test/edit-test.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -57,7 +59,9 @@ const routes: Routes = [
           { path: 'avatars-check', component: AvatarsCheckComponent, canActivate: [AuthGuard] },
           { path: 'register-requests', component: RegisterRequestsComponent, canActivate: [AuthGuard] },
           { path: 'edit-practice', component: EditPracticeComponent, canActivate: [AuthGuard] },
-          { path: 'choose-practice', component: ChoosePracticeComponent, canActivate: [AuthGuard] }
+          { path: 'edit-test', component: EditTestComponent, canActivate: [AuthGuard] },
+          { path: 'choose-practice', component: ChoosePracticeComponent, canActivate: [AuthGuard] },
+          { path: 'choose-test', component: ChooseTestComponent, canActivate: [AuthGuard]}
         ]
       },
       { path: 'info', component: InfoComponent, canActivate: [AuthGuard] }

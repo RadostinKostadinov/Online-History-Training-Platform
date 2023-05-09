@@ -87,7 +87,7 @@ router.post("/create-solved/:practiceId", async (req, res) => {
     }
 });
 
-//Обновява информацията в урок с дадено ID
+//Обновява упражнение с дадено ID
 router.patch("/update/:practiceId", async (req, res) => {
     try {
         const updatedPractice = await Practice.updateOne(

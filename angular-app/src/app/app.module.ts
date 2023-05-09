@@ -36,6 +36,7 @@ import { CompetitionsComponent } from './components/competitions/competitions.co
 import { PointsStatisticComponent } from './components/competitions/competitions-overview/points-statistic/points-statistic.component';
 import { PointsStatisticPointsComponent } from './components/competitions/competitions-overview/points-statistic-points/points-statistic-points.component';
 import { EditTestComponent } from './components/profile/edit-resources/edit-test/edit-test.component';
+import { ChooseTestComponent } from './components/profile/edit-resources/choose-test/choose-test.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { EditTestComponent } from './components/profile/edit-resources/edit-test
     CompetitionsOverviewComponent,
     PointsStatisticComponent,
     PointsStatisticPointsComponent,
-    EditTestComponent
+    EditTestComponent,
+    ChooseTestComponent
   ],
   imports: [
     BrowserModule,

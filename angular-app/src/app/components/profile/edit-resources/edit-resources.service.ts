@@ -9,9 +9,11 @@ import { environment } from 'src/environments/environment';
 export class EditResourcesService {
   private lesson = new BehaviorSubject({});
   private practice = new BehaviorSubject({});
+  private test = new BehaviorSubject({});
 
   currentLesson = this.lesson.asObservable();
   currentPractice = this.practice.asObservable();
+  currentTest = this.test.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +27,12 @@ export class EditResourcesService {
     this.http.get(`${environment.backendUrl}practices/get/${practiceId}`).pipe(take(1)).subscribe((practice: any) => {
       this.practice.next(practice);
     });
+  }
+
+  getTest(testId: string) {
+    this.http.get(`${environment.backendUrl}tests/get/${testId}`).pipe(take(1)).subscribe((test: any) => {
+      this.test.next(test);
+    })
   }
 
   deleteQuestion(questionId: any) {
