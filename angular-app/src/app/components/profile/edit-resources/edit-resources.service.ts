@@ -30,7 +30,7 @@ export class EditResourcesService {
   }
 
   getTest(testId: string) {
-    this.http.get(`${environment.backendUrl}tests/get/${testId}`).pipe(take(1)).subscribe((test: any) => {
+    this.http.get(`${environment.backendUrl}tests/${testId}`).pipe(take(1)).subscribe((test: any) => {
       this.test.next(test);
     })
   }

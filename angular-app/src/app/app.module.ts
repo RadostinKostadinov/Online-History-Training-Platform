@@ -37,6 +37,8 @@ import { PointsStatisticComponent } from './components/competitions/competitions
 import { PointsStatisticPointsComponent } from './components/competitions/competitions-overview/points-statistic-points/points-statistic-points.component';
 import { EditTestComponent } from './components/profile/edit-resources/edit-test/edit-test.component';
 import { ChooseTestComponent } from './components/profile/edit-resources/choose-test/choose-test.component';
+import { EditTestHeadingComponent } from './components/profile/edit-resources/edit-test/edit-test-heading/edit-test-heading.component';
+import { AddNewQuestionComponent } from './components/profile/edit-resources/edit-test/add-new-question/add-new-question.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { ChooseTestComponent } from './components/profile/edit-resources/choose-
     PointsStatisticComponent,
     PointsStatisticPointsComponent,
     EditTestComponent,
-    ChooseTestComponent
+    ChooseTestComponent,
+    EditTestHeadingComponent,
+    AddNewQuestionComponent,
   ],
   imports: [
     BrowserModule,

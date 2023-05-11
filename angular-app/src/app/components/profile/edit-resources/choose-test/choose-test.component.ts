@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, take } from 'rxjs';
 import { EditResourcesService } from '../edit-resources.service';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './choose-test.component.html',
   styleUrls: ['./choose-test.component.css']
 })
-export class ChooseTestComponent implements OnInit {
+export class ChooseTestComponent implements OnInit, OnDestroy {
   lessonSubsciprtion?: Subscription;
 
   lesson: any;
@@ -58,5 +58,9 @@ export class ChooseTestComponent implements OnInit {
         this.updateTestsList();
       })
     });
+  }
+
+  ngOnDestroy() {
+    this.lessonSubsciprtion?.unsubscribe();
   }
 }
