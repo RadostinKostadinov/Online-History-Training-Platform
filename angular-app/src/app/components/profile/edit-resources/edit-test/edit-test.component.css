@@ -6,6 +6,7 @@
   row-gap: 50px;
   width: 100%;
   position: relative;
+  padding-bottom: 30px;
 }
 
 .top-controls {
@@ -25,4 +26,8 @@
     rgba(186, 135, 97, 0.63) 100%
   );
   box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.5);
+}
+
+.questions {
+  width: 90%;
 }

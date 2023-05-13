@@ -1,4 +1,28 @@
 <div id="ep-content-wrapper">
-  <app-edit-test-heading class="top-controls" [test]="test"></app-edit-test-heading>
-  <app-add-new-question class="new-question-controls" [test]="test"></app-add-new-question>
+  <app-edit-test-heading
+    class="top-controls"
+    [test]="test"
+  ></app-edit-test-heading>
+  <app-add-new-question
+    class="new-question-controls"
+    [test]="test"
+  ></app-add-new-question>
+  <div
+    class="questions"
+    *ngFor="let question of test.questions"
+    [ngSwitch]="question.type"
+  >
+    <app-multiple-text-question
+      [question]="question"
+      *ngSwitchCase="'multiple-choice-text'"
+    ></app-multiple-text-question>
+    <app-open-question
+      [question]="question"
+      *ngSwitchCase="'open'"
+    ></app-open-question>
+    <app-multiple-image-question
+      [question]="question"
+      *ngSwitchCase="'multiple-choice-image'"
+    ></app-multiple-image-question>
+  </div>
 </div>

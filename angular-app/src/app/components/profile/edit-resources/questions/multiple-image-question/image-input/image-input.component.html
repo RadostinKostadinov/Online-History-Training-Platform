@@ -1,0 +1,19 @@
+<div *ngIf="this.image.name === ''; else displayImage">
+  <label class="image-input-label"
+    >Добави изображение
+    <input
+      type="file"
+      id="image-input"
+      name="uploadedImage"
+      accept="image/jpeg, image/png, image/jpg"
+      (change)="onImageUpload($event)"
+    />
+  </label>
+</div>
+<ng-template #displayImage>
+  <div
+    class="display-image"
+    [ngStyle]="{ 'background-image': 'url(' + this.image.value + ')' }"
+  ></div>
+  <div class="image-delete-button" (click)="onImageDelete($event)">Изтрий</div>
+</ng-template>

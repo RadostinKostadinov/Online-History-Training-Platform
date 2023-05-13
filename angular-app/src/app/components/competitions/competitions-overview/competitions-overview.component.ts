@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 
@@ -7,7 +7,7 @@ import { AuthService } from '../../auth/auth.service';
   templateUrl: './competitions-overview.component.html',
   styleUrls: ['./competitions-overview.component.css']
 })
-export class CompetitionsOverviewComponent implements OnInit {
+export class CompetitionsOverviewComponent implements OnInit, OnDestroy {
   userSub?: Subscription;
 
   user: any;
@@ -20,4 +20,7 @@ export class CompetitionsOverviewComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    this.userSub?.unsubscribe();
+  }
 }

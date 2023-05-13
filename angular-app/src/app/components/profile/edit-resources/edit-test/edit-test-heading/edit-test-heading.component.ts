@@ -1,18 +1,22 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { EditTestService } from '../edit-test.service';
+
 @Component({
   selector: 'app-edit-test-heading',
   templateUrl: './edit-test-heading.component.html',
-  styleUrls: ['./edit-test-heading.component.css']
+  styleUrls: ['./edit-test-heading.component.css'],
 })
 export class EditTestHeadingComponent implements OnInit {
   @Input() test: any = {};
 
-  constructor() { }
+  constructor(private ets: EditTestService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   savePTCBlank(event: MouseEvent) {
     event.preventDefault();
+    this.ets.updateQuestions();
+    console.log(this.test);
+    this.ets.saveTest();
   }
 }

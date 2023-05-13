@@ -63,7 +63,7 @@ router.post("/image", upload.single("uploadedImage"), (req, res) => {
     res.status(200).json({
         originalName: req.file.originalname,
         fileName: req.file.filename,
-        message: "Your files uploaded.",
+        message: "Image uploaded.",
     });
 });
 

@@ -1,0 +1,76 @@
+<div class="question-wrapper">
+  <div class="question-index">
+    <p>{{ this.question.questionIndex }}</p>
+  </div>
+  <form [formGroup]="questionGroup" class="question-content">
+    <div class="display-type">
+      <div>
+        <input
+          placeholder="Въведете събитие"
+          type="text"
+          formControlName="itemName"
+        />
+        <input type="radio" value="name" formControlName="itemDisplayType" />
+      </div>
+      <div>
+        <input type="radio" value="date" formControlName="itemDisplayType" />
+        <input
+          placeholder="Въведете дата"
+          type="text"
+          formControlName="itemDate"
+        />
+      </div>
+    </div>
+
+    <div class="question">
+      <input
+        placeholder="Въведете въпрос"
+        type="text"
+        formControlName="question"
+      />
+    </div>
+
+    <div class="answers">
+      <div>
+        <div class="answer">
+          <app-image-input
+            [questionGroup]="this.questionGroup"
+            [answerNumber]="0"
+          ></app-image-input>
+          <input type="radio" value="0" formControlName="correctAnswer" />
+        </div>
+        <div class="answer">
+          <input type="radio" value="1" formControlName="correctAnswer" />
+          <app-image-input
+            [questionGroup]="this.questionGroup"
+            [answerNumber]="1"
+          ></app-image-input>
+        </div>
+      </div>
+      <div>
+        <div class="answer">
+          <app-image-input
+            [questionGroup]="this.questionGroup"
+            [answerNumber]="2"
+          ></app-image-input>
+          <input type="radio" value="2" formControlName="correctAnswer" />
+        </div>
+        <div class="answer">
+          <input type="radio" value="3" formControlName="correctAnswer" />
+          <app-image-input
+            [questionGroup]="this.questionGroup"
+            [answerNumber]="3"
+          ></app-image-input>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-points">
+      <input
+        placeholder="Въведете точки"
+        type="text"
+        formControlName="points"
+      />
+    </div>
+  </form>
+</div>

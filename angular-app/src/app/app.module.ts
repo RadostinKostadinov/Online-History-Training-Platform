@@ -39,6 +39,10 @@ import { EditTestComponent } from './components/profile/edit-resources/edit-test
 import { ChooseTestComponent } from './components/profile/edit-resources/choose-test/choose-test.component';
 import { EditTestHeadingComponent } from './components/profile/edit-resources/edit-test/edit-test-heading/edit-test-heading.component';
 import { AddNewQuestionComponent } from './components/profile/edit-resources/edit-test/add-new-question/add-new-question.component';
+import { MultipleTextQuestionComponent } from './components/profile/edit-resources/questions/multiple-text-question/multiple-text-question.component';
+import { MultipleImageQuestionComponent } from './components/profile/edit-resources/questions/multiple-image-question/multiple-image-question.component';
+import { OpenQuestionComponent } from './components/profile/edit-resources/questions/open-question/open-question.component';
+import { ImageInputComponent } from './components/profile/edit-resources/questions/multiple-image-question/image-input/image-input.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +77,10 @@ import { AddNewQuestionComponent } from './components/profile/edit-resources/edi
     ChooseTestComponent,
     EditTestHeadingComponent,
     AddNewQuestionComponent,
+    MultipleTextQuestionComponent,
+    MultipleImageQuestionComponent,
+    OpenQuestionComponent,
+    ImageInputComponent,
   ],
   imports: [
     BrowserModule,
