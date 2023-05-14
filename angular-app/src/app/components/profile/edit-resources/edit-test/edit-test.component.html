@@ -15,14 +15,17 @@
     <app-multiple-text-question
       [question]="question"
       *ngSwitchCase="'multiple-choice-text'"
+      (removeQ)="removeQuestion($event)"
     ></app-multiple-text-question>
     <app-open-question
       [question]="question"
       *ngSwitchCase="'open'"
+      (removeQ)="removeQuestion($event)"
     ></app-open-question>
     <app-multiple-image-question
       [question]="question"
       *ngSwitchCase="'multiple-choice-image'"
+      (removeQ)="removeQuestion($event)"
     ></app-multiple-image-question>
   </div>
 </div>

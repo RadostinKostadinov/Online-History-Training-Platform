@@ -9,7 +9,7 @@ import { SelectEraComponent } from './components/lessons/select-era/select-era.c
 import { LessonsComponent } from './components/lessons/lessons.component';
 import { RegisterRequestsComponent } from './components/profile/register-requests/register-requests.component';
 import { AvatarsCheckComponent } from './components/profile/avatars-check/avatars-check.component';
-import { EditCompetitionsAndTests } from './components/profile/edit-competitions-and-tests/edit-competitions-and-tests.component';
+import { EditCompetitionsAndTestsComponent } from './components/profile/edit-competitions-and-tests/edit-competitions-and-tests.component';
 import { EditResourcesComponent } from './components/profile/edit-resources/edit-resources.component';
 import { ViewProfilesComponent } from './components/profile/view-profiles/view-profiles.component';
 import { EditProfilesComponent } from './components/profile/edit-profiles/edit-profiles.component';
@@ -28,58 +28,159 @@ import { CompetitionsComponent } from './components/competitions/competitions.co
 import { CompetitionsOverviewComponent } from './components/competitions/competitions-overview/competitions-overview.component';
 import { ChooseTestComponent } from './components/profile/edit-resources/choose-test/choose-test.component';
 import { EditTestComponent } from './components/profile/edit-resources/edit-test/edit-test.component';
+import { ToggleTcComponent } from './components/profile/edit-competitions-and-tests/toggle-tc/toggle-tc.component';
+import { ChooseComponent } from './components/profile/edit-competitions-and-tests/choose/choose.component';
+import { CheckTcComponent } from './components/profile/edit-competitions-and-tests/check-tc/check-tc.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [LoggedInGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard] },
   {
-    path: 'practice', component: PracticeComponent, canActivate: [AuthGuard], children: [
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [LoggedInGuard],
+  },
+  {
+    path: 'practice',
+    component: PracticeComponent,
+    canActivate: [AuthGuard],
+    children: [
       { path: '', pathMatch: 'full', redirectTo: 'select-practice' },
-      { path: 'select-practice', component: SelectPracticeComponent, canActivate: [AuthGuard] },
-      { path: 'solve-practice', component: SolvePracticeComponent, canActivate: [AuthGuard] },
-    ]
+      {
+        path: 'select-practice',
+        component: SelectPracticeComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'solve-practice',
+        component: SolvePracticeComponent,
+        canActivate: [AuthGuard],
+      },
+    ],
   },
   {
-    path: 'competitions', component: CompetitionsComponent, canActivate: [AuthGuard], children: [
+    path: 'competitions',
+    component: CompetitionsComponent,
+    canActivate: [AuthGuard],
+    children: [
       { path: '', pathMatch: 'full', redirectTo: 'overview' },
-      { path: 'overview', component: CompetitionsOverviewComponent, canActivate: [AuthGuard]},
-    ]
+      {
+        path: 'overview',
+        component: CompetitionsOverviewComponent,
+        canActivate: [AuthGuard],
+      },
+    ],
   },
   {
-    path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard], children: [
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    children: [
       { path: '', pathMatch: 'full', redirectTo: 'edit-resources' },
       {
-        path: '', canActivateChild: [AdminGuard], children: [
-          { path: 'view-profiles', component: ViewProfilesComponent, canActivate: [AuthGuard] },
-          { path: 'view-profile', component: ViewProfileComponent, canActivate: [AuthGuard] },
-          { path: 'edit-profiles', component: EditProfilesComponent, canActivate: [AuthGuard] },
-          { path: 'edit-resources', component: EditResourcesComponent, canActivate: [AuthGuard] },
-          { path: 'competitions', component: EditCompetitionsAndTests, canActivate: [AuthGuard] },
-          { path: 'avatars-check', component: AvatarsCheckComponent, canActivate: [AuthGuard] },
-          { path: 'register-requests', component: RegisterRequestsComponent, canActivate: [AuthGuard] },
-          { path: 'edit-practice', component: EditPracticeComponent, canActivate: [AuthGuard] },
-          { path: 'edit-test', component: EditTestComponent, canActivate: [AuthGuard] },
-          { path: 'choose-practice', component: ChoosePracticeComponent, canActivate: [AuthGuard] },
-          { path: 'choose-test', component: ChooseTestComponent, canActivate: [AuthGuard]}
-        ]
+        path: '',
+        canActivateChild: [AdminGuard],
+        children: [
+          {
+            path: 'view-profiles',
+            component: ViewProfilesComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'view-profile',
+            component: ViewProfileComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'edit-profiles',
+            component: EditProfilesComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'edit-resources',
+            component: EditResourcesComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'competitions',
+            component: EditCompetitionsAndTestsComponent,
+            canActivate: [AuthGuard],
+            children: [
+              {
+                path: '',
+                pathMatch: 'full',
+                component: ChooseComponent,
+              },
+              {
+                path: 'toggle',
+                component: ToggleTcComponent,
+              },
+              {
+                path: 'check',
+                component: CheckTcComponent,
+              },
+            ],
+          },
+          {
+            path: 'avatars-check',
+            component: AvatarsCheckComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'register-requests',
+            component: RegisterRequestsComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'edit-practice',
+            component: EditPracticeComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'edit-test',
+            component: EditTestComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'choose-practice',
+            component: ChoosePracticeComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'choose-test',
+            component: ChooseTestComponent,
+            canActivate: [AuthGuard],
+          },
+        ],
       },
-      { path: 'info', component: InfoComponent, canActivate: [AuthGuard] }
-    ]
+      { path: 'info', component: InfoComponent, canActivate: [AuthGuard] },
+    ],
   },
   {
-    path: 'lessons', component: LessonsComponent, canActivate: [AuthGuard], children: [
+    path: 'lessons',
+    component: LessonsComponent,
+    canActivate: [AuthGuard],
+    children: [
       { path: '', pathMatch: 'full', redirectTo: 'select-era' },
-      { path: 'select-era', component: SelectEraComponent, canActivate: [AuthGuard] },
-      { path: 'select-lesson', component: SelectLessonComponent, canActivate: [AuthGuard] },
-      { path: 'lesson', component: LessonComponent, canActivate: [AuthGuard] }
-    ]
+      {
+        path: 'select-era',
+        component: SelectEraComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'select-lesson',
+        component: SelectLessonComponent,
+        canActivate: [AuthGuard],
+      },
+      { path: 'lesson', component: LessonComponent, canActivate: [AuthGuard] },
+    ],
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnDestroy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { EditTestService } from '../../edit-test/edit-test.service';
@@ -10,6 +17,7 @@ import { EditTestService } from '../../edit-test/edit-test.service';
 })
 export class MultipleImageQuestionComponent implements OnInit, OnDestroy {
   @Input() question: any;
+  @Output() removeQ = new EventEmitter<string>();
   questionStatusSub?: Subscription;
 
   public questionGroup: FormGroup;
@@ -60,5 +68,9 @@ export class MultipleImageQuestionComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.questionStatusSub?.unsubscribe();
+  }
+
+  onRemove() {
+    this.removeQ.emit(this.question.questionIndex);
   }
 }

@@ -1,4 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  OnDestroy,
+  OnInit,
+  EventEmitter,
+} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { EditTestService } from '../../edit-test/edit-test.service';
@@ -10,6 +17,8 @@ import { EditTestService } from '../../edit-test/edit-test.service';
 })
 export class OpenQuestionComponent implements OnInit, OnDestroy {
   @Input() question: any;
+  @Output() removeQ = new EventEmitter<string>();
+
   questionStatusSub?: Subscription;
 
   public questionGroup: FormGroup;
@@ -35,6 +44,10 @@ export class OpenQuestionComponent implements OnInit, OnDestroy {
       delete this.question.answer3;
       this.question.answers = [];
     });
+  }
+
+  onRemove() {
+    this.removeQ.emit(this.question.questionIndex);
   }
 
   ngOnInit(): void {

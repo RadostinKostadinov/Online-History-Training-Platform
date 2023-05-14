@@ -3,7 +3,7 @@ import { AuthInterceptorService } from './components/auth/auth-interceptor.servi
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +17,7 @@ import { InfoComponent } from './components/profile/info/info.component';
 import { ViewProfilesComponent } from './components/profile/view-profiles/view-profiles.component';
 import { EditProfilesComponent } from './components/profile/edit-profiles/edit-profiles.component';
 import { EditResourcesComponent } from './components/profile/edit-resources/edit-resources.component';
-import { EditCompetitionsAndTests } from './components/profile/edit-competitions-and-tests/edit-competitions-and-tests.component';
+import { EditCompetitionsAndTestsComponent } from './components/profile/edit-competitions-and-tests/edit-competitions-and-tests.component';
 import { AvatarsCheckComponent } from './components/profile/avatars-check/avatars-check.component';
 import { RegisterRequestsComponent } from './components/profile/register-requests/register-requests.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
@@ -43,7 +43,9 @@ import { MultipleTextQuestionComponent } from './components/profile/edit-resourc
 import { MultipleImageQuestionComponent } from './components/profile/edit-resources/questions/multiple-image-question/multiple-image-question.component';
 import { OpenQuestionComponent } from './components/profile/edit-resources/questions/open-question/open-question.component';
 import { ImageInputComponent } from './components/profile/edit-resources/questions/multiple-image-question/image-input/image-input.component';
-
+import { ToggleTcComponent } from './components/profile/edit-competitions-and-tests/toggle-tc/toggle-tc.component';
+import { ChooseComponent } from './components/profile/edit-competitions-and-tests/choose/choose.component';
+import { CheckTcComponent } from './components/profile/edit-competitions-and-tests/check-tc/check-tc.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,7 @@ import { ImageInputComponent } from './components/profile/edit-resources/questio
     ViewProfilesComponent,
     EditProfilesComponent,
     EditResourcesComponent,
-    EditCompetitionsAndTests,
+    EditCompetitionsAndTestsComponent,
     AvatarsCheckComponent,
     RegisterRequestsComponent,
     LessonsComponent,
@@ -81,6 +83,9 @@ import { ImageInputComponent } from './components/profile/edit-resources/questio
     MultipleImageQuestionComponent,
     OpenQuestionComponent,
     ImageInputComponent,
+    ToggleTcComponent,
+    ChooseComponent,
+    CheckTcComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,9 +94,15 @@ import { ImageInputComponent } from './components/profile/edit-resources/questio
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

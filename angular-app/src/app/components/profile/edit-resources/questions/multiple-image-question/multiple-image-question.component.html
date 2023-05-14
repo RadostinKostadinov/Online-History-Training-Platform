@@ -1,6 +1,7 @@
 <div class="question-wrapper">
   <div class="question-index">
     <p>{{ this.question.questionIndex }}</p>
+    <p (click)="onRemove()">&#120;</p>
   </div>
   <form [formGroup]="questionGroup" class="question-content">
     <div class="display-type">

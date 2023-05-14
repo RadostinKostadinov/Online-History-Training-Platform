@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, forkJoin } from 'rxjs';
 import { EditResourcesService } from '../edit-resources.service';
 import { HttpClient } from '@angular/common/http';
 import * as Yup from 'yup';
 import { EditTestService } from './edit-test.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-test',
@@ -15,13 +16,18 @@ export class EditTestComponent implements OnInit, OnDestroy {
   testSubscription?: Subscription;
   saveTestSubscirption?: Subscription;
 
+  private newQuestions: Observable<any>[] = [];
+
   lesson: any;
   test: any;
+  oldQuestions: any[] = [];
+  createdQuestions: any[] = [];
 
   constructor(
     private ers: EditResourcesService,
     private http: HttpClient,
-    private ets: EditTestService
+    private ets: EditTestService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +37,11 @@ export class EditTestComponent implements OnInit, OnDestroy {
 
     this.testSubscription = this.ers.currentTest.subscribe((test: any) => {
       this.test = test;
+
+      this.test.questions.forEach((question: any) => {
+        this.oldQuestions.push(question._id);
+      });
+
       this.test.questions.sort((a: any, b: any) => {
         if (a.questionIndex < b.questionIndex) return -1;
         if (a.questionIndex > b.questionIndex) return 1;
@@ -46,8 +57,51 @@ export class EditTestComponent implements OnInit, OnDestroy {
   savePTCBlank() {
     try {
       const isTestValid = this.validateTest();
-      console.log('isTestValid', isTestValid);
-      console.log(this.test);
+
+      this.oldQuestions.forEach((questionId) => {
+        this.ers.deleteQuestion(questionId).subscribe((res) => {});
+      });
+
+      this.test.questions.forEach((question: any) => {
+        this.newQuestions.push(
+          this.ers.createQuestion({
+            type: question.type,
+            points: question.points,
+            itemName: question.itemName,
+            itemDate: question.itemDate,
+            itemDisplayType: question.itemDisplayType,
+            question: question.question,
+            answers: question.answers,
+            correctAnswer: question.correctAnswer,
+            questionIndex: question.questionIndex,
+          })
+        );
+      });
+
+      forkJoin(this.newQuestions).subscribe((res) => {
+        res.forEach((question) => {
+          this.createdQuestions.push(question.questionId);
+        });
+
+        this.ets
+          .updateTest(
+            this.test._id,
+            Object.assign({}, this.test, { questions: this.createdQuestions })
+          )
+          .subscribe(async (res: any) => {
+            alert(res.message);
+            this.router.navigate(['/profile/choose-test']);
+          });
+      });
+
+      if (this.newQuestions.length === 0) {
+        this.ets
+          .updateTest(this.test._id, this.test)
+          .subscribe(async (res: any) => {
+            alert(res.message);
+            this.router.navigate(['/profile/choose-test']);
+          });
+      }
     } catch (error: any) {
       alert(error.message);
     }
@@ -96,5 +150,11 @@ export class EditTestComponent implements OnInit, OnDestroy {
     });
 
     return testSchema.validateSync(this.test);
+  }
+
+  removeQuestion(questionIndex: any) {
+    this.test.questions = this.test.questions.filter(
+      (question: any) => question.questionIndex != questionIndex
+    );
   }
 }

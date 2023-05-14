@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -8,14 +10,13 @@ export class EditTestService {
   private questionStatus = new Subject<any>();
   private testStatus = new Subject<any>();
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   updateQuestions() {
     this.questionStatus.next('pushToTest');
   }
 
   saveTest() {
-    console.log('saveTest() called...');
     this.testStatus.next('saveText');
   }
 
@@ -24,7 +25,10 @@ export class EditTestService {
   }
 
   testsStatus(): Observable<any> {
-    console.log('testsStatus called...');
     return this.testStatus.asObservable();
+  }
+
+  updateTest(testId: string, body: object) {
+    return this.http.put(`${environment.backendUrl}tests/${testId}`, body);
   }
 }

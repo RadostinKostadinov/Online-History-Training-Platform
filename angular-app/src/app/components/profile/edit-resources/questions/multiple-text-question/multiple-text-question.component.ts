@@ -1,4 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EditTestService } from '../../edit-test/edit-test.service';
 import { Subscription } from 'rxjs';
@@ -11,6 +18,7 @@ import * as Yup from 'yup';
 })
 export class MultipleTextQuestionComponent implements OnInit, OnDestroy {
   @Input() question: any;
+  @Output() removeQ = new EventEmitter<string>();
   questionStatusSub?: Subscription;
 
   public questionGroup: FormGroup;
@@ -63,5 +71,9 @@ export class MultipleTextQuestionComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.questionStatusSub?.unsubscribe();
+  }
+
+  onRemove() {
+    this.removeQ.emit(this.question.questionIndex);
   }
 }

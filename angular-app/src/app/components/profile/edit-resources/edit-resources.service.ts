@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EditResourcesService {
   private lesson = new BehaviorSubject({});
@@ -15,27 +15,45 @@ export class EditResourcesService {
   currentPractice = this.practice.asObservable();
   currentTest = this.test.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getLesson(lessonId: string) {
-    this.http.get(`${environment.backendUrl}lessons/get/${lessonId}`).pipe(take(1)).subscribe((lesson: any) => {
-      this.lesson.next(lesson);
-    });
+    this.http
+      .get(`${environment.backendUrl}lessons/get/${lessonId}`)
+      .pipe(take(1))
+      .subscribe((lesson: any) => {
+        this.lesson.next(lesson);
+      });
   }
 
   getPractice(practiceId: string) {
-    this.http.get(`${environment.backendUrl}practices/get/${practiceId}`).pipe(take(1)).subscribe((practice: any) => {
-      this.practice.next(practice);
-    });
+    this.http
+      .get(`${environment.backendUrl}practices/get/${practiceId}`)
+      .pipe(take(1))
+      .subscribe((practice: any) => {
+        this.practice.next(practice);
+      });
   }
 
   getTest(testId: string) {
-    this.http.get(`${environment.backendUrl}tests/${testId}`).pipe(take(1)).subscribe((test: any) => {
-      this.test.next(test);
-    })
+    this.http
+      .get(`${environment.backendUrl}tests/${testId}`)
+      .pipe(take(1))
+      .subscribe((test: any) => {
+        this.test.next(test);
+      });
+  }
+
+  createQuestion(questionObject: Object) {
+    return this.http.post(
+      `${environment.backendUrl}questions/create`,
+      questionObject
+    );
   }
 
   deleteQuestion(questionId: any) {
-      return this.http.delete(`${environment.backendUrl}questions/delete/${questionId}`);
+    return this.http.delete(
+      `${environment.backendUrl}questions/delete/${questionId}`
+    );
   }
 }

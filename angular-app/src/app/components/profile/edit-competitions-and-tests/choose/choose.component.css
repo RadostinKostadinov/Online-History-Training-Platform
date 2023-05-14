@@ -1,0 +1,100 @@
+.competitions-test-wrapper {
+  display: flex;
+  width: 100%;
+  height: calc(100% + 35px);
+  margin-top: -35px;
+
+  justify-content: space-evenly;
+}
+
+.status-controls,
+.results-controls {
+  width: 45%;
+  height: 70%;
+  box-shadow: 0px 4px 25px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.status-controls {
+  background: linear-gradient(
+    45deg,
+    rgba(83, 194, 102, 1) 0%,
+    rgba(235, 111, 8, 0.6) 100%
+  );
+  border-radius: 0px 0px 30px 30px;
+}
+.results-controls {
+  align-self: flex-end;
+  background: linear-gradient(
+    45deg,
+    rgba(235, 111, 8, 0.6) 0%,
+    rgba(83, 194, 102, 1) 100%
+  );
+  border-radius: 30px 30px 0px 0px;
+  height: calc(70% + 30px);
+  margin-bottom: -30px;
+  padding-bottom: 44px;
+}
+
+.label {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  height: 80px;
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 48px;
+
+  letter-spacing: -0.02em;
+
+  color: #ffffff;
+}
+
+.buttons {
+  width: 60%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttons button {
+  width: 100%;
+  height: 30%;
+  border: none;
+
+  text-align: center;
+  background: linear-gradient(
+    92.78deg,
+    rgba(0, 148, 255, 0.6) 0%,
+    rgba(83, 194, 102, 0.6) 100%
+  );
+  box-shadow: inset 0px 0px 13px #ffffff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
