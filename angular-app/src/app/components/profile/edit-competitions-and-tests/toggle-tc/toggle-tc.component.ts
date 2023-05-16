@@ -19,6 +19,15 @@ export class ToggleTcComponent implements OnInit {
 
   selectedType: any = '';
 
+  tc = {
+    ptcBlank: '',
+    forClass: '',
+    isActive: false,
+    type: '',
+    eraName: '',
+    lessonName: '',
+  };
+
   constructor(
     private lessonService: LessonsServiceService,
     private ect: EctServiceService
@@ -35,11 +44,13 @@ export class ToggleTcComponent implements OnInit {
 
     this.ect.currentType.subscribe((selectedType: string) => {
       this.selectedType = selectedType;
+      this.tc.type = selectedType;
     });
   }
 
   onSelectEra(event: any) {
     event.preventDefault();
+    this.tc.eraName = event.target.value;
     this.lessons = this.eras.find(
       (era) => era.name == event.target.value
     ).lessons;
@@ -47,6 +58,7 @@ export class ToggleTcComponent implements OnInit {
 
   onSelectLesson(event: any) {
     event.preventDefault();
+    this.tc.lessonName = event.target.value;
     this.testsCompetitions = this.lessons
       .find((lesson) => lesson.name == event.target.value)
       [this.selectedType].filter((blank: any) => blank.isEnabled === true);
@@ -54,39 +66,29 @@ export class ToggleTcComponent implements OnInit {
 
   onSelectTC(event: any) {
     event.preventDefault();
-    this.selectedTC = event.target.value;
+    this.tc.ptcBlank = event.target.value;
   }
 
   onSelectClass(event: any) {
     event.preventDefault();
-    this.selectedClass = event.target.value;
+    this.tc.forClass = event.target.value;
   }
 
   onActivate(event: any) {
     event.preventDefault();
-    const tc = {
-      ptcBlank: this.selectedTC,
-      forClass: this.selectedClass,
-      isActive: true,
-      type: this.selectedType,
-    };
+    this.tc.isActive = true;
+    this.tc.type = this.selectedType;
 
-    this.ect.toggleTC(tc).subscribe((res) => {
+    this.ect.toggleTC(this.tc).subscribe((res) => {
       alert(res.message);
     });
   }
 
   onDeactivate(event: any) {
     event.preventDefault();
+    this.tc.isActive = false;
 
-    const tc = {
-      ptcBlank: this.selectedTC,
-      forClass: this.selectedClass,
-      isActive: false,
-      type: this.selectedType,
-    };
-
-    this.ect.toggleTC(tc).subscribe((res) => {
+    this.ect.toggleTC(this.tc).subscribe((res) => {
       alert(res.message);
     });
   }

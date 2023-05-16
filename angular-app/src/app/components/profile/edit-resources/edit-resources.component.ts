@@ -81,6 +81,11 @@ export class EditResourcesComponent implements OnInit {
       this.router.navigate(['/profile/choose-test']);
     }
 
+    if (this.mode === 'competitions') {
+      this.ers.getLesson(lessonId);
+      this.router.navigate(['/profile/choose-competition']);
+    }
+
     console.log('AFTER IF');
 
     this.states.push('third-screen');

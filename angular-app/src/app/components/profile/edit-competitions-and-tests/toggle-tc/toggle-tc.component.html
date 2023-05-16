@@ -12,7 +12,7 @@
     </option>
   </select>
   <select (change)="onSelectTC($event)" name="tc" id="tcs">
-    <option value="" selected disabled hidden>Изберете тест/състезание</option>
+    <option value="" selected>Изберете тест/състезание</option>
     <option value="{{ tc._id }}" *ngFor="let tc of testsCompetitions">
       {{ tc.name }}
     </option>

@@ -31,6 +31,9 @@ import { EditTestComponent } from './components/profile/edit-resources/edit-test
 import { ToggleTcComponent } from './components/profile/edit-competitions-and-tests/toggle-tc/toggle-tc.component';
 import { ChooseComponent } from './components/profile/edit-competitions-and-tests/choose/choose.component';
 import { CheckTcComponent } from './components/profile/edit-competitions-and-tests/check-tc/check-tc.component';
+import { SolveTcComponent } from './components/competitions/competitions-overview/solve-tc/solve-tc.component';
+import { EditCompetitionComponent } from './components/profile/edit-resources/edit-competition/edit-competition.component';
+import { ChooseCompetitionComponent } from './components/profile/edit-resources/choose-competition/choose-competition.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -67,6 +70,11 @@ const routes: Routes = [
       {
         path: 'overview',
         component: CompetitionsOverviewComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'solve-tc/:tcId',
+        component: SolveTcComponent,
         canActivate: [AuthGuard],
       },
     ],
@@ -143,6 +151,11 @@ const routes: Routes = [
             canActivate: [AuthGuard],
           },
           {
+            path: 'edit-competition',
+            component: EditCompetitionComponent,
+            canActivate: [AuthGuard],
+          },
+          {
             path: 'choose-practice',
             component: ChoosePracticeComponent,
             canActivate: [AuthGuard],
@@ -150,6 +163,11 @@ const routes: Routes = [
           {
             path: 'choose-test',
             component: ChooseTestComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'choose-competition',
+            component: ChooseCompetitionComponent,
             canActivate: [AuthGuard],
           },
         ],

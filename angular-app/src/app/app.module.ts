@@ -46,6 +46,15 @@ import { ImageInputComponent } from './components/profile/edit-resources/questio
 import { ToggleTcComponent } from './components/profile/edit-competitions-and-tests/toggle-tc/toggle-tc.component';
 import { ChooseComponent } from './components/profile/edit-competitions-and-tests/choose/choose.component';
 import { CheckTcComponent } from './components/profile/edit-competitions-and-tests/check-tc/check-tc.component';
+import { DisplayTcComponent } from './components/competitions/competitions-overview/display-tc/display-tc.component';
+import { SolveTcComponent } from './components/competitions/competitions-overview/solve-tc/solve-tc.component';
+import { MultipleTextQuestionSolveComponent } from './components/competitions/competitions-overview/solve-tc/multiple-text-question-solve/multiple-text-question-solve.component';
+import { MultipleImageQuestionSolveComponent } from './components/competitions/competitions-overview/solve-tc/multiple-image-question-solve/multiple-image-question-solve.component';
+import { OpenQuestionSolveComponent } from './components/competitions/competitions-overview/solve-tc/open-question-solve/open-question-solve.component';
+import { ChooseCompetitionComponent } from './components/profile/edit-resources/choose-competition/choose-competition.component';
+import { EditCompetitionComponent } from './components/profile/edit-resources/edit-competition/edit-competition.component';
+import { EditCompetitionHeadingComponent } from './components/profile/edit-resources/edit-competition/edit-competition-heading/edit-competition-heading.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +95,14 @@ import { CheckTcComponent } from './components/profile/edit-competitions-and-tes
     ToggleTcComponent,
     ChooseComponent,
     CheckTcComponent,
+    DisplayTcComponent,
+    SolveTcComponent,
+    MultipleTextQuestionSolveComponent,
+    MultipleImageQuestionSolveComponent,
+    OpenQuestionSolveComponent,
+    ChooseCompetitionComponent,
+    EditCompetitionComponent,
+    EditCompetitionHeadingComponent,
   ],
   imports: [
     BrowserModule,

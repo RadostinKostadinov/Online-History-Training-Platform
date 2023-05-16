@@ -10,10 +10,12 @@ export class EditResourcesService {
   private lesson = new BehaviorSubject({});
   private practice = new BehaviorSubject({});
   private test = new BehaviorSubject({});
+  private competition = new BehaviorSubject({});
 
   currentLesson = this.lesson.asObservable();
   currentPractice = this.practice.asObservable();
   currentTest = this.test.asObservable();
+  currentCompetition = this.competition.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -41,6 +43,15 @@ export class EditResourcesService {
       .pipe(take(1))
       .subscribe((test: any) => {
         this.test.next(test);
+      });
+  }
+
+  getCompetition(competitionId: string) {
+    this.http
+      .get(`${environment.backendUrl}competitions/${competitionId}`)
+      .pipe(take(1))
+      .subscribe((competition: any) => {
+        this.competition.next(competition);
       });
   }
 

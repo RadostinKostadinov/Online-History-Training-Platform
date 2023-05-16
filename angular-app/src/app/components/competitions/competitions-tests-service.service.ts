@@ -1,29 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, take } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CompetitionsTestsServiceService {
-  openedCompetitions = new BehaviorSubject([]);
-  openedTests = new BehaviorSubject([]);
-  chosen = new BehaviorSubject([]);
+  private openedCompetitions = new BehaviorSubject([]);
+  private openedTests = new BehaviorSubject([]);
+  private chosen = new BehaviorSubject([]);
 
   openedCompetitions$ = this.openedCompetitions.asObservable();
   openedTests$ = this.openedTests.asObservable();
   chosen$ = this.chosen.asObservable();
 
-  constructor(private http: HttpClient) {}
+  user: any;
 
-  loadOpenedCompetitions() {
-    // http get all opened competitions
-    // call this.openedCompetitions.next([response])
+  constructor(private http: HttpClient, private authService: AuthService) {}
+
+  loadOpenedCompetitions(forClass: string = '12Б') {
+    this.http
+      .get(`${environment.backendUrl}competitions/opened/${forClass}`)
+      .pipe(take(1))
+      .subscribe((res: any) => this.openedCompetitions.next(res));
   }
 
-  loadOpenedTests() {}
+  loadOpenedTests(forClass: string = '12Б') {
+    this.http
+      .get(`${environment.backendUrl}tests/opened/${forClass}`)
+      .pipe(take(1))
+      .subscribe((res: any) => this.openedTests.next(res));
+  }
 
-  setChosen(chosen: any) {
-    this.chosen.next(chosen);
+  setChosen(ptcBlankId: string) {
+    this.http
+      .get(`${environment.backendUrl}tests/get-for-solving/${ptcBlankId}`)
+      .subscribe((res: any) => this.chosen.next(res));
   }
 }

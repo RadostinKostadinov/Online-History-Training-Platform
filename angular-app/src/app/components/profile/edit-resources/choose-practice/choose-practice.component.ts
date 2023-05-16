@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-choose-practice',
   templateUrl: './choose-practice.component.html',
-  styleUrls: ['./choose-practice.component.css']
+  styleUrls: ['./choose-practice.component.css'],
 })
 export class ChoosePracticeComponent implements OnInit, OnDestroy {
   lessonSubscription?: Subscription;
@@ -18,13 +18,19 @@ export class ChoosePracticeComponent implements OnInit, OnDestroy {
   newPracticeId: any;
   currentPractices: any[] = [];
 
-  constructor(private http: HttpClient, private ers: EditResourcesService, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private ers: EditResourcesService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.lessonSubscription = this.ers.currentLesson.subscribe((lesson: any) => {
-      this.lesson = lesson;
-      this.updatePracticesList();
-    });
+    this.lessonSubscription = this.ers.currentLesson.subscribe(
+      (lesson: any) => {
+        this.lesson = lesson;
+        this.updatePracticesList();
+      }
+    );
   }
 
   onChoosePractice(event: any, practiceId: string) {
@@ -34,32 +40,42 @@ export class ChoosePracticeComponent implements OnInit, OnDestroy {
   }
 
   addNewPractice(event: any) {
-    const newPracticeName = (<any>document.getElementById('new-practice-input'))?.value;
-    this.http.post(`${environment.backendUrl}practices/create`, {
-      name: newPracticeName
-    }).pipe(take(1)).subscribe((res: any) => {
-      this.newPracticeId = res.practiceId;
-      this.currentPractices.push(this.newPracticeId);
-      this.http.patch(`${environment.backendUrl}lessons/update/${this.lesson._id}`, {
-        "practices": this.currentPractices
-      }).pipe(take(1)).subscribe(() => {
-        this.updatePracticesList();
+    const newPracticeName = (<any>document.getElementById('new-practice-input'))
+      ?.value;
+    this.http
+      .post(`${environment.backendUrl}practices/create`, {
+        name: newPracticeName,
+        type: 'practice',
+      })
+      .pipe(take(1))
+      .subscribe((res: any) => {
+        this.newPracticeId = res.practiceId;
+        this.currentPractices.push(this.newPracticeId);
+        this.http
+          .patch(`${environment.backendUrl}lessons/update/${this.lesson._id}`, {
+            practices: this.currentPractices,
+          })
+          .pipe(take(1))
+          .subscribe(() => {
+            this.updatePracticesList();
+          });
       });
-    });
   }
-
 
   ngOnDestroy(): void {
     this.lessonSubscription?.unsubscribe();
   }
 
   updatePracticesList() {
-    this.http.get(`${environment.backendUrl}lessons/get-practices/${this.lesson._id}`).pipe(take(1)).subscribe((practices: any) => {
-      this.practices = practices;
-      this.currentPractices = [];
-      this.practices.forEach((practice: any) => {
-        this.currentPractices.push(practice._id);
-      })
-    })
+    this.http
+      .get(`${environment.backendUrl}lessons/get-practices/${this.lesson._id}`)
+      .pipe(take(1))
+      .subscribe((practices: any) => {
+        this.practices = practices;
+        this.currentPractices = [];
+        this.practices.forEach((practice: any) => {
+          this.currentPractices.push(practice._id);
+        });
+      });
   }
 }

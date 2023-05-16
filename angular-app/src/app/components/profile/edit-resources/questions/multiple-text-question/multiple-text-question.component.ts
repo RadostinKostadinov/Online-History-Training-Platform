@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { EditTestService } from '../../edit-test/edit-test.service';
 import { Subscription } from 'rxjs';
 import * as Yup from 'yup';
+import { EditCompetitionService } from '../../edit-competition/edit-competition.service';
 
 @Component({
   selector: 'app-multiple-text-question',
@@ -18,11 +19,16 @@ import * as Yup from 'yup';
 })
 export class MultipleTextQuestionComponent implements OnInit, OnDestroy {
   @Input() question: any;
+  @Input() ptcType: any;
   @Output() removeQ = new EventEmitter<string>();
   questionStatusSub?: Subscription;
 
   public questionGroup: FormGroup;
-  constructor(public fb: FormBuilder, private ets: EditTestService) {
+  constructor(
+    public fb: FormBuilder,
+    private ets: EditTestService,
+    private ecs: EditCompetitionService
+  ) {
     this.questionGroup = this.fb.group({
       itemName: '',
       itemDisplayType: '',
@@ -35,23 +41,6 @@ export class MultipleTextQuestionComponent implements OnInit, OnDestroy {
       correctAnswer: '',
       points: '',
     });
-
-    this.questionStatusSub = this.ets
-      .questionsStatus()
-      .subscribe(async (status) => {
-        const updatedQuestion = Object.assign({}, this.questionGroup.value);
-        updatedQuestion.answers = [
-          updatedQuestion.answer0,
-          updatedQuestion.answer1,
-          updatedQuestion.answer2,
-          updatedQuestion.answer3,
-        ];
-        delete updatedQuestion.answer0;
-        delete updatedQuestion.answer1;
-        delete updatedQuestion.answer2;
-        delete updatedQuestion.answer3;
-        Object.assign(this.question, updatedQuestion);
-      });
   }
 
   ngOnInit(): void {
@@ -67,6 +56,45 @@ export class MultipleTextQuestionComponent implements OnInit, OnDestroy {
       correctAnswer: this.question.correctAnswer,
       points: this.question.points,
     });
+
+    if (this.ptcType === 'test') {
+      this.questionStatusSub = this.ets
+        .questionsStatus()
+        .subscribe(async (status) => {
+          const updatedQuestion = Object.assign({}, this.questionGroup.value);
+          updatedQuestion.answers = [
+            updatedQuestion.answer0,
+            updatedQuestion.answer1,
+            updatedQuestion.answer2,
+            updatedQuestion.answer3,
+          ];
+          delete updatedQuestion.answer0;
+          delete updatedQuestion.answer1;
+          delete updatedQuestion.answer2;
+          delete updatedQuestion.answer3;
+          Object.assign(this.question, updatedQuestion);
+        });
+    }
+
+    if (this.ptcType === 'competition') {
+      console.log('here');
+      this.questionStatusSub = this.ecs
+        .questionsStatus()
+        .subscribe(async (status) => {
+          const updatedQuestion = Object.assign({}, this.questionGroup.value);
+          updatedQuestion.answers = [
+            updatedQuestion.answer0,
+            updatedQuestion.answer1,
+            updatedQuestion.answer2,
+            updatedQuestion.answer3,
+          ];
+          delete updatedQuestion.answer0;
+          delete updatedQuestion.answer1;
+          delete updatedQuestion.answer2;
+          delete updatedQuestion.answer3;
+          Object.assign(this.question, updatedQuestion);
+        });
+    }
   }
 
   ngOnDestroy(): void {

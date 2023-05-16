@@ -1,0 +1,33 @@
+<div class="choose-test-wrapper">
+  <div>{{ lesson.name }}</div>
+  <div class="content-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Име</th>
+          <th>Продължителност</th>
+          <th>Активно</th>
+          <th>Бутон</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let competition of competitions">
+          <td>{{ competition.name }}</td>
+          <td>{{ competition.competitionTime }}</td>
+          <td [textContent]="competition.isEnabled ? 'Да' : 'Не'"></td>
+          <td>
+            <button (click)="onChooseCompetition($event, competition._id)">
+              Редактирай
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3"><input type="text" id="new-test-input" /></td>
+          <td>
+            <button (click)="addNewCompetition($event)">Добави</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

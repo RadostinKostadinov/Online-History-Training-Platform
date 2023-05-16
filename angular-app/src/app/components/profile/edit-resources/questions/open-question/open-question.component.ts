@@ -9,6 +9,7 @@ import {
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { EditTestService } from '../../edit-test/edit-test.service';
+import { EditCompetitionService } from '../../edit-competition/edit-competition.service';
 
 @Component({
   selector: 'app-open-question',
@@ -17,12 +18,17 @@ import { EditTestService } from '../../edit-test/edit-test.service';
 })
 export class OpenQuestionComponent implements OnInit, OnDestroy {
   @Input() question: any;
+  @Input() ptcType: any;
   @Output() removeQ = new EventEmitter<string>();
 
   questionStatusSub?: Subscription;
 
   public questionGroup: FormGroup;
-  constructor(public fb: FormBuilder, private ets: EditTestService) {
+  constructor(
+    public fb: FormBuilder,
+    private ets: EditTestService,
+    private ecs: EditCompetitionService
+  ) {
     this.questionGroup = this.fb.group({
       itemName: '',
       itemDisplayType: '',
@@ -34,15 +40,6 @@ export class OpenQuestionComponent implements OnInit, OnDestroy {
       answer3: '',
       correctAnswer: '',
       points: '',
-    });
-
-    this.questionStatusSub = this.ets.questionsStatus().subscribe((status) => {
-      Object.assign(this.question, this.questionGroup.value);
-      delete this.question.answer0;
-      delete this.question.answer1;
-      delete this.question.answer2;
-      delete this.question.answer3;
-      this.question.answers = [];
     });
   }
 
@@ -63,6 +60,32 @@ export class OpenQuestionComponent implements OnInit, OnDestroy {
       correctAnswer: this.question.correctAnswer,
       points: this.question.points,
     });
+
+    if (this.ptcType === 'test') {
+      this.questionStatusSub = this.ets
+        .questionsStatus()
+        .subscribe((status) => {
+          Object.assign(this.question, this.questionGroup.value);
+          delete this.question.answer0;
+          delete this.question.answer1;
+          delete this.question.answer2;
+          delete this.question.answer3;
+          this.question.answers = [];
+        });
+    }
+
+    if (this.ptcType === 'competition') {
+      this.questionStatusSub = this.ecs
+        .questionsStatus()
+        .subscribe((status) => {
+          Object.assign(this.question, this.questionGroup.value);
+          delete this.question.answer0;
+          delete this.question.answer1;
+          delete this.question.answer2;
+          delete this.question.answer3;
+          this.question.answers = [];
+        });
+    }
   }
 
   ngOnDestroy(): void {

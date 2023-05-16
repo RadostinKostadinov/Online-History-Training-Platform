@@ -27,9 +27,24 @@
 <div class="available">
   <div class="competitions">
     <label class="available-label">Състезания</label>
-    <!-- FOREACH OPENED COMPETITION -->
+    <div class="tc-cards-wrapper">
+      <app-display-tc
+        class="tc-card"
+        [tc]="competition"
+        *ngFor="let competition of openedCompetitions"
+        (choose)="onChooseTC($event)"
+      ></app-display-tc>
+    </div>
   </div>
   <div class="tests">
     <label class="available-label">Контролни</label>
+    <div class="tc-cards-wrapper">
+      <app-display-tc
+        class="tc-card"
+        [tc]="test"
+        *ngFor="let test of openedTests"
+        (choose)="onChooseTC($event)"
+      ></app-display-tc>
+    </div>
   </div>
 </div>

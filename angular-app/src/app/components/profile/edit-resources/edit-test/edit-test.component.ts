@@ -86,7 +86,10 @@ export class EditTestComponent implements OnInit, OnDestroy {
         this.ets
           .updateTest(
             this.test._id,
-            Object.assign({}, this.test, { questions: this.createdQuestions })
+            Object.assign({}, this.test, {
+              questions: this.createdQuestions,
+              lesson: this.lesson._id,
+            })
           )
           .subscribe(async (res: any) => {
             alert(res.message);

@@ -21,13 +21,15 @@ export class EctServiceService {
 
   // API CALLS
   toggleTC(body: any): Observable<any> {
-    console.log(body);
     switch (body.type) {
       case 'tests':
         console.log('here');
         return this.http.post(`${environment.backendUrl}tests/opened/`, body);
       case 'competitions':
-        return new Observable();
+        return this.http.post(
+          `${environment.backendUrl}competitions/opened/`,
+          body
+        );
       default:
         return new Observable();
     }
