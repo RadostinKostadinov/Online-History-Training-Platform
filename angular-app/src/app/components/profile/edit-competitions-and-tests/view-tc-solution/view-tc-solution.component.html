@@ -1,0 +1,47 @@
+<div class="student-info">
+  <div>
+    {{ solution.lessonName }}
+  </div>
+  <div>
+    {{ solution.name }}
+  </div>
+
+  <div>
+    {{
+      solution.owner.firstName +
+        " " +
+        solution.owner.surName +
+        " " +
+        solution.owner.lastName
+    }}
+  </div>
+  <div>Номер {{ solution.owner.number }}</div>
+  <div>Точки {{ solution.studentPoints }}/{{ solution.totalPoints }}</div>
+</div>
+
+<div class="questions">
+  <div *ngFor="let question of solution.questions">
+    <div [ngClass]="question.isCorrect ? 'correct' : 'incorrect'">
+      <div *ngIf="question.type">
+        <div>Въпрос: {{ question.content }}</div>
+        <div>
+          <div>
+            <span>Отговор:</span>
+            <div
+              class="display-image"
+              [ngStyle]="{ 'background-image': 'url(' + question.answer + ')' }"
+            ></div>
+          </div>
+          <div>Точки: {{ question.isCorrect ? question.points : 0 }}</div>
+        </div>
+      </div>
+      <div *ngIf="!question.type">
+        <div>Въпрос: {{ question.content }}</div>
+        <div>
+          <div>Отговор: {{ question.answer }}</div>
+          <div>Точки: {{ question.isCorrect ? question.points : 0 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

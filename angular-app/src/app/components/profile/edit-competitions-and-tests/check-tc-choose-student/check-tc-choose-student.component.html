@@ -1,0 +1,61 @@
+<div class="check-tc-wrapper">
+  <div class="head">
+    <div>{{ solutions[0].name }}</div>
+    <div>{{ solutions[0].owner.class }}</div>
+  </div>
+
+  <div class="results-table" id="content-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Номер</th>
+          <th>Име</th>
+          <th>Точки</th>
+          <th>Преглед</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let solution of solutions">
+          <td>{{ solution.parsedDate }}</td>
+          <td>{{ solution.owner.number }}</td>
+          <td>
+            {{
+              solution.owner.firstName +
+                " " +
+                solution.owner.surName +
+                " " +
+                solution.owner.lastName
+            }}
+          </td>
+          <td>{{ solution.studentPoints }}</td>
+          <td><button (click)="viewSolution(solution)">ВИЖ</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="pagination-buttons">
+      <div
+        [ngClass]="pageNumber <= 0 ? 'pagination-end' : ''"
+        id="pagination-button-left"
+        class="pagination-button"
+        (click)="previousPage()"
+      >
+        <img src="../../../../../assets/core/pagination_arrow.svg" />
+        <div>
+          <p>ПРЕДИШНА СТРАНИЦА</p>
+        </div>
+      </div>
+      <div
+        [ngClass]="pageNumber + 1 >= maxPageNumber ? 'pagination-end' : ''"
+        id="pagination-button-right"
+        class="pagination-button"
+        (click)="nextPage()"
+      >
+        <div>
+          <p>СЛЕДВАЩА СТРАНИЦА</p>
+        </div>
+        <img src="../../../../../assets/core/pagination_arrow.svg" />
+      </div>
+    </div>
+  </div>
+</div>

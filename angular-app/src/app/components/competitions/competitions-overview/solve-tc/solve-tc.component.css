@@ -276,3 +276,8 @@
 
   cursor: pointer;
 }
+
+input:disabled {
+  color: white;
+  opacity: 1;
+}

@@ -21,6 +21,18 @@ router.get("/get-for-solving/:competitionId", async (req, res) => {
   }
 });
 
+// Връща решен тест с дадено ID
+router.get("/get-solved/:competitionId", async (req, res) => {
+  try {
+    const solved = await SolvedCompetition.findById(req.params.competitionId)
+      .populate("owner")
+      .lean();
+    res.status(200).json(solved);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/:competitionId", async (req, res) => {
   try {
     const competition = await Competition.findById(req.params.competitionId)
@@ -39,6 +51,24 @@ router.get("/opened/:forClass", async (req, res) => {
 
     const openedComeptitins = await OpenedTC.find({
       isActive: true,
+      type: "competitions",
+      forClass: params.forClass,
+    })
+      .populate(["ptcBlank"])
+      .lean();
+
+    res.status(200).json(openedComeptitins);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
+
+router.get("/opened/all/:forClass", async (req, res) => {
+  try {
+    const { params } = req;
+
+    const openedComeptitins = await OpenedTC.find({
       type: "competitions",
       forClass: params.forClass,
     })

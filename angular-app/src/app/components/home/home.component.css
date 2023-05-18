@@ -4,6 +4,15 @@ div#first-section {
   justify-content: space-between;
   column-gap: 25%;
 }
+.avatar-image {
+  width: 100%;
+  height: 275px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 /* BOTH COLUMNS */
 #left-column,
@@ -43,6 +52,7 @@ div#first-section {
   background: rgba(255, 255, 255, 0.4);
   box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
   padding: 5px 0px;
+  border-radius: 15px;
 }
 #avatar-description-wrapper > p {
   text-align: center;
@@ -55,6 +65,7 @@ div#first-section {
   letter-spacing: -0.02em;
 
   color: #ffffff;
+  padding: 10px;
 }
 
 /* RIGHT COLUMN */
@@ -94,7 +105,7 @@ div#first-section {
 
   color: #ffffff;
 
-  padding: 5px 0px;
+  padding: 5px 10px;
 }
 
 /* INFO LEFT (STUDENT AND TEACHER) */

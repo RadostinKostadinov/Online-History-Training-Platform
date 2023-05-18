@@ -179,3 +179,8 @@
 app-image-input {
   flex: 1;
 }
+
+input:disabled {
+  color: white;
+  opacity: 1;
+}

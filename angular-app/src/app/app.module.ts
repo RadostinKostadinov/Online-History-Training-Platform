@@ -54,6 +54,10 @@ import { OpenQuestionSolveComponent } from './components/competitions/competitio
 import { ChooseCompetitionComponent } from './components/profile/edit-resources/choose-competition/choose-competition.component';
 import { EditCompetitionComponent } from './components/profile/edit-resources/edit-competition/edit-competition.component';
 import { EditCompetitionHeadingComponent } from './components/profile/edit-resources/edit-competition/edit-competition-heading/edit-competition-heading.component';
+import { CheckTcChooseStudentComponent } from './components/profile/edit-competitions-and-tests/check-tc-choose-student/check-tc-choose-student.component';
+import { ViewTcSolutionComponent } from './components/profile/edit-competitions-and-tests/view-tc-solution/view-tc-solution.component';
+import { MyAvatarsComponent } from './components/profile/info/my-avatars/my-avatars.component';
+import { CreateAvatarComponent } from './components/profile/info/create-avatar/create-avatar.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +107,10 @@ import { EditCompetitionHeadingComponent } from './components/profile/edit-resou
     ChooseCompetitionComponent,
     EditCompetitionComponent,
     EditCompetitionHeadingComponent,
+    CheckTcChooseStudentComponent,
+    ViewTcSolutionComponent,
+    MyAvatarsComponent,
+    CreateAvatarComponent,
   ],
   imports: [
     BrowserModule,

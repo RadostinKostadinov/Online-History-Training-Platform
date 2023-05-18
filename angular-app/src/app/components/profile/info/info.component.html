@@ -1,0 +1,49 @@
+<div class="section-profile-info">
+  <div class="heading-row-profile">Профилна информация</div>
+  <div class="content-row-profile">
+    <div class="info-left">
+      <div>{{ user.firstName + " " + user.lastName }}</div>
+      <div>{{ user.address }}</div>
+      <div>{{ user.userPhone }}</div>
+      <div>Родител: {{ user.parent }}</div>
+    </div>
+    <div class="info-right">
+      <div>{{ user.class }} клас</div>
+      <div>{{ user.number }} номер</div>
+      <div>{{ user.avgGrade }}</div>
+      <div>
+        Класен ръководител:
+        {{ user.classTeacher.firstName + " " + user.classTeacher.lastName }}
+      </div>
+    </div>
+  </div>
+  <div class="button-row">
+    <button class="avatars-button" (click)="gotoAvatars()">АВАТАРИ</button>
+  </div>
+</div>
+
+<div class="section-points-info">
+  <div class="heading-row-points">ТОЧКИ</div>
+  <div class="content-row-points">
+    <div>
+      <label class="points-name">Състезания</label>
+      <div class="points">{{ user.competitionsPoints }}</div>
+    </div>
+    <div>
+      <label class="points-name">Упражнения</label>
+      <div class="points">{{ user.practicesPoints }}</div>
+    </div>
+    <div>
+      <label class="points-name">Уроци</label>
+      <div class="points">{{ user.lessonsPoints }}</div>
+    </div>
+    <div>
+      <label class="points-name">Контролни</label>
+      <div class="points">{{ user.testsPoints }}</div>
+    </div>
+    <div>
+      <label class="points-name">Аватари</label>
+      <div class="points">{{ user.avatarsPoints }}</div>
+    </div>
+  </div>
+</div>

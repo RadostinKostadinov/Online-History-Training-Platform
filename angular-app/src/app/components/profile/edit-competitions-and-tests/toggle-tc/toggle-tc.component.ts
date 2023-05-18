@@ -42,7 +42,7 @@ export class ToggleTcComponent implements OnInit {
       }
     );
 
-    this.ect.currentType.subscribe((selectedType: string) => {
+    this.ect.currentType$.subscribe((selectedType: string) => {
       this.selectedType = selectedType;
       this.tc.type = selectedType;
     });

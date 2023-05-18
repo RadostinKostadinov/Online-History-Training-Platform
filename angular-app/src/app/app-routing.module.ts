@@ -34,6 +34,10 @@ import { CheckTcComponent } from './components/profile/edit-competitions-and-tes
 import { SolveTcComponent } from './components/competitions/competitions-overview/solve-tc/solve-tc.component';
 import { EditCompetitionComponent } from './components/profile/edit-resources/edit-competition/edit-competition.component';
 import { ChooseCompetitionComponent } from './components/profile/edit-resources/choose-competition/choose-competition.component';
+import { CheckTcChooseStudentComponent } from './components/profile/edit-competitions-and-tests/check-tc-choose-student/check-tc-choose-student.component';
+import { ViewTcSolutionComponent } from './components/profile/edit-competitions-and-tests/view-tc-solution/view-tc-solution.component';
+import { MyAvatarsComponent } from './components/profile/info/my-avatars/my-avatars.component';
+import { CreateAvatarComponent } from './components/profile/info/create-avatar/create-avatar.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -128,6 +132,14 @@ const routes: Routes = [
                 path: 'check',
                 component: CheckTcComponent,
               },
+              {
+                path: 'check/solution',
+                component: ViewTcSolutionComponent,
+              },
+              {
+                path: 'check/:id',
+                component: CheckTcChooseStudentComponent,
+              },
             ],
           },
           {
@@ -172,7 +184,21 @@ const routes: Routes = [
           },
         ],
       },
-      { path: 'info', component: InfoComponent, canActivate: [AuthGuard] },
+      {
+        path: 'info',
+        component: InfoComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'info/my-avatars',
+        component: MyAvatarsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'info/create-avatar',
+        component: CreateAvatarComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
   {

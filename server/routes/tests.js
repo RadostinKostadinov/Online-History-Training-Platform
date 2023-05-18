@@ -21,6 +21,18 @@ router.get("/get-for-solving/:testId", async (req, res) => {
   }
 });
 
+// Връща решен тест с дадено ID
+router.get("/get-solved/:testId", async (req, res) => {
+  try {
+    const solved = await SolvedTest.findById(req.params.testId)
+      .populate("owner")
+      .lean();
+    res.status(200).json(solved);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/:testId", async (req, res) => {
   try {
     const test = await Test.findById(req.params.testId)
@@ -29,6 +41,24 @@ router.get("/:testId", async (req, res) => {
 
     res.status(200).json(test);
   } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.get("/opened/all/:forClass", async (req, res) => {
+  try {
+    const { params } = req;
+
+    const openedTests = await OpenedTC.find({
+      type: "tests",
+      forClass: params.forClass,
+    })
+      .populate(["ptcBlank"])
+      .lean();
+
+    res.status(200).json(openedTests);
+  } catch (error) {
+    console.log(error);
     res.status(500).json(error);
   }
 });

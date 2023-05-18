@@ -165,3 +165,8 @@
 .question-points input {
   width: 100%;
 }
+
+input:disabled {
+  color: white;
+  opacity: 1;
+}
