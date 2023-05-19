@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 20px;
 }
 
 #content-first-row > div:first-of-type select {
@@ -30,6 +29,7 @@
 
 #vp-table {
   margin-right: 10px;
+  margin-left: 0px;
   background: linear-gradient(
     237.14deg,
     rgba(186, 135, 97, 0.63) 0%,

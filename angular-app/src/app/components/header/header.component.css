@@ -9,7 +9,6 @@
   z-index: 998;
 }
 
-
 #background {
   width: 100%;
   height: 100vh;
@@ -18,9 +17,11 @@
   left: 0;
   z-index: -9999;
   background: rgb(186, 135, 97);
-  background: linear-gradient(180deg,
-      rgba(186, 135, 97, 1) 0%,
-      rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(186, 135, 97, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }
 
 #header-papirus {
@@ -81,7 +82,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 150px 75px;
-
 }
 
 .header-time,
@@ -100,7 +100,6 @@
   background-image: url(../../../assets/core/header_dateandname_bg_v1.svg);
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
 [routerlink] {
@@ -116,4 +115,16 @@
   background-size: 125px 125px;
 
   cursor: not-allowed;
+}
+
+.faq-button {
+  position: fixed;
+  z-index: 99999;
+  font-size: 40px;
+  right: 10px;
+  top: 20px;
+  opacity: 0.8;
+  color: black;
+  cursor: pointer;
+  filter: grayscale(0.9);
 }

@@ -66,6 +66,9 @@ export class CheckTcComponent implements OnInit, OnDestroy {
 
   viewTc(id: string) {
     const tc = this.openedTCs.find((tc) => tc._id === id);
+    if (tc.solutions.length === 0) {
+      return alert('Все още няма решения.');
+    }
     this.ect.setCurrentTc(tc);
     this.router.navigate([`profile/competitions/check/${this.currentType}`]);
   }

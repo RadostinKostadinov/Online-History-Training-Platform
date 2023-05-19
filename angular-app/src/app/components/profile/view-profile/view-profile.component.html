@@ -18,10 +18,18 @@
       </div>
       <div id="info-column-2">
         <div class="profile-info-cell">{{ student.address }}</div>
-        <div class="profile-info-cell">{{ student.address }}</div>
-        <div class="profile-info-cell">{{ student.phone }}</div>
+        <div class="profile-info-cell">{{ student.userPhone }}</div>
         <div class="profile-info-cell">{{ student.parent }}</div>
-        <div class="profile-info-cell">{{ student.parentNumber }}</div>
+        <div class="profile-info-cell">{{ student.parentPhone }}</div>
+        <div class="profile-info-cell">
+          {{
+            student.classTeacher
+              ? student.classTeacher.firstName +
+                " " +
+                student.classTeacher.lastName
+              : "Не е въведен."
+          }}
+        </div>
       </div>
     </div>
   </div>
@@ -67,7 +75,14 @@
             <td>{{ savedBlank.date }}</td>
             <td>{{ savedBlank.practiceName }}</td>
             <td>{{ savedBlank.studentPoints }}</td>
-            <td><button (click)="viewBlank($event, savedBlank._id)"><img class="magnifier-icon-view-more" src="../.././../../assets/core/magnifier.png"/></button></td>
+            <td>
+              <button (click)="viewBlank($event, savedBlank._id)">
+                <img
+                  class="magnifier-icon-view-more"
+                  src="../.././../../assets/core/magnifier.png"
+                />
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -99,27 +114,26 @@
   </div>
 </div>
 
-
 <div id="vp-section-2" *ngIf="displayedPTC">
   <div id="ptc-heading">
-    <div>{{displayedPTC.lessonName}}</div>
-    <div>{{displayedPTC.practiceName}}</div>
-    <div>{{displayedPTC.date}}</div>
-    <div>{{displayedPTC.studentPoints}}/{{displayedPTC.totalPoints}}</div>
+    <div>{{ displayedPTC.lessonName }}</div>
+    <div>{{ displayedPTC.practiceName }}</div>
+    <div>{{ displayedPTC.date }}</div>
+    <div>{{ displayedPTC.studentPoints }}/{{ displayedPTC.totalPoints }}</div>
   </div>
   <div id="ptc-questions">
     <div class="ptc-question" *ngFor="let question of displayedPTC.questions">
       <div>
         <label>Въпрос:</label>
-        <span>{{question.content}}</span>
+        <span>{{ question.content }}</span>
       </div>
       <div [ngClass]="question.isCorrect ? 'correct' : 'incorrect'">
         <label>Отговор:</label>
-        <span>{{question.answer}}</span>
+        <span>{{ question.answer }}</span>
       </div>
       <div *ngIf="question.isCorrect">
         <label>Точки:</label>
-        <span>{{question.points}}</span>
+        <span>{{ question.points }}</span>
       </div>
     </div>
   </div>

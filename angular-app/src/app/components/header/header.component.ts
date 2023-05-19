@@ -5,16 +5,25 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   userSub?: Subscription;
 
   user: any;
+  isFaqOpened: boolean = false;
 
-  days: any[] = ['Неделя', 'Понеделник', 'Вторник', 'Сряда', 'Четвъртък', 'Петък', 'Събота'];
+  days: any[] = [
+    'Неделя',
+    'Понеделник',
+    'Вторник',
+    'Сряда',
+    'Четвъртък',
+    'Петък',
+    'Събота',
+  ];
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe((user) => {
@@ -32,9 +41,11 @@ export class HeaderComponent implements OnInit {
         s = this.checkTime(today.getSeconds());
       let day = today.getDay();
       if (document.querySelector('.header-time p')) {
-        document.querySelector('.header-time p')!.innerHTML = `${year}/${month + 1}/${date} - ${h}:${m}:${s} - ${this.days[day]}`;
+        document.querySelector('.header-time p')!.innerHTML = `${year}/${
+          month + 1
+        }/${date} - ${h}:${m}:${s} - ${this.days[day]}`;
       }
-    }, 500)
+    }, 500);
   }
 
   onLogout() {
@@ -42,7 +53,6 @@ export class HeaderComponent implements OnInit {
   }
 
   checkTime(i: number) {
-    return (i < 10) ? "0" + i : i;
+    return i < 10 ? '0' + i : i;
   }
 }
-

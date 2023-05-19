@@ -4,7 +4,6 @@ div.edit-resources-wrapper {
   align-items: center;
   min-width: 100%;
   min-height: 100%;
-  padding: 15px 0px;
   row-gap: 40px;
 }
 
@@ -14,7 +13,7 @@ div#edit-resources-first-screen > div.content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  row-gap: 30px;
 }
 
 div#edit-resources-first-screen > div.content-wrapper > div {

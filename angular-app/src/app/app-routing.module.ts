@@ -38,6 +38,7 @@ import { CheckTcChooseStudentComponent } from './components/profile/edit-competi
 import { ViewTcSolutionComponent } from './components/profile/edit-competitions-and-tests/view-tc-solution/view-tc-solution.component';
 import { MyAvatarsComponent } from './components/profile/info/my-avatars/my-avatars.component';
 import { CreateAvatarComponent } from './components/profile/info/create-avatar/create-avatar.component';
+import { EditStudentComponent } from './components/profile/edit-profiles/edit-student/edit-student.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -180,6 +181,11 @@ const routes: Routes = [
           {
             path: 'choose-competition',
             component: ChooseCompetitionComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'edit-profiles/profile/:studentId',
+            component: EditStudentComponent,
             canActivate: [AuthGuard],
           },
         ],

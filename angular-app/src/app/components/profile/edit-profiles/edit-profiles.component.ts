@@ -1,61 +1,76 @@
 import { Subscription } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profiles',
   templateUrl: './edit-profiles.component.html',
-  styleUrls: ['./edit-profiles.component.css']
+  styleUrls: ['./edit-profiles.component.css'],
 })
 export class EditProfilesComponent implements OnInit, OnDestroy {
+  students: any = {};
 
-  classSelectSub?: Subscription;
-  avClassesForm: FormGroup = new FormGroup({
-    avClass: new FormControl([]),
-  });
+  studentsToShow: any = [];
+  pageNumber: number = 0;
+  studentsPerPage: number = 4;
+  maxPageNumber: number = Math.ceil(
+    this.students.length / this.studentsPerPage
+  );
 
-  //TODO: To get classes from DB or Env file or Config file
-  availableClasses = [
-    { id: 1, name: "5А" },
-    { id: 2, name: "5Б" },
-    { id: 3, name: "6А" },
-    { id: 4, name: "6Б" },
-    { id: 5, name: "7А" },
-    { id: 6, name: "7Б" },
-    { id: 7, name: "8А" },
-    { id: 8, name: "8Б" },
-    { id: 9, name: "9А" },
-    { id: 10, name: "9Б" },
-    { id: 11, name: "10А" },
-    { id: 12, name: "10Б" },
-    { id: 13, name: "11А" },
-    { id: 14, name: "11Б" },
-    { id: 15, name: "12А" },
-    { id: 16, name: "12Б" },
-  ];
-
-  constructor(private fb: FormBuilder) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    this.avClassesForm = this.fb.group({
-      country: ['5А']
-    });
-
-    this.classSelectSub = this.avClassesForm.get("avClass")?.valueChanges
-      .subscribe(value => {
-        this.onClassSelected(value);
-      })
+    this.http
+      .get(`${environment.backendUrl}users/all/12Б`)
+      .subscribe((res: any) => {
+        this.students = res.filter((user: any) => user.type === 'student');
+        this.maxPageNumber = Math.ceil(
+          this.students.length / this.studentsPerPage
+        );
+      });
   }
 
-  onClassSelected(value: string) {
-    //TODO: Send req to db and get all students from selected class.
+  onClassSelected(event: any) {
+    this.http
+      .get(`${environment.backendUrl}users/all/${event.target.value}`)
+      .subscribe((res: any) => {
+        this.students = res;
+      });
   }
 
-  selectClass() {
+  editProfile(student: any) {
+    this.router.navigate([`/profile/edit-profiles/profile/${student._id}`]);
   }
 
-  ngOnDestroy(): void {
-    this.classSelectSub?.unsubscribe();
+  previousPage() {
+    if (this.pageNumber > 0) {
+      --this.pageNumber;
+    }
+    this.updateTable();
   }
 
+  nextPage() {
+    if (this.pageNumber < this.maxPageNumber) {
+      ++this.pageNumber;
+    }
+
+    this.updateTable();
+  }
+
+  updateTable() {
+    if ((this.pageNumber + 1) * this.studentsPerPage > this.students.length) {
+      this.studentsToShow = this.students.slice(
+        this.pageNumber * this.studentsPerPage
+      );
+    } else {
+      this.studentsToShow = this.students.slice(
+        this.pageNumber * this.studentsPerPage,
+        this.pageNumber * this.studentsPerPage + this.studentsPerPage
+      );
+    }
+  }
+  ngOnDestroy(): void {}
 }

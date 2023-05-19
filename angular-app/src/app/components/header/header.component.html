@@ -1,21 +1,41 @@
-<div id="background">
-</div>
+<div id="background"></div>
 <header id="header">
-<img id="header-papirus"src="../assets/core/header_papirus.png">
-<div id="header-wrapper">
-  <div id="header-first-row">
-    <div class="header-time"><p>08.03.2022 23:08 Понеделник</p></div>
-    <div class="header-name"><p>{{user.firstName}} {{user.lastName}}</p></div>
+  <img id="header-papirus" src="../assets/core/header_papirus.png" />
+  <div id="header-wrapper">
+    <div id="header-first-row">
+      <div class="header-time"><p>08.03.2022 23:08 Понеделник</p></div>
+      <div class="header-name">
+        <p>{{ user.firstName }} {{ user.lastName }}</p>
+      </div>
+    </div>
+    <div id="header-second-row">
+      <ul>
+        <li>
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Начало</a
+          >
+        </li>
+        <li><a routerLink="/lessons" routerLinkActive="active">Уроци</a></li>
+        <li>
+          <a routerLink="/practice" routerLinkActive="active">Упражнения</a>
+        </li>
+        <li>
+          <a routerLink="/competitions" routerLinkActive="active">Състезания</a>
+        </li>
+        <li><a routerLink="/profile" routerLinkActive="active">Профил</a></li>
+        <li><a (click)="onLogout()">Изход</a></li>
+      </ul>
+    </div>
   </div>
-  <div id="header-second-row">
-    <ul>
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Начало</a></li>
-      <li><a routerLink="/lessons" routerLinkActive="active">Уроци</a></li>
-      <li><a routerLink="/practice" routerLinkActive="active">Упражнения</a></li>
-      <li><a routerLink="/competitions" routerLinkActive="active">Състезания</a></li>
-      <li><a routerLink="/profile" routerLinkActive="active">Профил</a></li>
-      <li><a (click)="onLogout()">Изход</a></li>
-    </ul>
-  </div>
-</div>
 </header>
+
+<div class="faq-button" (click)="isFaqOpened = true">&#x2753;</div>
+<app-faq-popup
+  *ngIf="isFaqOpened"
+  [isFaqOpened]="isFaqOpened"
+  [role]="user.type"
+  (closeFaq)="isFaqOpened = false"
+></app-faq-popup>
