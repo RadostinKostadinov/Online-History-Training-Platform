@@ -5,6 +5,7 @@ div.edit-resources-wrapper {
   min-width: 100%;
   min-height: 100%;
   row-gap: 40px;
+  padding-bottom: 30px;
 }
 
 div#edit-resources-first-screen > div.content-wrapper {

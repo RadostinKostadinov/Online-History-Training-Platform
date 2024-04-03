@@ -45,12 +45,11 @@ router.get("/:competitionId", async (req, res) => {
   }
 });
 
-router.get("/opened/:forClass", async (req, res) => {
+router.get("/opened/all/:forClass", async (req, res) => {
   try {
     const { params } = req;
 
     const openedComeptitins = await OpenedTC.find({
-      isActive: true,
       type: "competitions",
       forClass: params.forClass,
     })
@@ -64,18 +63,28 @@ router.get("/opened/:forClass", async (req, res) => {
   }
 });
 
-router.get("/opened/all/:forClass", async (req, res) => {
+router.get("/opened/:forClass/:userId", async (req, res) => {
   try {
     const { params } = req;
 
-    const openedComeptitins = await OpenedTC.find({
+    const openedComeptitions = await OpenedTC.find({
+      isActive: true,
       type: "competitions",
       forClass: params.forClass,
     })
-      .populate(["ptcBlank"])
+      .populate(["ptcBlank", "solutions"])
       .lean();
 
-    res.status(200).json(openedComeptitins);
+    const result = openedComeptitions.filter((competition) => {
+      const isSolved = competition.solutions.some((solution) => {
+        return solution.owner.toString() == params.userId;
+      });
+
+      delete competition.solutions;
+      return !isSolved;
+    });
+
+    res.status(200).json(result);
   } catch (error) {
     console.log(error);
     res.status(500).json(error);

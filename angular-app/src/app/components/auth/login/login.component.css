@@ -44,7 +44,7 @@
   position: absolute;
   top: 10%;
   width: 80%;
-  border: 3px solid #AE1D5F;
+  border: 3px solid #ae1d5f;
   background-color: #ae1d5e4b;
   border-radius: 20px;
   padding: 10px 0px;
@@ -56,7 +56,7 @@
   font-size: 16pt;
 }
 
-#form-wrapper{
+#form-wrapper {
   width: 80%;
   background-color: var(--auth-form-background);
 }
@@ -104,18 +104,21 @@
   justify-content: space-between;
 }
 
-.submit-button, .register-button {
- width: 45%;
- height: 60px;
+.submit-button,
+.register-button {
+  width: 45%;
+  height: 60px;
 
- font-weight: 700;
- font-size: 28px;
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 28px;
 
- color: #FFFFFF;
+  color: #ffffff;
 
- border: none;
+  border: none;
 
- cursor: pointer;
+  cursor: pointer;
 }
 
 .submit-button {
@@ -125,4 +128,3 @@
 .register-button {
   background-color: var(--auth-formfield-background);
 }
-

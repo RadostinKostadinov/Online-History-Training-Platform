@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css?family=El+Messiri:100,200,300,400,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css?family=Neucha:100,200,300,400,500,600,700,800,900");
 
 @font-face {
   font-family: Bukyvede;
@@ -25,10 +27,10 @@
 }
 
 :root {
-  --auth-background: #59543F;
+  --auth-background: #59543f;
   --auth-formfield-background: #b9865fb3;
   --auth-form-background: #171916cc;
-  --auth-login-btn-background: #EB6F08;
+  --auth-login-btn-background: #eb6f08;
   --auth-form-labels: #ffffff;
   --auth-buttons-text: #ffffff;
 }
@@ -43,7 +45,7 @@
 }
 
 body {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: normal;
 }
 
@@ -56,7 +58,6 @@ body {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 
 html,
 body {

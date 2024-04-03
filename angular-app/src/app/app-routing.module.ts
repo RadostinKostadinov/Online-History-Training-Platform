@@ -39,6 +39,7 @@ import { ViewTcSolutionComponent } from './components/profile/edit-competitions-
 import { MyAvatarsComponent } from './components/profile/info/my-avatars/my-avatars.component';
 import { CreateAvatarComponent } from './components/profile/info/create-avatar/create-avatar.component';
 import { EditStudentComponent } from './components/profile/edit-profiles/edit-student/edit-student.component';
+import { TeacherProfileComponent } from './components/profile/teacher-profile/teacher-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -95,6 +96,11 @@ const routes: Routes = [
         path: '',
         canActivateChild: [AdminGuard],
         children: [
+          {
+            path: 'teacher-info',
+            component: TeacherProfileComponent,
+            canActivate: [AuthGuard],
+          },
           {
             path: 'view-profiles',
             component: ViewProfilesComponent,

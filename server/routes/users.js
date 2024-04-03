@@ -159,11 +159,13 @@ router.patch("/update/:userId", validateUser, async (req, res) => {
       { _id: req.params.userId },
       { $set: req.body }
     );
+
     res.status(200).json({
       userId: `${req.params.userId}`,
       message: "Записът е успешно обновен.",
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });

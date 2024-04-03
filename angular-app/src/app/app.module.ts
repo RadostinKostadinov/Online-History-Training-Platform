@@ -60,6 +60,7 @@ import { MyAvatarsComponent } from './components/profile/info/my-avatars/my-avat
 import { CreateAvatarComponent } from './components/profile/info/create-avatar/create-avatar.component';
 import { EditStudentComponent } from './components/profile/edit-profiles/edit-student/edit-student.component';
 import { FaqPopupComponent } from './components/header/faq-popup/faq-popup.component';
+import { TeacherProfileComponent } from './components/profile/teacher-profile/teacher-profile.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +116,7 @@ import { FaqPopupComponent } from './components/header/faq-popup/faq-popup.compo
     CreateAvatarComponent,
     EditStudentComponent,
     FaqPopupComponent,
+    TeacherProfileComponent,
   ],
   imports: [
     BrowserModule,

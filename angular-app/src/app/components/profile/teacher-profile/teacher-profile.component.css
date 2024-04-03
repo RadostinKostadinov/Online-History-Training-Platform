@@ -1,0 +1,94 @@
+.section-profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 30px;
+}
+
+.heading-row-profile {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.3em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.fields-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-right: 10px;
+  width: 50%;
+  row-gap: 20px;
+}
+
+.fields-wrapper > div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  width: 100%;
+}
+
+.fields-wrapper > div > div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+}
+
+.fields-wrapper > div > div:nth-of-type(4) label,
+.fields-wrapper > div > div:nth-of-type(5) label,
+label {
+  color: rgba(0, 0, 0, 0.6) !important;
+  font-size: 13px !important;
+  font-style: italic !important;
+  text-align: center;
+}
+
+.fields-wrapper label,
+.fields-wrapper input,
+select,
+button {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.3em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+
+  padding-left: 10px;
+  text-align: center;
+}
+
+input {
+  border: none;
+  padding: 5px 0px;
+  width: 100%;
+
+  background: #caa284;
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+
+  font-weight: 600;
+  font-size: 22px !important;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 0px;
+  background: radial-gradient(
+      50% 1030.19% at 50% 50%,
+      rgba(41, 35, 26, 0.6) 0%,
+      rgba(141, 106, 78, 0.6) 49.13%,
+      rgba(244, 180, 131, 0.6) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  border: 2px solid #594833;
+  box-shadow: inset 0px 0px 13px #ffffff;
+  cursor: pointer;
+}

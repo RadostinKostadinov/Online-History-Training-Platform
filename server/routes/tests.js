@@ -63,7 +63,7 @@ router.get("/opened/all/:forClass", async (req, res) => {
   }
 });
 
-router.get("/opened/:forClass", async (req, res) => {
+router.get("/opened/:forClass/:userId", async (req, res) => {
   try {
     const { params } = req;
 
@@ -72,10 +72,19 @@ router.get("/opened/:forClass", async (req, res) => {
       type: "tests",
       forClass: params.forClass,
     })
-      .populate(["ptcBlank"])
+      .populate(["ptcBlank", "solutions"])
       .lean();
 
-    res.status(200).json(openedTests);
+    const result = openedTests.filter((test) => {
+      const isSolved = test.solutions.some((solution) => {
+        return solution.owner.toString() == params.userId;
+      });
+
+      delete test.solutions;
+      return !isSolved;
+    });
+
+    res.status(200).json(result);
   } catch (error) {
     console.log(error);
     res.status(500).json(error);

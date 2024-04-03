@@ -26,7 +26,7 @@ div.choose-practice-wrapper > div:first-of-type {
   align-items: center;
   justify-content: center;
 
-  cursor:default;
+  cursor: default;
 }
 
 div.choose-practice-wrapper > div.content-wrapper {
@@ -39,7 +39,7 @@ div.choose-practice-wrapper > div.content-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 80%
+  width: 80%;
 }
 
 table {
@@ -98,4 +98,3 @@ tbody button:hover {
   height: 30px;
   width: 80%;
 }
-

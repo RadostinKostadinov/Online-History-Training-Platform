@@ -31,16 +31,18 @@ export class CompetitionsOverviewComponent implements OnInit, OnDestroy {
 
     this.testsSub = this.ctService.openedTests$.subscribe((tests) => {
       this.openedTests = tests;
+      console.log(this.openedTests);
     });
 
     this.competitionsSub = this.ctService.openedCompetitions$.subscribe(
       (competitions) => {
         this.openedCompetitions = competitions;
+        console.log(this.openedCompetitions);
       }
     );
 
-    this.ctService.loadOpenedTests(this.user.class);
-    this.ctService.loadOpenedCompetitions(this.user.class);
+    this.ctService.loadOpenedTests(this.user.class, this.user._id);
+    this.ctService.loadOpenedCompetitions(this.user.class, this.user._id);
   }
 
   onChooseTC(event: any) {

@@ -38,7 +38,9 @@ export class EctServiceService {
 
     this._currentTc.solutions.forEach((solutionId: any) => {
       this.http
-        .get(`${environment.backendUrl}tests/get-solved/${solutionId}`)
+        .get(
+          `${environment.backendUrl}${this._currentType}/get-solved/${solutionId}`
+        )
         .subscribe((solution: any) => {
           this._currentSolutions.push(solution);
           this.currentSolutions.next(this._currentSolutions);
@@ -69,6 +71,7 @@ export class EctServiceService {
   }
 
   getOpenedTCs(forClass = '12Б') {
+    console.log('here');
     return this.http.get(
       `${environment.backendUrl}${this._currentType}/opened/all/${forClass}`
     );

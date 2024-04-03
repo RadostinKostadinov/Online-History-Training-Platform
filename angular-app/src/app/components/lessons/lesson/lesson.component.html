@@ -21,6 +21,7 @@
         <div class="lesson-grid-item-choose-line"></div>
         <div
           class="lesson-grid-item-choose-circle"
+          href="#hidden-item-scroll-to"
           (click)="onChooseItem($event, item._id)"
         >
           {{ item.date }}
@@ -30,6 +31,7 @@
   </div>
 </div>
 
+<div id="hidden-item-scroll-to"></div>
 <div id="lesson-section-3-lesson" *ngIf="lessonItem">
   <div id="row-1-text-images">
     <div class="left-column-text">
@@ -50,7 +52,7 @@
           </div>
         </div>
       </div>
-      <div id="lesson-images-pagination">
+      <div id="lesson-images-pagination" *ngIf="itemImages.size > 1">
         <div (click)="slideLeftImages($event)" class="lesson-slider-prev-btn">
           <img src="/assets/core/pagination_arrow_white_Left.png" />
         </div>

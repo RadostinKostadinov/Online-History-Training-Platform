@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit-profiles.component.css'],
 })
 export class EditProfilesComponent implements OnInit, OnDestroy {
-  students: any = {};
+  students: any = [];
 
   studentsToShow: any = [];
   pageNumber: number = 0;

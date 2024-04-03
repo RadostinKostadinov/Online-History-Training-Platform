@@ -22,7 +22,7 @@ const OpenedTC = mongoose.Schema(
     solutions: [
       {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: "SolvedPTC",
+        ref: "SolvedPTCs",
       },
     ],
     type: {

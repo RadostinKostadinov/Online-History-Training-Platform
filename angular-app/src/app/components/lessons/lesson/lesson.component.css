@@ -1,3 +1,7 @@
+#hidden-item-scroll-to {
+  margin-bottom: 80px;
+}
+
 #lesson-section-1-heading {
   height: 240px;
   max-height: 240px;
@@ -181,7 +185,11 @@
 
   padding-top: 50px;
   padding-bottom: 50px;
-  background: linear-gradient(1.87deg, rgba(186, 135, 97, 0) 1.58%, #BA8761 98.45%);
+  background: linear-gradient(
+    1.87deg,
+    rgba(186, 135, 97, 0) 1.58%,
+    #ba8761 98.45%
+  );
 }
 
 .left-column-text,
@@ -191,18 +199,17 @@
 }
 
 .left-column-text {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-
 .left-column-text > h3 {
   width: 80%;
   text-align: center;
 
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   font-size: 22px;
@@ -210,7 +217,7 @@
 
   letter-spacing: -0.02em;
 
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
@@ -220,10 +227,10 @@
   height: 500px;
 
   padding: 30px;
-  background: linear-gradient(180deg, rgb(141 106 78) 0%, #BA8761 100%);
+  background: linear-gradient(180deg, rgb(141 106 78) 0%, #ba8761 100%);
   box-shadow: 0px 4px 50px 5px rgba(0, 0, 0, 0.25);
 
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -235,7 +242,7 @@
   text-align: center;
   letter-spacing: -0.02em;
 
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .row-3-interesting {
@@ -248,14 +255,18 @@
 
   padding-top: 50px;
   padding-bottom: 50px;
-  background: linear-gradient(1.87deg, rgba(186, 135, 97, 0) 1.58%, #BA8761 98.45%);
+  background: linear-gradient(
+    1.87deg,
+    rgba(186, 135, 97, 0) 1.58%,
+    #ba8761 98.45%
+  );
 }
 
-.row-3-interesting > div{
+.row-3-interesting > div {
   width: 80%;
   text-align: center;
 
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   font-size: 36px;
@@ -263,18 +274,18 @@
 
   letter-spacing: -0.02em;
 
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
-.row-3-interesting > p#lesson-p-interesting{
+.row-3-interesting > p#lesson-p-interesting {
   width: 80%;
   text-align: center;
 
   padding: 30px;
-  background: linear-gradient(180deg, rgb(141 106 78) 0%, #BA8761 100%);
+  background: linear-gradient(180deg, rgb(141 106 78) 0%, #ba8761 100%);
   box-shadow: 0px 4px 50px 5px rgba(0, 0, 0, 0.25);
 
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -286,14 +297,18 @@
   text-align: center;
   letter-spacing: -0.02em;
 
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .right-column-images {
   padding: 30px;
   padding-top: 50px;
   padding-bottom: 50px;
-  background: linear-gradient(1.87deg, rgba(186, 135, 97, 0) 1.58%, #BA8761 98.45%);
+  background: linear-gradient(
+    1.87deg,
+    rgba(186, 135, 97, 0) 1.58%,
+    #ba8761 98.45%
+  );
 
   width: 100%;
   display: flex;
@@ -301,7 +316,6 @@
   row-gap: 30px;
   position: relative;
   overflow: hidden;
-
 }
 
 .right-column-images > div:nth-of-type(1) {
@@ -312,7 +326,7 @@
   background: rgba(255, 255, 255, 0.4);
   box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
 
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -322,7 +336,7 @@
   letter-spacing: -0.02em;
   text-transform: uppercase;
 
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .lesson-images-slider {
@@ -330,14 +344,13 @@
   width: 490px;
   position: relative;
   overflow: hidden;
-  display:flex;
+  display: flex;
   flex-direction: column;
 
   background: rgba(255, 255, 255, 0.4);
   box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
 
   padding: 20px;
-
 }
 
 .lesson-images-wrapper {
@@ -394,7 +407,11 @@
   padding: 30px;
   padding-top: 50px;
   padding-bottom: 50px;
-  background: linear-gradient(1.87deg, rgba(186, 135, 97, 0) 1.58%, #BA8761 98.45%);
+  background: linear-gradient(
+    1.87deg,
+    rgba(186, 135, 97, 0) 1.58%,
+    #ba8761 98.45%
+  );
 
   width: 100%;
   display: flex;
@@ -402,7 +419,6 @@
   row-gap: 30px;
   position: relative;
   overflow: hidden;
-
 }
 
 .row-2-videos > div:nth-of-type(1) {
@@ -413,7 +429,7 @@
   background: rgba(255, 255, 255, 0.4);
   box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
 
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -423,7 +439,7 @@
   letter-spacing: -0.02em;
   text-transform: uppercase;
 
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .lesson-videos-slider {
@@ -431,14 +447,13 @@
   width: 85%;
   position: relative;
   overflow: hidden;
-  display:flex;
+  display: flex;
   flex-direction: column;
 
   background: rgba(255, 255, 255, 0.4);
   box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
 
   padding: 20px;
-
 }
 
 .lesson-videos-wrapper {
@@ -462,5 +477,4 @@
 }
 
 .lesson-grid-item-choose-circle {
-
 }

@@ -26,9 +26,7 @@ export class CheckTcChooseStudentComponent implements OnInit, OnDestroy {
           sol.parsedDate = new Date(sol.createdAt).toLocaleString('bg-BG');
         });
         this.solutions.sort((a: any, b: any) => {
-          const t1 = Math.floor(new Date(a.createdAt).getTime() / 1000);
-          const t2 = Math.floor(new Date(b.createdAt).getTime() / 1000);
-          return t2 - t1;
+          return Number(b.studentPoints) - Number(a.studentPoints);
         });
         this.maxPageNumber = Math.ceil(this.solutions.length / this.tcsPerPage);
         this.updateTable();

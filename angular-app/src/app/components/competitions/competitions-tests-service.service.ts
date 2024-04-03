@@ -20,16 +20,16 @@ export class CompetitionsTestsServiceService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  loadOpenedCompetitions(forClass: string = '12Б') {
+  loadOpenedCompetitions(forClass: string = '12Б', userId: string = '') {
     this.http
-      .get(`${environment.backendUrl}competitions/opened/${forClass}`)
+      .get(`${environment.backendUrl}competitions/opened/${forClass}/${userId}`)
       .pipe(take(1))
       .subscribe((res: any) => this.openedCompetitions.next(res));
   }
 
-  loadOpenedTests(forClass: string = '12Б') {
+  loadOpenedTests(forClass: string = '12Б', userId: string = '') {
     this.http
-      .get(`${environment.backendUrl}tests/opened/${forClass}`)
+      .get(`${environment.backendUrl}tests/opened/${forClass}/${userId}`)
       .pipe(take(1))
       .subscribe((res: any) => this.openedTests.next(res));
   }

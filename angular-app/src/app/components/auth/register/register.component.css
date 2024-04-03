@@ -40,7 +40,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit:scale-down;
+  object-fit: scale-down;
 }
 
 #img-register-wave {
@@ -66,7 +66,6 @@
   grid-column-end: two;
   padding-bottom: 20px;
   /* background-color: var(--auth-form-background); */
-
 }
 
 #user-data,
@@ -99,7 +98,7 @@
 }
 
 #user-data > div > input:first-of-type,
-#school-data > div > input:first-of-type  {
+#school-data > div > input:first-of-type {
   display: block;
   margin-bottom: 10px;
   width: 100%;
@@ -110,15 +109,12 @@
   outline: none;
   border: none;
   font-size: 14pt;
-
-
 }
 
 #user-data input::placeholder,
-#school-data input::placeholder  {
+#school-data input::placeholder {
   color: rgba(255, 255, 255, 0.4);
 }
-
 
 #user-data > div#class-number,
 #school-data > div#class-number {
@@ -127,7 +123,7 @@
 }
 
 #user-data > div#class-number > div,
-#school-data > div#class-number > div  {
+#school-data > div#class-number > div {
   display: inline-block;
   width: 46%;
 }
@@ -145,7 +141,7 @@
 
 #user-data > div#class-number > div > input,
 #school-data > div#class-number > div > input,
-#school-data > div#class-number > div > select{
+#school-data > div#class-number > div > select {
   display: block;
   margin-bottom: 10px;
   width: 100%;
@@ -164,28 +160,25 @@
 }
 
 .register-button {
-
-
   padding: 15px 40px;
-
 
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
   font-size: 16pt;
 
-  color: #FFFFFF;
+  color: #ffffff;
 
   border: 1px solid var(--auth-form-background);
 
   cursor: pointer;
- }
+}
 
- .register-button {
-  background-color: #BA8761;
- }
+.register-button {
+  background-color: #ba8761;
+}
 
- #error-msg {
+#error-msg {
   margin-left: 0;
   margin-right: 0;
   width: 100%;
@@ -200,7 +193,10 @@
   color: #ae1d5f;
   font-size: 16pt;
 }
- #success-msg {
+#success-msg {
+  position: absolute;
+  z-index: 9999;
+
   margin-left: 0;
   margin-right: 0;
   width: 100%;
@@ -208,9 +204,9 @@
   background-color: #1dae554b;
   border-radius: 20px;
   padding: 10px 0px;
- }
+}
 
- #success-msg p {
+#success-msg p {
   text-align: center;
   color: #ffffff;
   font-size: 16pt;

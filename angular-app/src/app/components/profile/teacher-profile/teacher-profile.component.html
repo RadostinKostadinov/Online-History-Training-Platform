@@ -1,0 +1,33 @@
+<div class="section-profile-info">
+  <div class="heading-row-profile">Профилна информация</div>
+  <div class="fields-wrapper">
+    <div class="left-side">
+      <div>
+        <label>Име</label>
+        <input type="text" placeholder="" [(ngModel)]="teacher.firstName" />
+      </div>
+      <div>
+        <label>Презиме</label>
+        <input type="text" placeholder="" [(ngModel)]="teacher.surName" />
+      </div>
+      <div>
+        <label>Фамилия</label>
+        <input type="text" placeholder="" [(ngModel)]="teacher.lastName" />
+      </div>
+    </div>
+
+    <div class="right-side">
+      <div>
+        <label>Адрес</label>
+        <input type="text" placeholder="" [(ngModel)]="teacher.address" />
+      </div>
+      <div>
+        <label>Телефонен номер</label>
+        <input type="text" placeholder="" [(ngModel)]="teacher.userPhone" />
+      </div>
+      <div class="button-row">
+        <button class="avatars-button" (click)="saveProfile()">Запази</button>
+      </div>
+    </div>
+  </div>
+</div>
