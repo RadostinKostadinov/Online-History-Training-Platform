@@ -8,15 +8,11 @@ The main vision of the project is to be a self-hosted platform for a school in B
 
 ### Explanation
 
-You can check the project's UML diagrams to get more detailed information about its logic and how it is expected to work.
-**_Diagrams:_** [Bulgarian](https://github.com/RadostinKostadinov/Online-History-Training-Platform/tree/main/docs/Diagrams/Bulgarian/Images) | [English](https://github.com/RadostinKostadinov/Online-History-Training-Platform/tree/main/docs/Diagrams/English/Images)
-**_Common diagrams:_** [Database conceptual model](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/Database_Conceptual_Model.png), [Use-Case Teacher](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/usecase_teacher.jpg), [Use-Case Student](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/usecase_student.jpg), [Sitemap](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/sitemap.jpg)
+You can check the project's UML diagrams to get more detailed information about its logic and how it is expected to work.<br>**_Diagrams:_** [Bulgarian](https://github.com/RadostinKostadinov/Online-History-Training-Platform/tree/main/docs/Diagrams/Bulgarian/Images) | [English](https://github.com/RadostinKostadinov/Online-History-Training-Platform/tree/main/docs/Diagrams/English/Images)<br>**_Common diagrams:_** [Database conceptual model](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/Database_Conceptual_Model.png), [Use-Case Teacher](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/usecase_teacher.jpg), [Use-Case Student](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/usecase_student.jpg), [Sitemap](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/sitemap.jpg)
 
 ### Tech Stack
 
-**Client:** Angular, TypeScript
-**Server:** Node, Express, MongoDB
-**Other:** Git, Postman, Figma
+**Client:** Angular, TypeScript<br>**Server:** Node, Express, MongoDB<br>**Other:** Git, Postman, Figma
 
 ### Installation & Configuration
 
