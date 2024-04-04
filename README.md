@@ -2,15 +2,15 @@
 
 ## A platform that teachers and students can use for online learning
 
-This project was build as a thesis project, so it isn't production ready. But can be used as a solid foundation for such a platform.
+This project was built as a thesis project, so it isn't production-ready. But can be used as a solid foundation for such a platform.
 
-The main vision about the project is to be a self-hosted platform for school in Bulgaria, where teachers can upload lessons and add exercises, competitions and tests to them. In the other hand students, divided into classes, can read the lessons and solve exercises, competitions or tests.
+The main vision of the project is to be a self-hosted platform for a school in Bulgaria, where teachers can upload lessons and add exercises, competitions, and tests to them. On the other hand, students, divided into classes, can read the lessons and solve exercises, competitions, or tests.
 
 ### Explanation
 
-You can check project's UML diagrams to get more detailed information about the logic behind it and how it is expected to work.
-**_Diagrams:_** [Bulgarian]() | [English]()
-**_Common diagrams:_** [Database conceptual model](), [Use-Case Teacher](), [Use-Case Student](), [Sitemap]()
+You can check the project's UML diagrams to get more detailed information about its logic and how it is expected to work.
+**_Diagrams:_** [Bulgarian](https://github.com/RadostinKostadinov/Online-History-Training-Platform/tree/main/docs/Diagrams/Bulgarian/Images) | [English](https://github.com/RadostinKostadinov/Online-History-Training-Platform/tree/main/docs/Diagrams/English/Images)
+**_Common diagrams:_** [Database conceptual model](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/Database_Conceptual_Model.png), [Use-Case Teacher](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/usecase_teacher.jpg), [Use-Case Student](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/usecase_student.jpg), [Sitemap](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Diagrams/English/Images/sitemap.jpg)
 
 ### Tech Stack
 
@@ -20,7 +20,7 @@ You can check project's UML diagrams to get more detailed information about the 
 
 ### Installation & Configuration
 
-To clone and run this project, you'll need [Git](), [Node.js]() (which comes with npm) and [MongoDB]() installed on your computer.
+To clone and run this project, you'll need [Git](https://git-scm.com/downloads), [Node.js](https://nodejs.org/en/download) (which comes with npm) and [MongoDB](https://www.mongodb.com/try/download/community) installed on your computer.
 
 ```bash
 # Clone this repository
@@ -57,4 +57,4 @@ $ npm run start
 
 ## Contacts
 
-If you have any questions feel free to contact me: dev@rkostadinov.com
+If you have any questions feel free to contact me at dev@rkostadinov.com
