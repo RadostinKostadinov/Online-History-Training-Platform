@@ -1,4 +1,4 @@
-![Online History Training Platform]()
+![Online History Training Platform](https://github.com/RadostinKostadinov/Online-History-Training-Platform/blob/main/docs/Resources/Images/Figma/github_readme_logo2.png)
 
 ## A platform that teachers and students can use for online learning
 
