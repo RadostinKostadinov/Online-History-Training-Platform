@@ -1,0 +1,246 @@
+<div
+  id="edit-resources-first-screen"
+  class="edit-resources-wrapper"
+  *ngIf="currentState === 'first-screen'"
+>
+  <div class="content-wrapper">
+    <div (click)="onChooseMode($event, 'lessons')"><a href="#">Уроци</a></div>
+    <div (click)="onChooseMode($event, 'practice')">
+      <a href="#">Упражнения</a>
+    </div>
+    <div (click)="onChooseMode($event, 'tests')"><a href="#">Контролни</a></div>
+    <div (click)="onChooseMode($event, 'competitions')">
+      <a href="#">Състезания</a>
+    </div>
+  </div>
+</div>
+
+<div
+  id="edit-resources-second-screen"
+  class="edit-resources-wrapper"
+  *ngIf="currentState === 'second-screen'"
+>
+  <div class="controls-wrapper">
+    <a
+      href="#"
+      class="btn-previous-screen"
+      (click)="backToPreviousScreen($event)"
+      >Назад</a
+    >
+  </div>
+  <div class="content-wrapper">
+    <div *ngFor="let era of this.eras; index as i">
+      <button class="accordion" (click)="onAccordionClick($event, 'active')">
+        {{ era.name }}
+      </button>
+      <div class="panel">
+        <div
+          class="accordion-panel-element"
+          *ngFor="let lesson of era.lessons; index as k"
+        >
+          <a (click)="onChooseLesson(era._id, lesson._id)">{{ lesson.name }}</a>
+          <div *ngIf="mode === 'lessons'" (click)="onDeleteLesson(era._id, lesson._id)">X</div>
+        </div>
+        <div *ngIf="mode === 'lessons'" class="accordion-panel-element add-new-lesson-input-wrapper">
+          <input id="add-new-lesson-input" type="text" />
+          <img
+            (click)="onAddLesson($event, era._id)"
+            src="../../../../assets/core/add_lesson_btn.png"
+            alt="add_lesson_btn"
+            height="30"
+            width="30"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  id="edit-resources-third-screen"
+  class="edit-resources-wrapper"
+  *ngIf="currentState === 'third-screen'"
+>
+  <div class="controls-wrapper">
+    <a
+      href="#"
+      class="btn-previous-screen"
+      (click)="backToPreviousScreen($event)"
+      >Назад</a
+    >
+
+    <div class="lesson-name-wrapper">
+      <span class="third-screen-lesson-name" *ngIf="lesson">{{
+        lesson.name
+      }}</span>
+    </div>
+
+    <a href="#" class="btn-previous-screen" (click)="saveItemsOrder($event)"
+      >Запази</a
+    >
+  </div>
+  <div class="content-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th class="circle-th"></th>
+          <th>Име</th>
+          <th>Отвори</th>
+          <th>Премахни</th>
+        </tr>
+      </thead>
+      <tbody
+        cdkDropList
+        [cdkDropListData]="lesson.items"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <tr *ngFor="let lessonitem of lesson.items" cdkDrag>
+          <td class="circle-td"><div>{{ lessonitem.date }}</div></td>
+          <td>{{ lessonitem.name }}</td>
+          <td>
+            <button (click)="onChooseLessonItem($event, lessonitem._id)">
+              Редактирай
+            </button>
+          </td>
+          <td>
+            <button (click)="onDeleteItem($event, lessonitem._id)">
+              Изтрий
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3"><input type="text" id="new-lesson-item-input" /></td>
+          <td>
+            <button (click)="addNewLessonItem($event)">
+              Добави
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div
+  id="edit-resources-fourth-screen"
+  class="edit-resources-wrapper"
+  *ngIf="currentState === 'fourth-screen'"
+>
+  <div class="controls-wrapper">
+    <div>
+      <a
+        href="#"
+        class="btn-previous-screen"
+        (click)="backToPreviousScreen($event)"
+        >Назад</a
+      >
+
+      <div class="lesson-name-wrapper">
+        <span class="third-screen-lesson-name">{{ lesson.name }}</span>
+      </div>
+
+      <a href="#" class="btn-previous-screen" (click)="saveItem($event)"
+        >Запази</a
+      >
+    </div>
+    <div id="lesson-edit-name-date-row">
+      <div class="lesson-date-wrapper">
+        <input type="text" class="third-screen-lesson-date" [value]="lessonItem.date"/>
+      </div>
+      <div class="lesson-item-wrapper">
+        <input type="text"  class="third-screen-item-name" [value]="lessonItem.name"/>
+      </div>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div>
+      <label>ТЕКСТ</label>
+      <textarea id="lessonItem-text">{{ lessonItem.text }}</textarea>
+    </div>
+    <div>
+      <label>ИЗОБРАЖЕНИЯ</label>
+      <div class="slider">
+        <div class="images-wrapper">
+          <div
+            class="image-wrapper-slide"
+            *ngFor="let image of itemImages | keyvalue"
+          >
+            <div
+              class="display-image"
+              [ngStyle]="{ 'background-image': 'url(' + image.value + ')' }"
+            ></div>
+            <div
+              class="image-delete-button"
+              (click)="deleteImage($event, image.key)"
+            >
+              Изтрий
+            </div>
+          </div>
+          <label class="image-wrapper-slide button-add-image">
+            <input
+              type="file"
+              id="image-input"
+              name="uploadedImage"
+              accept="image/jpeg, image/png, image/jpg"
+              (change)="onImageUpload($event)"
+            />
+          </label>
+        </div>
+        <div id="images-pagination-wrapper">
+          <div (click)="slideLeftImage($event)" class="slider-prev-btn">
+            <img src="/assets/core/pagination_arrow_white_Left.png" />
+          </div>
+          <div (click)="slideRightImage($event)" class="slider-next-btn">
+            <img src="/assets/core/pagination_arrow_white_Right.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <label>ВИДЕО</label>
+      <div class="slider video-slider">
+        <div id="add-video-wrapper">
+          <input type="text" id="input-video" />
+          <button (click)="onVideoUpload($event)">Добави видео</button>
+        </div>
+        <div class="videos-wrapper">
+          <div
+            class="image-wrapper-slide"
+            *ngFor="let video of itemVideos | keyvalue; index as i"
+          >
+            <iframe
+              width="300"
+              height="225"
+              [src]="video.value"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+            <div
+              class="image-delete-button"
+              (click)="deleteVideo($event, video.key)"
+            >
+              Изтрий
+            </div>
+          </div>
+        </div>
+        <div id="images-pagination-wrapper">
+          <div (click)="slideLeftVideo($event)" class="slider-prev-btn">
+            <img src="/assets/core/pagination_arrow_white_Left.png" />
+          </div>
+          <div (click)="slideRightVideo($event)" class="slider-next-btn">
+            <img src="/assets/core/pagination_arrow_white_Right.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <label>ИНТЕРЕСНО</label>
+      <textarea id="lessonItem-interesting">{{
+        lessonItem.interesting
+      }}</textarea>
+    </div>
+  </div>
+</div>

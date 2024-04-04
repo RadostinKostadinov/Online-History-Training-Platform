@@ -1,0 +1,184 @@
+<div class="section-fullscreen">
+  <div id="left-side">
+    <img
+      id="img-register-wave"
+      src="../../../../assets/core/register-wave.png"
+      alt=""
+    />
+  </div>
+  <div id="right-side">
+    <div id="right-side-top">
+      <form (ngSubmit)="onRegister(registerForm)" #registerForm="ngForm">
+        <div>
+          <div id="user-data">
+            <div>
+              <label for="username">Потребителско име</label>
+              <input
+                placeholder="itodorov"
+                autocomplete="username"
+                type="text"
+                id="username"
+                ngModel
+                name="username"
+                required
+                minlength="4"
+                maxlength="12"
+              />
+            </div>
+            <div>
+              <label for="email">Имейл</label>
+              <input
+                placeholder="itodorov@gmail.com"
+                autocomplete="email"
+                type="text"
+                id="email"
+                ngModel
+                name="email"
+                required
+                email
+                minlength="6"
+              />
+            </div>
+            <div>
+              <label for="password">Парола</label>
+              <input
+                placeholder="******"
+                autocomplete="new-password"
+                type="password"
+                id="password"
+                ngModel
+                name="password"
+                required
+                minlength="6"
+              />
+            </div>
+            <div>
+              <label for="repass">Повтори паролата</label>
+              <input
+                placeholder="******"
+                autocomplete="new-password"
+                type="password"
+                id="repass"
+                ngModel
+                name="repass"
+                required
+                minlength="6"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div id="school-data">
+            <div>
+              <label for="firstname">Име</label>
+              <input
+                placeholder="Иван"
+                type="text"
+                id="firstname"
+                ngModel
+                name="firstName"
+                required
+                minlength="3"
+                maxlength="30"
+              />
+            </div>
+            <div>
+              <label for="surname">Презиме</label>
+              <input
+                placeholder="Стоянов"
+                type="text"
+                id="surname"
+                ngModel
+                name="surName"
+                required
+                minlength="3"
+                maxlength="30"
+              />
+            </div>
+            <div>
+              <label for="lastname">Фамилия</label>
+              <input
+                placeholder="Тодоров"
+                type="text"
+                id="lastname"
+                ngModel
+                name="lastName"
+                required
+                minlength="3"
+                maxlength="30"
+              />
+            </div>
+            <div id="class-number">
+              <div>
+                <label for="school_class">Клас</label>
+                <select
+                  ngModel
+                  name="school_class"
+                  id="class-number-class"
+                  required
+                >
+                  <option value="5А">5А</option>
+                  <option value="5Б">5Б</option>
+                  <option value="6А">6А</option>
+                  <option value="6Б">6Б</option>
+                  <option value="7А">7А</option>
+                  <option value="7Б">7Б</option>
+                  <option value="8А">8А</option>
+                  <option value="8Б">8Б</option>
+                  <option value="9А">9А</option>
+                  <option value="9Б">9Б</option>
+                  <option value="10А">10А</option>
+                  <option value="10Б">10Б</option>
+                  <option value="11А">11А</option>
+                  <option value="11Б">11Б</option>
+                  <option value="12А">12А</option>
+                  <option value="12Б">12Б</option>
+                </select>
+              </div>
+              <div>
+                <label for="number">Номер</label>
+                <input
+                  placeholder="18"
+                  type="text"
+                  id="number"
+                  ngModel
+                  name="number"
+                  required
+                  minlength="1"
+                  maxlength="2"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div id="form-btns">
+            <button
+              class="register-button"
+              type="submit"
+              [disabled]="!registerForm.valid"
+            >
+              Регистрация
+            </button>
+          </div>
+        </div>
+      </form>
+      <div id="error-msg" *ngIf="errorMsg !== ''">
+        <p>{{ errorMsg }}</p>
+      </div>
+      <div id="success-msg" *ngIf="isRegSuccessful">
+        <p>Успешна регистрация!</p>
+        <p>Обърнете се към учител, за активиране на акаунта Ви.</p>
+      </div>
+    </div>
+    <div id="right-side-bottom">
+      <img
+        id="img-glagolica-horizontal"
+        src="../../../../assets/core/glagolica-horizontal.png"
+        alt=""
+      />
+    </div>
+  </div>
+</div>

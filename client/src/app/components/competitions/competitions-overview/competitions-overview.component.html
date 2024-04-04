@@ -1,0 +1,50 @@
+<div class="points-statistic-wrapper">
+  <div class="points">
+    <p>Състезания</p>
+    <app-points-statistic-points
+      points="{{ user.competitionsPoints }}"
+    ></app-points-statistic-points>
+  </div>
+  <div class="label">
+    <p>ТОЧКИ</p>
+  </div>
+  <div class="points">
+    <app-points-statistic-points
+      points="{{ user.testsPoints }}"
+    ></app-points-statistic-points>
+    <p>Контролни</p>
+  </div>
+</div>
+
+<div class="center-greeting">
+  <img src="/assets/core/competitions_main_image.png" alt="comp_main_img" />
+  <p>
+    Учихме здраво нали?<br />Времето дойде... Нека да сглобим всички знания и да
+    разбием теста!
+  </p>
+</div>
+
+<div class="available">
+  <div class="competitions">
+    <label class="available-label">Състезания</label>
+    <div class="tc-cards-wrapper">
+      <app-display-tc
+        class="tc-card"
+        [tc]="competition"
+        *ngFor="let competition of openedCompetitions"
+        (choose)="onChooseTC($event)"
+      ></app-display-tc>
+    </div>
+  </div>
+  <div class="tests">
+    <label class="available-label">Контролни</label>
+    <div class="tc-cards-wrapper">
+      <app-display-tc
+        class="tc-card"
+        [tc]="test"
+        *ngFor="let test of openedTests"
+        (choose)="onChooseTC($event)"
+      ></app-display-tc>
+    </div>
+  </div>
+</div>

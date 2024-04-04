@@ -1,0 +1,16 @@
+<div class="question-wrapper">
+  <form [formGroup]="answerGroup" class="question-content">
+    <div class="question">
+      <input [disabled]="true" type="text" value="{{ question.question }}" />
+    </div>
+
+    <div class="answers">
+      <input
+        type="text"
+        placeholder="Въведете отговор"
+        formControlName="answer"
+        (change)="onSelectAnswer($event)"
+      />
+    </div>
+  </form>
+</div>

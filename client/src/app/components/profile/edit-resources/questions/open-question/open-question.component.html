@@ -1,0 +1,50 @@
+<div class="question-wrapper">
+  <div class="question-index">
+    <p>{{ this.question.questionIndex }}</p>
+    <p (click)="onRemove()">&#120;</p>
+  </div>
+  <form [formGroup]="questionGroup" class="question-content">
+    <div class="display-type">
+      <div>
+        <input
+          placeholder="Въведете събитие"
+          type="text"
+          formControlName="itemName"
+        />
+        <input type="radio" value="name" formControlName="itemDisplayType" />
+      </div>
+      <div>
+        <input type="radio" value="date" formControlName="itemDisplayType" />
+        <input
+          placeholder="Въведете дата"
+          type="text"
+          formControlName="itemDate"
+        />
+      </div>
+    </div>
+
+    <div class="question">
+      <input
+        placeholder="Въведете въпрос"
+        type="text"
+        formControlName="question"
+      />
+    </div>
+
+    <div class="answers">
+      <input
+        type="text"
+        formControlName="correctAnswer"
+        placeholder="Въведете подсказка при проверка (не се вижда от ученика)"
+      />
+    </div>
+
+    <div class="question-points">
+      <input
+        placeholder="Въведете точки"
+        type="text"
+        formControlName="points"
+      />
+    </div>
+  </form>
+</div>

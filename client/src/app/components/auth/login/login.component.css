@@ -1,0 +1,130 @@
+.section-fullscreen {
+  background: linear-gradient(
+    107.56deg,
+    var(--auth-background) 0%,
+    #ffffff 100%
+  );
+
+  display: flex;
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 45%;
+  height: 100%;
+}
+
+#img-glagolica-vertical,
+#img-diplomanti {
+  position: absolute;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+#img-glagolica-vertical {
+  right: 15%;
+}
+
+#img-diplomanti {
+  right: 0%;
+}
+
+.right-side {
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+
+#error-msg {
+  position: absolute;
+  top: 10%;
+  width: 80%;
+  border: 3px solid #ae1d5f;
+  background-color: #ae1d5e4b;
+  border-radius: 20px;
+  padding: 10px 0px;
+}
+
+#error-msg p {
+  text-align: center;
+  color: white;
+  font-size: 16pt;
+}
+
+#form-wrapper {
+  width: 80%;
+  background-color: var(--auth-form-background);
+}
+
+#form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  row-gap: 40px;
+}
+
+#user-data {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group:first-of-type {
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 44px;
+  color: #ffffff;
+}
+
+.form-group input {
+  width: 100%;
+  background-color: var(--auth-formfield-background);
+  height: 50px;
+  outline: none;
+  border: none;
+  font-size: 40px;
+}
+
+#form-btns {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.submit-button,
+.register-button {
+  width: 45%;
+  height: 60px;
+
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 28px;
+
+  color: #ffffff;
+
+  border: none;
+
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: var(--auth-login-btn-background);
+}
+
+.register-button {
+  background-color: var(--auth-formfield-background);
+}

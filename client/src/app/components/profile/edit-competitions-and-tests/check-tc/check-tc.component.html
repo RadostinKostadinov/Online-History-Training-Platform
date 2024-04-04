@@ -1,0 +1,84 @@
+<div class="check-tc-wrapper">
+  <div class="head-controls">
+    <select
+      (change)="onSelectClass($event)"
+      name="school_class"
+      id="school_classes"
+    >
+      <option value="5А">5А</option>
+      <option value="5Б">5Б</option>
+      <option value="6А">6А</option>
+      <option value="6Б">6Б</option>
+      <option value="7А">7А</option>
+      <option value="7Б">7Б</option>
+      <option value="8А">8А</option>
+      <option value="8Б">8Б</option>
+      <option value="9А">9А</option>
+      <option value="9Б">9Б</option>
+      <option value="10А">10А</option>
+      <option value="10Б">10Б</option>
+      <option value="11А">11А</option>
+      <option value="11Б">11Б</option>
+      <option value="12А">12А</option>
+      <option value="12Б" selected>12Б</option>
+    </select>
+
+    <button
+      [ngClass]="currentType === 'tests' ? 'selected' : ''"
+      (click)="setType('tests')"
+    >
+      Контролни
+    </button>
+    <button
+      [ngClass]="currentType === 'competitions' ? 'selected' : ''"
+      (click)="setType('competitions')"
+    >
+      Състезания
+    </button>
+  </div>
+
+  <div class="results-table" id="content-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Урок</th>
+          <th>{{ currentType === "tests" ? "Тест" : "Състезание" }}</th>
+          <th>Преглед</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tc of tcsToShow">
+          <td>{{ tc.parsedDate }}</td>
+          <td>{{ tc.lessonName }}</td>
+          <td>{{ tc.ptcBlank.name }}</td>
+          <td><button (click)="viewTc(tc._id)">ВИЖ</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="pagination-buttons">
+      <div
+        [ngClass]="pageNumber <= 0 ? 'pagination-end' : ''"
+        id="pagination-button-left"
+        class="pagination-button"
+        (click)="previousPage()"
+      >
+        <img src="../../../../../assets/core/pagination_arrow.svg" />
+        <div>
+          <p>ПРЕДИШНА СТРАНИЦА</p>
+        </div>
+      </div>
+      <div
+        [ngClass]="pageNumber + 1 >= maxPageNumber ? 'pagination-end' : ''"
+        id="pagination-button-right"
+        class="pagination-button"
+        (click)="nextPage()"
+      >
+        <div>
+          <p>СЛЕДВАЩА СТРАНИЦА</p>
+        </div>
+        <img src="../../../../../assets/core/pagination_arrow.svg" />
+      </div>
+    </div>
+  </div>
+</div>

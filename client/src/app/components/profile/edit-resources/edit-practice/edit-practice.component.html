@@ -1,0 +1,233 @@
+<div id="ep-content-wrapper">
+  <div id="ep-section1-heading-controls">
+    <div>
+      <input
+        id="ep-name"
+        type="text"
+        placeholder="ИМЕ НА УПРАЖНЕНИЕТО"
+        [value]="practice.name"
+      />
+    </div>
+    <div>
+      <input
+        id="ep-competition-time"
+        type="number"
+        placeholder="ПРОДЪЛЖИТЕЛНОСТ"
+        [value]="practice.competitionTime"
+      />
+      <div id="ep-buttons-wrapper">
+        <div id="ep-status-wrapper">
+          <div
+            id="ep-status"
+            [ngClass]="blankIsActive ? 'ep-status-active' : 'ep-status-stopped'"
+          >
+            <div (click)="activatePractice()">Пусни</div>
+            <div (click)="disablePractice()">Скрий</div>
+          </div>
+        </div>
+        <button id="ep-save-btn" (click)="savePTCBlank($event)">ЗАПАЗИ</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep-section2-questions">
+    <div id="not-practice-questions" *ngIf="practice.questions.length === 0">
+      <div
+        class="ep-question"
+        *ngFor="let lessonItem of lesson.items; index as i"
+      >
+        <div class="ep-question-heading">
+          <div class="ep-questionItem-name" (click)="onSelectName($event)" data-type="name">{{ lessonItem.name }}</div>
+          <div class="ep-questionItem-date" (click)="onSelectDate($event)" data-type="date">{{ lessonItem.date }}</div>
+        </div>
+        <div>
+          <div class="ep-question-index">
+            <span>{{ i + 1 }}</span>
+          </div>
+          <div class="ep-question-box">
+            <input
+              type="text"
+              class="ep-question-name"
+              placeholder="ВЪПРОС..."
+            />
+            <div class="ep-asnwers-wrapper">
+              <div>
+                <div>
+                  <input type="text" class="ep-a1" placeholder="ОТГОВОР 1" />
+                  <div
+                    class="ep-a1-check"
+                    (click)="markQuestion($event, i + 1)"
+                  ></div>
+                </div>
+                <div>
+                  <input type="text" class="ep-a2" placeholder="ОТГОВОР 2" />
+                  <div
+                    class="ep-a2-check"
+                    (click)="markQuestion($event, i + 1)"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <div
+                    class="ep-a3-check"
+                    (click)="markQuestion($event, i + 1)"
+                  ></div>
+                  <input type="text" class="ep-a3" placeholder="ОТГОВОР 3" />
+                </div>
+                <div>
+                  <div
+                    class="ep-a4-check"
+                    (click)="markQuestion($event, i + 1)"
+                  ></div>
+                  <input type="text" class="ep-a4" placeholder="ОТГОВОР 4" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <input
+              type="number"
+              class="ep-question-points"
+              placeholder="ТОЧКИ"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="have-practice-questions" *ngIf="practice.questions.length > 0">
+      <div
+        class="ep-question"
+        *ngFor="let question of practice.questions; index as i"
+      >
+      <div class="ep-question-heading">
+        <div class="ep-questionItem-name" (click)="onSelectName($event)" data-type="name"
+        [ngClass]="
+        question.itemDisplayType == 'name' ? 'ep-questionItem-active'
+          : ''
+      ">{{ question.itemName }}</div>
+        <div class="ep-questionItem-date" (click)="onSelectDate($event)" data-type="date"
+        [ngClass]="
+        question.itemDisplayType == 'date' ? 'ep-questionItem-active'
+          : ''
+      ">{{ question.itemDate }}</div>
+      </div>
+        <div>
+          <div class="ep-question-index">
+            <span>{{ i + 1 }}</span>
+          </div>
+          <div class="ep-question-box">
+            <input
+              type="text"
+              class="ep-question-name"
+              placeholder="ВЪПРОС..."
+              [value]="question.question"
+            />
+            <div class="ep-asnwers-wrapper">
+              <div>
+                <div>
+                  <input
+                    [ngClass]="
+                      question.answers[0] == question.correctAnswer
+                        ? 'ep-input-correct-answer'
+                        : ''
+                    "
+                    type="text"
+                    class="ep-a1"
+                    placeholder="ОТГОВОР 1"
+                    [value]="question.answers[0]"
+                  />
+                  <div
+                    [ngClass]="
+                      question.answers[0] == question.correctAnswer
+                        ? 'checked'
+                        : ''
+                    "
+                    class="ep-a1-check"
+                    (click)="markQuestion($event, i + 1)"
+                  ></div>
+                </div>
+                <div>
+                  <input
+                    [ngClass]="
+                      question.answers[1] == question.correctAnswer
+                        ? 'ep-input-correct-answer'
+                        : ''
+                    "
+                    type="text"
+                    class="ep-a2"
+                    placeholder="ОТГОВОР 2"
+                    [value]="question.answers[1]"
+                  />
+                  <div
+                    [ngClass]="
+                      question.answers[1] == question.correctAnswer
+                        ? 'checked'
+                        : ''
+                    "
+                    class="ep-a2-check"
+                    (click)="markQuestion($event, i + 1)"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <div
+                    [ngClass]="
+                      question.answers[2] == question.correctAnswer
+                        ? 'checked'
+                        : ''
+                    "
+                    class="ep-a3-check"
+                    (click)="markQuestion($event, i + 1)"
+                  ></div>
+                  <input
+                    [ngClass]="
+                      question.answers[2] == question.correctAnswer
+                        ? 'ep-input-correct-answer'
+                        : ''
+                    "
+                    type="text"
+                    class="ep-a3"
+                    placeholder="ОТГОВОР 3"
+                    [value]="question.answers[2]"
+                  />
+                </div>
+                <div>
+                  <div
+                    [ngClass]="
+                      question.answers[3] == question.correctAnswer
+                        ? 'checked'
+                        : ''
+                    "
+                    class="ep-a4-check"
+                    (click)="markQuestion($event, i + 1)"
+                  ></div>
+                  <input
+                    [ngClass]="
+                      question.answers[3] == question.correctAnswer
+                        ? 'ep-input-correct-answer'
+                        : ''
+                    "
+                    type="text"
+                    class="ep-a4"
+                    placeholder="ОТГОВОР 4"
+                    [value]="question.answers[3]"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <input
+              type="number"
+              class="ep-question-points"
+              placeholder="ТОЧКИ"
+              [value]="question.points"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

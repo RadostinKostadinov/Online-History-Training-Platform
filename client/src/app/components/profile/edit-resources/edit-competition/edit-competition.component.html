@@ -1,0 +1,34 @@
+<div id="ep-content-wrapper">
+  <app-edit-competition-heading
+    class="top-controls"
+    [competition]="competition"
+  ></app-edit-competition-heading>
+  <app-add-new-question
+    class="new-question-controls"
+    [test]="competition"
+  ></app-add-new-question>
+  <div
+    class="questions"
+    *ngFor="let question of competition.questions"
+    [ngSwitch]="question.type"
+  >
+    <app-multiple-text-question
+      [question]="question"
+      [ptcType]="'competition'"
+      *ngSwitchCase="'multiple-choice-text'"
+      (removeQ)="removeQuestion($event)"
+    ></app-multiple-text-question>
+    <app-open-question
+      [question]="question"
+      [ptcType]="'competition'"
+      *ngSwitchCase="'open'"
+      (removeQ)="removeQuestion($event)"
+    ></app-open-question>
+    <app-multiple-image-question
+      [question]="question"
+      [ptcType]="'competition'"
+      *ngSwitchCase="'multiple-choice-image'"
+      (removeQ)="removeQuestion($event)"
+    ></app-multiple-image-question>
+  </div>
+</div>

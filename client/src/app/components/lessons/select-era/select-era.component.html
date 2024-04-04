@@ -1,0 +1,13 @@
+<div id="content-wrapper">
+  <div id="left-side">
+    <img src="../../../assets/core/eras-page-greeting.png" />
+  </div>
+  <div id="right-side">
+    <h1>Избор на ера</h1>
+    <div>
+      <a *ngFor="let era of eras" (click)="onEraSelect($event, era._id)">
+        {{ era.name }}</a
+      >
+    </div>
+  </div>
+</div>

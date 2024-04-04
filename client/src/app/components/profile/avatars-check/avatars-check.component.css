@@ -1,0 +1,178 @@
+.avatars-wrapper {
+  display: flex;
+  padding: 0px 0px 30px 20px;
+  flex-direction: column;
+  row-gap: 30px;
+  justify-content: flex-end;
+}
+
+.avatar {
+  background: linear-gradient(237.14deg, #594833 0%, #f4b483 100%);
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 30px 0px 0px 30px;
+
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.top-row {
+  display: flex;
+  column-gap: 30px;
+}
+
+.top-right {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  width: 100%;
+}
+
+.top-right-first-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-right-first-row div {
+  width: 40%;
+
+  text-align: center;
+  padding: 10px;
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+}
+
+.top-right-second-row {
+  width: 100% !important;
+  height: 100%;
+
+  text-align: center;
+  padding: 10px;
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+}
+
+.bottom-row {
+  display: flex;
+  column-gap: 30px;
+}
+
+.teacher-comment {
+  flex: 7;
+
+  text-align: center;
+  padding: 10px;
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+}
+
+.controls {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.unapprove,
+.approve {
+  border: none;
+  padding: 10px;
+  width: 100%;
+}
+
+.unapprove {
+  background: linear-gradient(
+    92.78deg,
+    rgba(232, 71, 64, 0.6) 0%,
+    rgba(232, 71, 64, 0.6) 100%
+  );
+  box-shadow: inset 0px 0px 13px #ffffff;
+}
+
+.approve {
+  background: linear-gradient(
+    92.78deg,
+    rgba(83, 194, 102, 0.6) 0%,
+    rgba(83, 194, 102, 0.6) 100%
+  );
+  box-shadow: inset 0px 0px 13px #ffffff;
+}
+
+.controls input {
+  border: none;
+  border-radius: 15px;
+  padding: 5px 0px;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.3em;
+
+  text-align: center;
+
+  color: #ffffff;
+
+  width: 40%;
+  height: 35px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.controls input::placeholder {
+  font-weight: bold;
+  color: rgb(88, 88, 88);
+}
+.controls,
+.teacher-comment,
+.top-right-second-row,
+.top-right-first-row > div,
+button {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  overflow-y: auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+.image-wrap {
+  width: 340px;
+  padding: 20px;
+
+  background: linear-gradient(237.14deg, #594833 0%, #f4b483 100%);
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 30px 0px 0px 30px;
+  border-radius: 15px;
+}
+
+.avatar-image {
+  width: 300px;
+  height: 225px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

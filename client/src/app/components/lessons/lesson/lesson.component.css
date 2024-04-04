@@ -1,0 +1,480 @@
+#hidden-item-scroll-to {
+  margin-bottom: 80px;
+}
+
+#lesson-section-1-heading {
+  height: 240px;
+  max-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+#lesson-top-left-image {
+  position: absolute;
+  top: 0;
+  left: 5%;
+}
+
+#lesson-top-left-image > img {
+  height: 240px;
+  max-height: 240px;
+}
+
+#lesson-top-right-textfields {
+  margin-top: 90px;
+  margin-right: 5%;
+}
+
+#lesson-top-right-textfields > div {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+}
+
+#lesson-top-right-textfields > div > h2,
+#lesson-top-right-textfields > div > h1 {
+  padding: 10px 30px;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17.6px;
+  line-height: 1.3em;
+
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #000000;
+}
+
+#lesson-top-right-textfields > div > h1 {
+  font-size: 22px;
+}
+
+/* s */
+
+#lesson-items-grid {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 200px;
+  gap: 15px 0px;
+  justify-content: center;
+  align-content: start;
+  justify-items: center;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+.lesson-grid-item {
+  height: 200px;
+  width: 100%;
+}
+
+.lesson-grid-item > p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2em;
+
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #000000;
+  height: 50px;
+}
+
+.lesson-grid-item-linecircle-wrapper {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lesson-grid-item-choose-line {
+  content: "";
+  width: 100%;
+  height: 30px;
+  background: #ba8761;
+  box-shadow: 30px 4px 24px 0px rgba(0, 0, 0, 0.25);
+}
+
+.lesson-grid-item-choose-circle {
+  position: absolute;
+  border-radius: 40px;
+  background: rgba(83, 194, 102, 0.6);
+  content: "";
+  width: 70px;
+  height: 70px;
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+
+  text-transform: uppercase;
+}
+
+.lesson-grid-item > div:nth-of-type(2) {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lesson-grid-item-choose-button {
+  padding: 20px 50px;
+
+  border: 0px solid white;
+  background: radial-gradient(
+    50% 1030.19% at 50% 50%,
+    rgba(114, 63, 0, 0.6) 31.77%,
+    rgba(244, 180, 131, 0.6) 100%
+  );
+  box-shadow: inset 0px 0px 13px #ffffff;
+  border-radius: 30px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.3px;
+  /* or 179% */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+
+  cursor: pointer;
+}
+
+/* sss */
+
+#lesson-section-3-lesson {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#row-1-text-images {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 20px;
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: linear-gradient(
+    1.87deg,
+    rgba(186, 135, 97, 0) 1.58%,
+    #ba8761 98.45%
+  );
+}
+
+.left-column-text,
+.right-column-images {
+  flex: 1;
+  padding: 0px 20px;
+}
+
+.left-column-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-column-text > h3 {
+  width: 80%;
+  text-align: center;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3em;
+
+  letter-spacing: -0.02em;
+
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+#lesson-textarea-text {
+  width: 90%;
+  text-align: center;
+  height: 500px;
+
+  padding: 30px;
+  background: linear-gradient(180deg, rgb(141 106 78) 0%, #ba8761 100%);
+  box-shadow: 0px 4px 50px 5px rgba(0, 0, 0, 0.25);
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3em;
+  /* or 159% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #ffffff;
+}
+
+.row-3-interesting {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: linear-gradient(
+    1.87deg,
+    rgba(186, 135, 97, 0) 1.58%,
+    #ba8761 98.45%
+  );
+}
+
+.row-3-interesting > div {
+  width: 80%;
+  text-align: center;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.3em;
+
+  letter-spacing: -0.02em;
+
+  color: #ffffff;
+}
+
+.row-3-interesting > p#lesson-p-interesting {
+  width: 80%;
+  text-align: center;
+
+  padding: 30px;
+  background: linear-gradient(180deg, rgb(141 106 78) 0%, #ba8761 100%);
+  box-shadow: 0px 4px 50px 5px rgba(0, 0, 0, 0.25);
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3em;
+  /* or 159% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #ffffff;
+}
+
+.right-column-images {
+  padding: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: linear-gradient(
+    1.87deg,
+    rgba(186, 135, 97, 0) 1.58%,
+    #ba8761 98.45%
+  );
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.right-column-images > div:nth-of-type(1) {
+  align-self: center;
+  width: 300px;
+  padding: 15px 20px;
+
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3em;
+
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.lesson-images-slider {
+  align-self: center;
+  width: 490px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+
+  padding: 20px;
+}
+
+.lesson-images-wrapper {
+  width: 100%;
+  height: 350px;
+  position: relative;
+
+  display: flex;
+  column-gap: 30px;
+
+  transition: all 0.5s;
+}
+
+.lesson-display-image {
+  width: 450px;
+  height: 350px;
+  border: 1px solid black;
+  background-position: center;
+  background-size: cover;
+}
+
+#lesson-images-pagination {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 60px;
+  top: 50%;
+  position: absolute;
+}
+
+.lesson-slider-prev-btn,
+.lesson-slider-next-btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+
+.lesson-slider-prev-btn:active,
+.lesson-slider-next-btn:active {
+  transform: scale(1.1);
+}
+
+.lesson-slider-prev-btn {
+  top: 77px;
+  left: -5%;
+}
+
+.lesson-slider-next-btn {
+  top: 77px;
+  right: -5%;
+}
+
+.row-2-videos {
+  padding: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: linear-gradient(
+    1.87deg,
+    rgba(186, 135, 97, 0) 1.58%,
+    #ba8761 98.45%
+  );
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.row-2-videos > div:nth-of-type(1) {
+  align-self: center;
+  width: 300px;
+  padding: 15px 20px;
+
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3em;
+
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.lesson-videos-slider {
+  align-self: center;
+  width: 85%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+
+  padding: 20px;
+}
+
+.lesson-videos-wrapper {
+  width: 100%;
+  height: 350px;
+  position: relative;
+
+  display: flex;
+  column-gap: 30px;
+
+  transition: all 0.5s;
+}
+
+#lesson-videos-pagination {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 60px;
+  top: 50%;
+  position: absolute;
+}
+
+.lesson-grid-item-choose-circle {
+}

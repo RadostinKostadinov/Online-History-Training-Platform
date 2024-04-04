@@ -1,0 +1,140 @@
+<div id="vp-section-1">
+  <div id="vp-row-1">
+    <div id="top-left">
+      <div id="profile-image-wrapper">
+        <img
+          src="../../../../assets/defaults/profile-picture.png"
+          alt="default-profile-pic"
+        />
+      </div>
+    </div>
+    <div id="top-right">
+      <div id="info-column-1">
+        <div class="profile-info-cell">{{ student.firstName }}</div>
+        <div class="profile-info-cell">{{ student.surName }}</div>
+        <div class="profile-info-cell">{{ student.lastName }}</div>
+        <div class="profile-info-cell">{{ student.class }}</div>
+        <div class="profile-info-cell">{{ student.number }}</div>
+      </div>
+      <div id="info-column-2">
+        <div class="profile-info-cell">{{ student.address }}</div>
+        <div class="profile-info-cell">{{ student.userPhone }}</div>
+        <div class="profile-info-cell">{{ student.parent }}</div>
+        <div class="profile-info-cell">{{ student.parentPhone }}</div>
+        <div class="profile-info-cell">
+          {{
+            student.classTeacher
+              ? student.classTeacher.firstName +
+                " " +
+                student.classTeacher.lastName
+              : "Не е въведен."
+          }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="vp-row-2">
+    <div id="bottom-left">
+      <div id="points-wrapper">
+        <div class="profile-points-info-cell">
+          <div>Контролни</div>
+          <div>{{ student.testsPoints }}</div>
+        </div>
+        <div class="profile-points-info-cell">
+          <div>Уроци</div>
+          <div>{{ student.lessonsPoints }}</div>
+        </div>
+        <div class="profile-points-info-cell">
+          <div>Аватари</div>
+          <div>{{ student.avatarsPoints }}</div>
+        </div>
+        <div class="profile-points-info-cell">
+          <div>Упражнения</div>
+          <div>{{ student.practicesPoints }}</div>
+        </div>
+        <div class="profile-points-info-cell">
+          <div>Състезания</div>
+          <div>{{ student.competitionsPoints }}</div>
+        </div>
+      </div>
+    </div>
+    <div id="bottom-right">
+      <table>
+        <thead>
+          <tr>
+            <th>ТИП</th>
+            <th>ДАТА</th>
+            <th>ИМЕ</th>
+            <th>ТОЧКИ</th>
+            <th>ПРЕГЛЕД</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let savedBlank of ptcsToShow">
+            <td>{{ savedBlank.typeSymbol }}</td>
+            <td>{{ savedBlank.date }}</td>
+            <td>{{ savedBlank.practiceName }}</td>
+            <td>{{ savedBlank.studentPoints }}</td>
+            <td>
+              <button (click)="viewBlank($event, savedBlank._id)">
+                <img
+                  class="magnifier-icon-view-more"
+                  src="../.././../../assets/core/magnifier.png"
+                />
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="pagination-buttons">
+        <div
+          [ngClass]="pageNumber <= 0 ? 'pagination-end' : ''"
+          id="pagination-button-left"
+          class="pagination-button"
+          (click)="previousPage()"
+        >
+          <img src="../../../../assets/core/pagination_arrow.svg" />
+          <div>
+            <p>ПРЕДИШНА СТРАНИЦА</p>
+          </div>
+        </div>
+        <div
+          [ngClass]="pageNumber >= maxPageNumber ? 'pagination-end' : ''"
+          id="pagination-button-right"
+          class="pagination-button"
+          (click)="nextPage()"
+        >
+          <div>
+            <p>СЛЕДВАЩА СТРАНИЦА</p>
+          </div>
+          <img src="../../../../assets/core/pagination_arrow.svg" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="vp-section-2" *ngIf="displayedPTC">
+  <div id="ptc-heading">
+    <div>{{ displayedPTC.lessonName }}</div>
+    <div>{{ displayedPTC.practiceName }}</div>
+    <div>{{ displayedPTC.date }}</div>
+    <div>{{ displayedPTC.studentPoints }}/{{ displayedPTC.totalPoints }}</div>
+  </div>
+  <div id="ptc-questions">
+    <div class="ptc-question" *ngFor="let question of displayedPTC.questions">
+      <div>
+        <label>Въпрос:</label>
+        <span>{{ question.content }}</span>
+      </div>
+      <div [ngClass]="question.isCorrect ? 'correct' : 'incorrect'">
+        <label>Отговор:</label>
+        <span>{{ question.answer }}</span>
+      </div>
+      <div *ngIf="question.isCorrect">
+        <label>Точки:</label>
+        <span>{{ question.points }}</span>
+      </div>
+    </div>
+  </div>
+</div>

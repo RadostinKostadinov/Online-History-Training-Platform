@@ -1,0 +1,98 @@
+<div id="lesson-section-1-heading">
+  <div id="lesson-top-left-image">
+    <img
+      src="../../../../assets/core/lesson-page-greeting.png"
+      alt="lesson-page-greeting"
+    />
+  </div>
+  <div id="lesson-top-right-textfields">
+    <div>
+      <h2>{{ era.name }}</h2>
+      <h1>{{ lesson.name }}</h1>
+    </div>
+  </div>
+</div>
+
+<div id="lesson-section-2-timeline">
+  <div id="lesson-items-grid">
+    <div class="lesson-grid-item" *ngFor="let item of lesson.items">
+      <p>{{ item.name }}</p>
+      <div class="lesson-grid-item-linecircle-wrapper">
+        <div class="lesson-grid-item-choose-line"></div>
+        <div
+          class="lesson-grid-item-choose-circle"
+          href="#hidden-item-scroll-to"
+          (click)="onChooseItem($event, item._id)"
+        >
+          {{ item.date }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="hidden-item-scroll-to"></div>
+<div id="lesson-section-3-lesson" *ngIf="lessonItem">
+  <div id="row-1-text-images">
+    <div class="left-column-text">
+      <h3>{{ lessonItem.name }}</h3>
+      <textarea id="lesson-textarea-text" [readonly]="true">{{
+        lessonItem.text
+      }}</textarea>
+    </div>
+    <div class="right-column-images">
+      <div>ИЗОБРАЖЕНИЯ</div>
+      <div class="lesson-images-slider">
+        <div class="lesson-images-wrapper">
+          <div
+            class="lesson-image-wrapper-slide"
+            *ngFor="let image of itemImages | keyvalue"
+          >
+            <img class="lesson-display-image" [src]="image.value" />
+          </div>
+        </div>
+      </div>
+      <div id="lesson-images-pagination" *ngIf="itemImages.size > 1">
+        <div (click)="slideLeftImages($event)" class="lesson-slider-prev-btn">
+          <img src="/assets/core/pagination_arrow_white_Left.png" />
+        </div>
+        <div (click)="slideRightImages($event)" class="lesson-slider-next-btn">
+          <img src="/assets/core/pagination_arrow_white_Right.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row-2-videos">
+    <div>ВИДЕA</div>
+    <div class="lesson-videos-slider">
+      <div class="lesson-videos-wrapper">
+        <div
+          class="lesson-video-wrapper-slide"
+          *ngFor="let video of itemVideos | keyvalue; index as i"
+        >
+          <iframe
+            width="450"
+            height="350"
+            [src]="video.value"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <div id="lesson-videos-pagination">
+      <div (click)="slideLeftVideos($event)" class="lesson-slider-prev-btn">
+        <img src="/assets/core/pagination_arrow_white_Left.png" />
+      </div>
+      <div (click)="slideRightVideos($event)" class="lesson-slider-next-btn">
+        <img src="/assets/core/pagination_arrow_white_Right.png" />
+      </div>
+    </div>
+  </div>
+  <div class="row-3-interesting">
+    <div>ЛЮБОПИТНО</div>
+    <p id="lesson-p-interesting">{{ lessonItem.interesting }}</p>
+  </div>
+</div>

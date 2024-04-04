@@ -1,0 +1,155 @@
+#content-first-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#content-first-row > div:first-of-type select {
+  display: block;
+  margin-bottom: 10px;
+  height: 50px;
+  width: 200px;
+  outline: none;
+  border: none;
+  font-size: 16pt;
+  padding-left: 52px;
+
+  background: url(../../../../assets/core/select_arrow.svg) no-repeat;
+  background-position: 100% center !important;
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  padding-right: 2rem !important;
+  cursor: pointer;
+}
+
+#content-first-row > div:first-of-type p {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+#vp-table {
+  margin-right: 10px;
+  margin-left: 0px;
+  background: linear-gradient(
+    237.14deg,
+    rgba(186, 135, 97, 0.63) 0%,
+    rgba(186, 135, 97, 0.63) 100%
+  );
+  box-shadow: 0px 4px 25px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+/* adds space between tbody and thead */
+tbody:before {
+  content: "@";
+  display: block;
+  line-height: 10px;
+  text-indent: -99999px;
+}
+
+tr {
+  background: rgba(255, 255, 255, 0.3);
+}
+td {
+}
+
+th,
+td,
+tbody button {
+  padding: 10px 0px;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.3em;
+
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #3a313d;
+}
+
+tbody > tr:not(:last-child) {
+  border-bottom: 3px solid #ba876199;
+}
+
+tbody button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+tbody button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* PAGINATION BUTTONS */
+#pagination-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#pagination-button-left {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+#pagination-button-right > img {
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+#pagination-button-right > img {
+  transform: rotate(180deg);
+}
+
+.pagination-button {
+  cursor: pointer;
+  display: flex;
+  column-gap: 10px;
+}
+
+.pagination-button > img {
+  width: 50px;
+  height: auto;
+}
+
+.pagination-button > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.pagination-button > div > p {
+  max-width: 10ch;
+  text-align: center;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.pagination-end {
+  visibility: hidden;
+}
